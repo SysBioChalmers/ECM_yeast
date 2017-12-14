@@ -7,7 +7,7 @@
 %
 % Ivan Domenzain.   Last edited: 2017-12-14
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [ECnumbers, NarrowDists] = BRENDA_analysis(model_data)
+function [ECnumbers, NarrowDists] = BRENDA_Analysis(model_data)
     % Extract all the unique EC numbers included in the model
     ECnumbers = extractECnumbers(model_data.EC_numbers);
     cd Databases
@@ -24,7 +24,6 @@ function [ECnumbers, NarrowDists] = BRENDA_analysis(model_data)
     % The parameters matching criteria can be flexibilized for the EC numbers
     % with narrow distributions
     [NarrowDists, stats] = getWidenessDistributions(ECnumbers,KM{1},KM{4});
-    cd ..
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [wideDists, stats] = getWidenessDistributions(ECs,EC_cell,Kvalues)
