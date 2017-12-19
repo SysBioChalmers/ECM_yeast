@@ -21,7 +21,7 @@
     phylDistStruct =  KEGG_struct(true);
     org_index      = find_inKEGG(org_name,phylDistStruct.names);
     %Extract Kcat values, SA*Mw and KMs from the BRENDA files
-    [Kcat_cell, SA_cel, KM_cell] = extractBRENDAdata;
+    [Kcat_cell,SA_cel] = extractBRENDAdata;
     for i=1:nR
         subsIndx      = find(model.S(:,i)<0);
         prodsIndx     = find(model.S(:,i)>0);
@@ -42,47 +42,22 @@
  %end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %Load BRENDA data:
- function [Kcat_cell,SA_cell,KM_cell] = extractBRENDAdata
+ function [Kcat_cell,SA_cell] = extractBRENDAdata
     cd Databases
     %Get all the Kcat values (maximum values for the organism/substrate/EC#
-    %triplets distribution) for non-mutant enzymes.
+    %
     fID           = fopen('max_KCAT.txt');
     Kcat_cell     = textscan(fID,'%s %s %s %f  %s','delimiter','\t');
     Kcat_cell{4}  = Kcat_cell{4};   %[1/s] -> [1/h]
     fclose(fID);
-    %Get all the KM values (minimum values for the organism/substrate/EC#
-    %triplets distribution) for non-mutant enzymes.
-    fID         = fopen('min_KM.txt');
-    KM_cell     = textscan(fID,'%s %s %s %f  %s','delimiter','\t');
-    KM_cell{4}  = KM_cell{4}*1000;   %[1/s] -> [1/h]
+    
+    fID           = fopen('max_KCAT.txt');
+    Kcat_cell     = textscan(fID,'%s %s %s %f  %s','delimiter','\t');
+    Kcat_cell{4}  = Kcat_cell{4};   %[1/s] -> [1/h]
     fclose(fID);
-    %Split string for each organism in the BRENDA data 
-    %{name, taxonomy, KEGG code}
-    Kcat_cell{3} = cellfun(@stringSplit, Kcat_cell{3});
-    KM_cell{3}   = cellfun(@stringSplit, KM_cell{3});
+    %Split string for each organism in the BRENDA data {name, taxonomy, KEGG code}
+    Kcat_cell{3}      = cellfun(@stringSplit, Kcat_cell{3});
     %Creates a cell with all the SA*Mw values (corresponding to the same EC#
     %and organism).
-    %SA_cell      = SA_BRENDA('max_SA.txt','max_MW.txt');
+    SA_cell        = SA_BRENDA('max_SA.txt',MW_file);
  end
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function string_cells = stringSplit(cell_array)
-        string_cells = {strsplit(cell_array,'//')};
-        string_cells = string_cells{1}(1);
-end
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function org_index = find_inKEGG(org_name,names)
-    org_index      = find(strcmpi(org_name,names));
-    if isempty(org_index)
-        i=1;
-        while isempty(org_index) && i<length(names)
-            str = names{i};
-            if strcmpi(org_name(1:strfind(org_name,' ')-1),...
-                str(1:strfind(str,' ')-1))
-                org_index = i;
-            end
-            i = i+1;
-        end
-        if isempty(org_index);org_index = '*';end
-    end
-end
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
