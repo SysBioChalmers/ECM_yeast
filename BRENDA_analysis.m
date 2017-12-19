@@ -34,11 +34,13 @@ function [wideDists, stats] = getWidenessDistributions(ECs,EC_cell,Kvalues)
          indx      = find(strcmpi(ECs(i),EC_cell));
          if ~isempty(indx)
              EC_KMdist = Kvalues(indx);
-             metric    = log10(mean(EC_KMdist))/log10(max(EC_KMdist)/...
+             metric    = log10(median(EC_KMdist))/log10(max(EC_KMdist)/...
                                                           min(EC_KMdist));
              wideness  = [wideness; metric];
              if metric >= 1
                  wideDists = [wideDists; ECs(i)]; 
+                 disp(ECs(i))
+                 disp(length(indx))
              end
          end
 
