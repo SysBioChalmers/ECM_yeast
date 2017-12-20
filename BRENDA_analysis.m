@@ -7,45 +7,55 @@
 %
 % Ivan Domenzain.   Last edited: 2017-12-14
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [ECnumbers, NarrowDists] = BRENDA_analysis(model_data)
+function [Narrow, stats] = BRENDA_analysis(model_data, parameter)
     % Extract all the unique EC numbers included in the model
     ECnumbers = extractECnumbers(model_data.EC_numbers);
     cd Databases
-    %kcat_file = 'max_KCAT.txt';
-    km_file   = 'min_KM.txt';
-    %SA_file    = 'max_SA.txt';
-    %MW_file    = 'max_MW.txt';
-    fID       = fopen(km_file);
-    KM        = textscan(fID,'%s %s %s %f  %s','delimiter','\t');
-    KM{4}     = KM{4}*1000;   %[mM] -> [microM]
+    
+    if strcmpi(parameter,'KCAT')
+        file          = 'max_KCAT.txt';
+        scalingFactor = 1;    %[1/s] ->[1/s]
+    elseif strcmpi(parameter,'KM')
+        file          = 'min_KM.txt';
+        scalingFactor = 1000; %[microM] ->[miliM]
+    end
+    
+    fID     = fopen(file);
+    data    = textscan(fID,'%s %s %s %f  %s','delimiter','\t');
+    data{4} = data{4}*scalingFactor;
     fclose(fID);
     %Split string for each organism in the BRENDA data {name,taxonomy,KEGG code}
-    KM{3}     = cellfun(@stringSplit, KM{3});
-    % The parameters matching criteria can be flexibilized for the EC numbers
-    % with narrow distributions
-    [NarrowDists, stats] = getWidenessDistributions(ECnumbers,KM{1},KM{4});
+    data{3} = cellfun(@stringSplit, data{3});
+    %The parameters matching criteria can be flexibilized for the EC numbers
+    %with narrow distributions
+    str            = [parameter ' distributions wideness'];
+    [Narrow,stats] = anlyzeDistributions(ECnumbers,data{1},data{4},str);
     cd ..
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [wideDists, stats] = getWidenessDistributions(ECs,EC_cell,Kvalues)
+function [wideDists, stats] = anlyzeDistributions(ECs,EC_cell,Kvalues,str)
     wideness  = [];
     wideDists = []; 
     for i=1:length(ECs)
          indx      = find(strcmpi(ECs(i),EC_cell));
          if ~isempty(indx)
              EC_KMdist = Kvalues(indx);
-             metric    = log10(median(EC_KMdist))/log10(max(EC_KMdist)/...
-                                                          min(EC_KMdist));
-             wideness  = [wideness; metric];
+             if length(indx) == 1
+                 metric = 0;
+             else
+                 metric = log10(median(EC_KMdist))/log10(max(EC_KMdist)/...
+                                                           min(EC_KMdist));
+                 wideness  = [wideness; metric];
+             end
              if metric >= 1
                  wideDists = [wideDists; ECs(i)]; 
-                 disp(ECs(i))
-                 disp(length(indx))
              end
          end
 
     end
+    figure
     [y, stats]=cdfplot(wideness);
+    title(str)
     ylabel('Cumulative distribution','FontSize',30,'FontWeight','bold');
     xlabel('log10(mean)/log10(max/min)','FontSize',30,'FontWeight','bold');
     hold on

@@ -1,0 +1,104 @@
+rxn: 18,[EC2.7.1.1],alpha-D-glucose,NaN,closest
+rxn: 18,[EC2.7.1.1],ATP,3.32,closest
+rxn: 18,[EC2.7.1.2],alpha-D-glucose,317,saccharomyces cerevisiae
+rxn: 18,[EC2.7.1.2],ATP,317,saccharomyces cerevisiae
+rxn: 19,[EC5.3.1.9],alpha-D-glucose 6-phosphate,NaN,closest
+rxn: 20,[EC2.7.1.11],ATP,149,saccharomyces cerevisiae
+rxn: 20,[EC2.7.1.11],beta-D-fructofuranose 6-phosphate,149,saccharomyces cerevisiae
+rxn: 21,[EC3.1.3.11],beta-D-fructofuranose 1,6-bisphosphate,NaN,closest
+rxn: 22,[EC4.1.2.13],beta-D-fructofuranose 1,6-bisphosphate,NaN,closest
+rxn: 23,[EC5.3.1.1],glycerone phosphate,367,closest
+rxn: 24,[EC1.2.1.12],D-glyceraldehyde 3-phosphate,29,saccharomyces cerevisiae
+rxn: 24,[EC1.2.1.12],nad+,20,closest
+rxn: 24,[EC1.2.1.12],phosphate,NaN,closest
+rxn: 25,[EC2.7.2.3],1,3 bis-phosphoglycerate,NaN,closest
+rxn: 25,[EC2.7.2.3],ADP,963.1,saccharomyces cerevisiae
+rxn: 26,[EC5.4.2.11],3-phospho-D-glycerate,530,saccharomyces cerevisiae
+rxn: 27,[EC4.2.1.11],2-phospho-D-glycerate,44.85,saccharomyces cerevisiae
+rxn: 28,[EC2.7.1.40],ADP,0.2,closest
+rxn: 28,[EC2.7.1.40],phosphoenolpyruvate,232,saccharomyces cerevisiae
+rxn: 29,[EC1.1.1.49],alpha-D-glucose 6-phosphate,NaN,closest
+rxn: 29,[EC1.1.1.49],nadp+,174,closest
+rxn: 30,[EC3.1.1.31],6-O-phosphono-D-glucono-1,5-lactone,NaN,closest
+rxn: 30,[EC3.1.1.31 EC3.1.1.31],6-O-phosphono-D-glucono-1,5-lactone,NaN,closest
+rxn: 31,[EC1.1.1.44],6-phospho-D-gluconate,NaN,closest
+rxn: 31,[EC1.1.1.44],nadp+,98,closest
+rxn: 32,[EC5.3.1.6],D-ribulose 5-phosphate,50,closest
+rxn: 33,[EC5.1.3.1],D-ribulose 5-phosphate,1300,saccharomyces cerevisiae
+rxn: 34,[EC2.2.1.1],D-ribose 5-phosphate,NaN,closest
+rxn: 34,[EC2.2.1.1],D-xylulose 5-phosphate,NaN,closest
+rxn: 35,[EC2.2.1.2],D-glyceraldehyde 3-phosphate,13,saccharomyces cerevisiae
+rxn: 35,[EC2.2.1.2],sedoheptulose 7-phosphate,13,saccharomyces cerevisiae
+rxn: 36,[EC2.2.1.1],D-erythrose 4-phosphate,NaN,closest
+rxn: 36,[EC2.2.1.1],D-xylulose 5-phosphate,NaN,closest
+rxn: 37,[EC1.1.1.8],glycerone phosphate,NaN,closest
+rxn: 37,[EC1.1.1.8],NADH,NaN,closest
+rxn: 38,[EC3.1.3.21],glycerol-3-phosphate,NaN,closest
+rxn: 39,[EC4.1.1.1],pyruvate,73.1,saccharomyces cerevisiae
+rxn: 39,[EC4.1.1.74],pyruvate,0.88,closest
+rxn: 40,[EC1.1.1.1],acetaldehyde,283,closest
+rxn: 40,[EC1.1.1.1],NADH,0.41,closest
+rxn: 41,[EC1.2.1.4],acetaldehyde,0.75,closest
+rxn: 41,[EC1.2.1.4],nadp+,1.02,closest
+rxn: 42,[EC1.2.1.3],acetaldehyde,1.14,closest
+rxn: 42,[EC1.2.1.3],nad+,2.05,closest
+rxn: 42,[EC1.2.1.5],acetaldehyde,1.14,closest
+rxn: 42,[EC1.2.1.5],nad+,2.05,closest
+rxn: 43,[EC4.1.3.30],isocitrate,69,saccharomyces cerevisiae
+rxn: 44,[EC2.3.3.9],acetyl-CoA,26.7,saccharomyces cerevisiae
+rxn: 44,[EC2.3.3.9],Glyoxylate,26.7,saccharomyces cerevisiae
+rxn: 46,[EC1.2.4.1],coenzyme A,NaN,closest
+rxn: 46,[EC1.2.4.1],nad+,NaN,closest
+rxn: 46,[EC1.2.4.1],pyruvate,0.05,closest
+rxn: 46,[EC1.8.1.4],coenzyme A,NaN,closest
+rxn: 46,[EC1.8.1.4],nad+,506,closest
+rxn: 46,[EC1.8.1.4],pyruvate,NaN,closest
+rxn: 47,[EC6.2.1.1],acetate,21.2,closest
+rxn: 47,[EC6.2.1.1],ATP,13.2,closest
+rxn: 47,[EC6.2.1.1],coenzyme A,NaN,closest
+rxn: 48,[EC4.1.1.49],ATP,38,saccharomyces cerevisiae
+rxn: 48,[EC4.1.1.49],oxaloacetate,0.28,saccharomyces cerevisiae
+rxn: 49,[EC6.4.1.1],ATP,60,saccharomyces cerevisiae
+rxn: 49,[EC6.4.1.1],CO2,NaN,closest
+rxn: 49,[EC6.4.1.1],pyruvate,60,saccharomyces cerevisiae
+rxn: 50,[EC2.3.3.1],acetyl-CoA,167,saccharomyces cerevisiae
+rxn: 50,[EC2.3.3.1],oxaloacetate,167,saccharomyces cerevisiae
+rxn: 51,[EC4.2.1.3],citrate,5.3,closest
+rxn: 52,[EC1.1.1.41],isocitrate,50.55,saccharomyces cerevisiae
+rxn: 52,[EC1.1.1.41],nad+,50.55,saccharomyces cerevisiae
+rxn: 53,[EC1.1.1.42],isocitrate,31.4,closest
+rxn: 53,[EC1.1.1.42],nadp+,0.003,closest
+rxn: 54,[EC1.2.4.2],2-oxoglutarate,NaN,closest
+rxn: 54,[EC1.2.4.2],nad+,NaN,closest
+rxn: 54,[EC1.2.4.2],ADP,NaN,closest
+rxn: 54,[EC1.2.4.2],phosphate,NaN,closest
+rxn: 54,[EC2.3.1.61],2-oxoglutarate,NaN,closest
+rxn: 54,[EC2.3.1.61],nad+,NaN,closest
+rxn: 54,[EC2.3.1.61],ADP,NaN,closest
+rxn: 54,[EC2.3.1.61],phosphate,NaN,closest
+rxn: 55,[EC1.3.5.1],FAD,NaN,closest
+rxn: 55,[EC1.3.5.1],succinate,66.7,closest
+rxn: 56,[EC1.3.1.6],FADH2,658,saccharomyces cerevisiae
+rxn: 56,[EC1.3.1.6],fumarate,658,saccharomyces cerevisiae
+rxn: 57,[EC4.2.1.2],fumarate,460,saccharomyces cerevisiae
+rxn: 58,[EC1.1.1.37],(S)-malate,4.71,closest
+rxn: 58,[EC1.1.1.37],nad+,3.66,closest
+rxn: 59,[EC1.6.5.9],NADH,0.031,saccharomyces cerevisiae
+rxn: 59,[EC1.6.5.9],ubiquinone-9,0.031,saccharomyces cerevisiae
+rxn: 60,[EC1.6.5.9],NADH,0.031,saccharomyces cerevisiae
+rxn: 60,[EC1.6.5.9],ubiquinone-9,0.031,saccharomyces cerevisiae
+rxn: 62,[EC1.10.2.2],ubiquinols,NaN,closest
+rxn: 62,[EC1.10.2.2],ferricytochrome c,NaN,closest
+rxn: 62,[EC1.10.2.2],h+,NaN,closest
+rxn: 63,[EC1.9.3.1],O2,NaN,closest
+rxn: 63,[EC1.9.3.1],ferrocytochrome c,12,closest
+rxn: 63,[EC1.9.3.1],h+,NaN,closest
+rxn: 64,[EC2.3.1.7],h+,NaN,closest
+rxn: 64,[EC2.3.1.7],ADP,NaN,closest
+rxn: 64,[EC2.3.1.7],phosphate,NaN,closest
+rxn: 64,[EC2.3.1.7 EC3.6.3.14],h+,NaN,closest
+rxn: 64,[EC2.3.1.7 EC3.6.3.14],ADP,16,closest
+rxn: 64,[EC2.3.1.7 EC3.6.3.14],phosphate,16,closest
+rxn: 64,[EC3.6.3.14],h+,NaN,closest
+rxn: 64,[EC3.6.3.14],ADP,16,closest
+rxn: 64,[EC3.6.3.14],phosphate,16,closest
