@@ -9,8 +9,8 @@
  %Specify the GECKO toolbox directory
  GECKO_path    = '/Users/ivand/Documents/GECKO-IVAN';
  Protdatabase  = 'sce_ProtDatabase.mat';
- %org_name      = 'saccharomyces cerevisiae';
- %org_code      = 'sce';
+ org_name      = 'saccharomyces cerevisiae';
+ org_code      = 'sce';
  toolbox       = 'COBRA'; 
  cd ([GECKO_path '/Matlab_Module/get_enzyme_data'])
  % Get EC numbers for each reaction based on the grRules field
