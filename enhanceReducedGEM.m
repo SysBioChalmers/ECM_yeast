@@ -13,8 +13,10 @@
  org_code      = 'sce';
  toolbox       = 'COBRA'; 
  cd ([GECKO_path '/Matlab_Module/get_enzyme_data'])
+ 
+ model         = AddMissingGenes(model); 
  % Get EC numbers for each reaction based on the grRules field
- model_data               = getEnzymeCodes(model,Protdatabase,GECKO_path);
+ model_data    = getEnzymeCodes(model,Protdatabase,GECKO_path);
  cd (current)
  %Get the unique EC# matched to the model and then analyse the distribution
  %of KM and Kcat values reported for each of these. EC numbers with more
