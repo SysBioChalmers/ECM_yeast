@@ -5,18 +5,18 @@
 % and products)for all of the enzymatic reactions  with an associated EC 
 % number in model_data.model. 
 %
-% Ivan Domenzain.   Last edited: 2017-12-19
+% Ivan Domenzain.   Last edited: 2018-02-06
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function ParametersCoverage(model_data,org_name,parameter)
+function [Ks,Kp] = ParametersCoverage(model_data,org_name,parameter)
 
     current       = pwd;
     EC_numbers    = model_data.EC_numbers;
-    model         = correctMetNames(model_data.model);
     [nR, x]       = size(EC_numbers);
     Totalcounter  = 0;
     Kcatcounter   = 0;
     KScounter     = 0;
     KPcounter     = 0;
+    model         = model_data.model;
    %Extract Kcat values, SA*Mw and KMs from the BRENDA files
     [data_cell] = extractBRENDAdata(parameter);
    %Creates a Structure with KEGG codes for organisms, names and phylogenetic 
@@ -36,6 +36,7 @@ function ParametersCoverage(model_data,org_name,parameter)
     fileID_prods   = fopen(fileName_prods,'w');
        
     %for each of the model reactions
+    Kp = []; Ks = [];
     for i=1:nR
         subsIndx       = find(model.S(:,i)<0);
         prodsIndx      = find(model.S(:,i)>0);
@@ -50,7 +51,7 @@ function ParametersCoverage(model_data,org_name,parameter)
         for j=1:nE
             ECs     = strsplit(rxnECs{j},' ');         
            %For each of the enzymatic subunits (in case of complexes)
-            Km_list = []; Kp = []; Kcat = [];
+            Km_list = []; Kcat = [];
            %look for the parameters reported for each substrate in the rxn
             for k=1:nS
                 cd ..
@@ -58,24 +59,27 @@ function ParametersCoverage(model_data,org_name,parameter)
                                phylDistStruct,org_index,org_name,parameter);
                 
                 str = ['rxn: ' num2str(i) ',[' rxnECs{j} '],' substrates{k} ',' num2str(val) ',' origin '\n'];
+                if ~isnan(val)
+                    Ks = [Ks; val];
+                end
                 cd dataCoverage
                 fprintf(fileID_subs,str);
                 disp(str)
             end
-           %look for the parameters reported for each substrate in the rxn
+           %look for the parameters reported for each product in the rxn
             for k=1:nP
                 cd ..
                 [val,origin] = getKvalforMets(products(k),ECs,data_cell,...
                                phylDistStruct,org_index,org_name,parameter);
                 
                 str = ['rxn: ' num2str(i) ',[' rxnECs{j} '],' products{k} ',' num2str(val) ',' origin '\n'];
+                if ~isnan(val)
+                    Kp = [Kp; val];
+                end
                 cd dataCoverage
                 fprintf(fileID_prods,str);
                 disp(str)
             end
-                        
-            
-            %Create .txt files for saving the results
              
         end                
         %Paremeters needed by the model
@@ -100,9 +104,13 @@ function [val,origin] = getKvalforMets(met,ECs,data_cell,DistStruct,indx,...
             end
 
             if ~isempty(val)
+                %Take the minimum Kcat value to avoid underpredicted 
+                %enzyme costs
                 if strcmpi(parameter,'kcat')
                     val = min(val);
                 elseif strcmpi(parameter,'km')
+                %Take the max Km values to avoid underpredicted 
+                %enzyme costs
                     val = max(val);
                 end
             else
@@ -119,7 +127,7 @@ end
     if strcmpi(parameter,'kcat')
         %Get all the Kcat values (maximum values for the organism/substrate/EC#
         %triplets distribution) for non-mutant enzymes.
-        disp('Extractring Kcat values')
+        disp('Extracting Kcat values')
         fID           = fopen('max_KCAT.txt');
         data_cell     = textscan(fID,'%s %s %s %f  %s','delimiter','\t');
         data_cell{4}  = data_cell{4};  
@@ -173,9 +181,10 @@ function [Kval,Triplets,NarrowDist] = extractKval(EC,Kcell,met,OrgIndx,...
         wideness = abs(log(median(values))/...
                        log(max(values)/min(values)));
        %If the Kvalues present a narrow distribution then
-       %the median value is taken
+       %the mean value is taken
         if wideness >= 1
-        	Kval       = [Kval; median(values)];
+        	%Kval       = [Kval; mean(values)];
+            Kval       = mean(values);
             NarrowDist = NarrowDist + 1;
         else
        %Search for the triplet [EC#/Substrate/Organism] on the 
@@ -184,7 +193,8 @@ function [Kval,Triplets,NarrowDist] = extractKval(EC,Kcell,met,OrgIndx,...
                                                  OrgIndx,DistStruct,false);
 
             if ~isempty(EC_indexes)
-                Kval     = [Kval; min(Kcell{4}(EC_indexes))];
+                %Kval     = [Kval; min(Kcell{4}(EC_indexes))];
+                Kval     = Kcell{4}(EC_indexes);
                 Triplets = Triplets + 1;
             end
         end
