@@ -107,11 +107,11 @@ function [val,origin] = getKvalforMets(met,ECs,data_cell,DistStruct,indx,...
                 %Take the minimum Kcat value to avoid underpredicted 
                 %enzyme costs
                 if strcmpi(parameter,'kcat')
-                    val = min(val);
+                    val = max(val);
                 elseif strcmpi(parameter,'km')
                 %Take the max Km values to avoid underpredicted 
                 %enzyme costs
-                    val = max(val);
+                    val = min(val);
                 end
             else
                 val = NaN;
