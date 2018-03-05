@@ -4,6 +4,8 @@ function model = correctMetNames(model)
             model.metNames(l) = {'h+'};
         elseif strcmpi(model.metNames(l),'free protons')
             model.metNames(l) = {'h+'};
+        elseif strcmpi(model.metNames(l),'mitocondrialATP')
+            model.metNames(l) = {'ATP'};
         elseif strcmpi(model.metNames(l),'mitocondrialADP')
             model.metNames(l) = {'ADP'};
         elseif strcmpi(model.metNames(l),'mitocondrial phosphate')
@@ -14,6 +16,8 @@ function model = correctMetNames(model)
             model.metNames(l) = {'nad+'};
         elseif strcmpi(model.metNames(l),'nadp(+)')
             model.metNames(l) = {'nadp+'};
+        elseif strcmpi(model.metNames(l),'galactos')
+            model.metNames(l) = {'galactose'};
         end
     end
 end
