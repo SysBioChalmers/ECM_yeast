@@ -133,8 +133,8 @@ function [val,origin] = getKvalforMets(met,ECs,data_cell,DistStruct,indx,...
     for l=1:length(ECs)
             val = []; ii = 1;
             while isempty(val) && ii<=2
-                [val,KmTriplets,KmNarrow] = extractKval(ECs(l),data_cell,p,...
-                                         met,indx, DistStruct,options(ii));
+                val = extractKval(ECs(l),data_cell,p,met,indx, DistStruct,...
+                                                              options(ii));
                 ii=ii+1;
             end
 
@@ -204,11 +204,18 @@ function org_index = find_inKEGG(org_name,names)
     end
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [Kval,Triplets,NarrowDist] = extractKval(EC,Kcell,p,met,OrgIndx,...
-                                                  DistStruct,org_name)
-    Kval = []; NarrowDist = 0;Triplets = 0;                                           
+function Kval = extractKval(EC,Kcell,p,met,OrgIndx,DistStruct,org_name)
+    
+    Kval      = [];
+    hyphenPos = strfind(EC{1},'-');
+    %Ignore hyphens in the EC number 
+    hyphen = false;
+    if ~isempty(hyphenPos)
+        EC     = EC{1}(1:hyphenPos-1);
+        hyphen = true;
+    end
    % Extract indexes for the EC# appearences for any met or organism)
-    EC_indexes = extract_indexes(EC,Kcell,'*',false,'any', OrgIndx,DistStruct,false);
+    EC_indexes = extract_indexes(EC,Kcell,'*',false,'any', OrgIndx,DistStruct,hyphen);
     if ~isempty(EC_indexes)
     	values   = Kcell{4}(EC_indexes);
         wideness = abs(log(median(values))/...
@@ -216,28 +223,23 @@ function [Kval,Triplets,NarrowDist] = extractKval(EC,Kcell,p,met,OrgIndx,...
        %If the Kvalues present a narrow distribution then
        %the mean value is taken
         if wideness >= 1
-        	%Kval       = [Kval; mean(values)];
             Kval       = mean(values);
-            NarrowDist = NarrowDist + 1;
         else
-        %If KMs are queried, the search will be substrate especific
-        if strcmpi(p,'Michaelis constant')
-            metFlag = true;
-        else
-            %For Kcats, substrates are not taken into account
-            metFlag = false;
-        end
-       %Search for the triplet [EC#/Substrate/Organism] on the KM_cell data
-            EC_indexes = extract_indexes(EC,Kcell,met,metFlag,org_name, ...
-                                                 OrgIndx,DistStruct,false);
-
+           %Search for the triplet [EC#/Substrate/Organism] on the KM_cell data
+            EC_indexes = extract_indexes(EC,Kcell,met,true,org_name,...
+                                                 OrgIndx,DistStruct,hyphen);
+           %If no match was found, the search will be done for any
+           %substrate (for Kcat values)
+            if isempty(EC_indexes) && strcmpi(p,'catalytic rate constant')
+                 EC_indexes = extract_indexes(EC,Kcell,met,false,org_name,...
+                                                 OrgIndx,DistStruct,hyphen);
+            end
             if ~isempty(EC_indexes)
                 Kval     = Kcell{4}(EC_indexes);
-                Triplets = Triplets + 1;
             end
         end
 
     else
-        disp([EC ' not found in data'])            
-    end        
+        disp([EC{1} ' not found in data'])            
+    end          
 end 
