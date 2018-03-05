@@ -13,7 +13,7 @@
  %model modifications
  model = AddMissingGenes(model); 
  model = correctMetNames(model);
-
+ model = modelCorrections(model);
  % Get EC numbers for each reaction based on the grRules field
  cd ([GECKO_path '/Matlab_Module/get_enzyme_data'])
  model_data    = getEnzymeCodes(model);
@@ -29,11 +29,10 @@
  [NarrowKMs,KMStats]     = BRENDA_analysis(model_data,'KM');
  %Reversibility consistency check between the LB and rev fields in the model
  inconsistencies          = reversibilityConsistencyCheck(model);
- 
- [Ks, Kp] = ParametersCoverage(model_data,org_name,'kcat');
+ [Ks, Kp] = ParametersCoverage(model_data,org_name,'catalytic rate constant');
  plotCDF(Ks,Kp,'Kcat distributions','Kcat [1/s]')
 
- [Ks, Kp] = ParametersCoverage(model_data,org_name,'km');
+ [Ks, Kp] = ParametersCoverage(model_data,org_name,'Michaelis constant');
  plotCDF(Ks,Kp,'KM substrates','KM [mM]')
 
 %end
