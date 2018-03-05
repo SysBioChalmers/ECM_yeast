@@ -27,7 +27,7 @@ function EC_indexes = extract_indexes(EC,data_cell,metName,met_flag,...
        EC_indexes = transpose(find(strcmpi(EC,EC_cell)));  
     end
    %If met_flag=true then it will extract only the entry indexes for the 
-   %specific metabolitein the EC subset from the BRENDA cell array
+   %specific metabolite in the EC subset from the BRENDA cell array
     if met_flag
         Subs_indexes = [];
         for l = 1:length(metName)
@@ -38,15 +38,15 @@ function EC_indexes = extract_indexes(EC,data_cell,metName,met_flag,...
         end
         EC_indexes = Subs_indexes;    
     end
-    EC_orgs    = orgs_cell(EC_indexes);
+    EC_orgs = orgs_cell(EC_indexes);
  
    %If specific organism values are requested look for all the organism
    %repetitions on the subset BRENDA cell array(EC_indexes)
     if ~ismember(string(organism),{'closest';'any'}) 
         EC_indexes = EC_indexes(strcmpi(string(organism),EC_orgs));
 
-   %If KEGG code was assigned to the organism (model) then it will look for   
-   %the Kcat value for the closest organism
+    %If KEGG code was assigned to the organism (model) then it will look for   
+    %the Kcat value for the closest organism
     elseif strcmpi(organism,'closest') && org_index~='*'
         KEGG_indexes = [];temp = [];
 
