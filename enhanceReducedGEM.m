@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % [model_data,kcats,KMs] = enhanceReducedGEM(model,org_name,KEGGcode)
 %
-% Ivan Domenzain.   Last edited: 2018-02-06
+% Ivan Domenzain.   Last edited: 2018-04-09
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %function [model_data,kcats,KMs] = enhanceGEM(model,org_name,org_code)
  current       = pwd; 
@@ -9,11 +9,14 @@
  GECKO_path    = '/Users/ivand/Documents/GitHub/GECKO';
  org_name      = 'saccharomyces cerevisiae';
  org_code      = 'sce';
-
- %model modifications
- model = AddMissingGenes(model); 
- model = correctMetNames(model);
- model = modelCorrections(model);
+ %%%%%%%%%%%%%%%%%%%%%%%%%% Model modifications  %%%%%%%%%%%%%%%%%%%%%%%%%%
+ %Commented because the missing genes were also manually added to the model
+ %model                = AddMissingGenes(model); 
+ model                = correctMetNames(model);
+ % grRules stardization step, RAVEN toolbox required (Devel branch)
+ [grRules,rxnGeneMat] = standardizeGrRules(model);
+ model.grRules        = grRules;
+ model.rxnGeneMat     = rxnGeneMat;
  % Get EC numbers for each reaction based on the grRules field
  cd ([GECKO_path '/Matlab_Module/get_enzyme_data'])
  model_data    = getEnzymeCodes(model);
@@ -21,6 +24,8 @@
  cd Models
  save('reducedModel.mat','model','model_data') 
  cd ..
+ 
+ %%%%%%%%%%%%%%%%%%%% Parameter distributions analysis  %%%%%%%%%%%%%%%%%%%
  %Get all the unique EC# matched to the model and then analyse the distribution
  %of KM and Kcat values reported for each of these. EC numbers with more
  %than one value and narrow distributions (log(median)/log(max/min)>= 1 are
