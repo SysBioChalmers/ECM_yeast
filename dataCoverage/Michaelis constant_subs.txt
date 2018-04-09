@@ -21,12 +21,12 @@ Michaelis constant	ENO	2-phospho-D-glycerate	0.03205	mM	[EC4.2.1.11]	saccharomyc
 Michaelis constant	CDC	ADP	0.16	mM	[EC2.7.1.40]	saccharomyces cerevisiae
 Michaelis constant	CDC	phosphoenolpyruvate	0.021	mM	[EC2.7.1.40]	saccharomyces cerevisiae
 Michaelis constant	ZWF	alpha-D-glucose 6-phosphate	NaN	mM	[EC1.1.1.49]	closest
-Michaelis constant	ZWF	nadp+	0.006	mM	[EC1.1.1.49]	closest
+Michaelis constant	ZWF	nadp+	1.98	mM	[EC1.1.1.49]	closest
 Michaelis constant	PGL	6-O-phosphono-D-glucono-1,5-lactone	0.29	mM	[EC3.1.1.31]	saccharomyces cerevisiae
 Michaelis constant	PGL	6-O-phosphono-D-glucono-1,5-lactone	0.29	mM	[EC3.1.1.31 EC3.1.1.31]	saccharomyces cerevisiae
 Michaelis constant	GND	6-phospho-D-gluconate	0.0509	mM	[EC1.1.1.44]	saccharomyces cerevisiae
 Michaelis constant	GND	nadp+	0.025	mM	[EC1.1.1.44]	saccharomyces cerevisiae
-Michaelis constant	RPI	D-ribulose 5-phosphate	0.015	mM	[EC5.3.1.6]	closest
+Michaelis constant	RPI	D-ribulose 5-phosphate	15	mM	[EC5.3.1.6]	closest
 Michaelis constant	RPE	D-ribulose 5-phosphate	1.5	mM	[EC5.1.3.1]	saccharomyces cerevisiae
 Michaelis constant	TKLa	D-ribose 5-phosphate	NaN	mM	[EC2.2.1.1]	closest
 Michaelis constant	TKLa	D-xylulose 5-phosphate	NaN	mM	[EC2.2.1.1]	closest
@@ -34,13 +34,13 @@ Michaelis constant	TAL1	D-glyceraldehyde 3-phosphate	NaN	mM	[EC2.2.1.2]	closest
 Michaelis constant	TAL1	sedoheptulose 7-phosphate	0.18	mM	[EC2.2.1.2]	saccharomyces cerevisiae
 Michaelis constant	TKLb	D-erythrose 4-phosphate	NaN	mM	[EC2.2.1.1]	closest
 Michaelis constant	TKLb	D-xylulose 5-phosphate	NaN	mM	[EC2.2.1.1]	closest
-Michaelis constant	DAR	glycerone phosphate	NaN	mM	[EC1.1.1.8]	closest
+Michaelis constant	DAR	glycerone phosphate	0.052	mM	[EC1.1.1.8]	closest
 Michaelis constant	DAR	NADH	0.023	mM	[EC1.1.1.8]	saccharomyces cerevisiae
 Michaelis constant	GPP	glycerol-3-phosphate	NaN	mM	[EC3.1.3.21]	closest
-Michaelis constant	PDC	pyruvate	1.1	mM	[EC4.1.1.- EC4.1.1.1]	saccharomyces cerevisiae
+Michaelis constant	PDC	pyruvate	0.5	mM	[EC4.1.1.- EC4.1.1.1]	saccharomyces cerevisiae
 Michaelis constant	PDC	pyruvate	3.38	mM	[EC4.1.1.- EC4.1.1.1 EC4.1.1.43 EC4.1.1.74]	closest
-Michaelis constant	PDC	pyruvate	1.1	mM	[EC4.1.1.1]	saccharomyces cerevisiae
-Michaelis constant	ADH1	acetaldehyde	2.83	mM	[EC1.1.1.1]	saccharomyces cerevisiae
+Michaelis constant	PDC	pyruvate	0.5	mM	[EC4.1.1.1]	saccharomyces cerevisiae
+Michaelis constant	ADH1	acetaldehyde	0.22	mM	[EC1.1.1.1]	saccharomyces cerevisiae
 Michaelis constant	ADH1	NADH	0.122	mM	[EC1.1.1.1]	saccharomyces cerevisiae
 Michaelis constant	ALD6	acetaldehyde	0.035	mM	[EC1.2.1.4]	saccharomyces cerevisiae
 Michaelis constant	ALD6	nadp+	0.014	mM	[EC1.2.1.4]	saccharomyces cerevisiae
@@ -61,6 +61,8 @@ Michaelis constant	PDH	pyruvate	0.4	mM	[EC1.8.1.4]	closest
 Michaelis constant	ACS	acetate	0.208	mM	[EC6.2.1.1]	saccharomyces cerevisiae
 Michaelis constant	ACS	ATP	0.16	mM	[EC6.2.1.1]	saccharomyces cerevisiae
 Michaelis constant	ACS	coenzyme A	NaN	mM	[EC6.2.1.1]	closest
+Michaelis constant	ADK1_1	ATP	NaN	mM	[EC2.7.4.3]	closest
+Michaelis constant	ADK1_1	AMP	NaN	mM	[EC2.7.4.3]	closest
 Michaelis constant	PCK	ATP	0.03	mM	[EC4.1.1.49]	saccharomyces cerevisiae
 Michaelis constant	PCK	oxaloacetate	0.014	mM	[EC4.1.1.49]	saccharomyces cerevisiae
 Michaelis constant	PYC	ATP	0.056	mM	[EC6.4.1.1]	saccharomyces cerevisiae
@@ -73,20 +75,18 @@ Michaelis constant	IDH	isocitrate	0.581	mM	[EC1.1.1.41]	closest
 Michaelis constant	IDH	nad+	0.136	mM	[EC1.1.1.41]	closest
 Michaelis constant	IDPH	isocitrate	0.015	mM	[EC1.1.1.42]	saccharomyces cerevisiae
 Michaelis constant	IDPH	nadp+	0.01	mM	[EC1.1.1.42]	saccharomyces cerevisiae
-Michaelis constant	KGD1KGD2	2-oxoglutarate	0.15	mM	[EC1.2.4.2]	saccharomyces cerevisiae
-Michaelis constant	KGD1KGD2	nad+	NaN	mM	[EC1.2.4.2]	closest
-Michaelis constant	KGD1KGD2	ADP	NaN	mM	[EC1.2.4.2]	closest
-Michaelis constant	KGD1KGD2	phosphate	NaN	mM	[EC1.2.4.2]	closest
-Michaelis constant	KGD1KGD2	2-oxoglutarate	NaN	mM	[EC2.3.1.61]	closest
-Michaelis constant	KGD1KGD2	nad+	NaN	mM	[EC2.3.1.61]	closest
-Michaelis constant	KGD1KGD2	ADP	NaN	mM	[EC2.3.1.61]	closest
-Michaelis constant	KGD1KGD2	phosphate	NaN	mM	[EC2.3.1.61]	closest
+Michaelis constant	KGD1	2-oxoglutarate	0.15	mM	[EC1.2.4.2]	saccharomyces cerevisiae
+Michaelis constant	KGD1	coenzyme A	NaN	mM	[EC1.2.4.2]	closest
+Michaelis constant	KGD1	nad+	NaN	mM	[EC1.2.4.2]	closest
+Michaelis constant	LSC2	ADP	0.0077	mM	[EC6.2.1.5]	closest
+Michaelis constant	LSC2	phosphate	1.4	mM	[EC6.2.1.5]	closest
+Michaelis constant	LSC2	succinyl-CoA	0.0221	mM	[EC6.2.1.5]	closest
 Michaelis constant	SDH12	FAD	NaN	mM	[EC1.3.5.1]	closest
 Michaelis constant	SDH12	succinate	0.002	mM	[EC1.3.5.1]	closest
 Michaelis constant	FRDS2	FADH2	NaN	mM	[EC1.3.1.6]	closest
 Michaelis constant	FRDS2	fumarate	0.007	mM	[EC1.3.1.6]	closest
 Michaelis constant	FUM1	fumarate	0.125	mM	[EC4.2.1.2]	closest
-Michaelis constant	MDH1	(S)-malate	0.269	mM	[EC1.1.1.37]	closest
+Michaelis constant	MDH1	(S)-malate	0.00012	mM	[EC1.1.1.37]	closest
 Michaelis constant	MDH1	nad+	0.11	mM	[EC1.1.1.37]	saccharomyces cerevisiae
 Michaelis constant	NDI1	NADH	0.03108	mM	[EC1.6.5.9]	saccharomyces cerevisiae
 Michaelis constant	NDI1	ubiquinone-9	0.03108	mM	[EC1.6.5.9]	saccharomyces cerevisiae
