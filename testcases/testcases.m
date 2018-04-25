@@ -1,8 +1,18 @@
 addpath('sourceCode')
 load('../Model/model.mat');
+clf
 
 %Load condtion
-conditionName = 'heyland2009';
+%conditionName = 'heyland2009';
+%conditionName = 'costenoble2011';
+%conditionName = 'daran-lapujade2003';
+%conditionName = 'daran-lapujade2007';
+%conditionName = 'postma1989';
+%conditionName = 'meyenburg1969';
+%conditionName = 'hoek1999';
+conditionName = 'hoek1998';
+
+
 A = importdata(['conditions/' conditionName '.txt']);
 paramName = A.textdata;
 paramVal = A.data;
@@ -32,16 +42,29 @@ for i = 1:size(results,2)
     model = constrainModel(model, paramName, paramVal(:,i));
     output = solveLinMin(model);
     if output.f == 0
-        %if infeasible relax glucose uptake rate
-        model = setParam(model, 'lb', 'glcIN', 0);
+        %if infeasible relax oxygen uptake growth
+        model = setParam(model,'lb','o2IN',0);
+        model = setParam(model,'ub','o2IN',1000);
+
         output = solveLinMin(model);
+        if output.f == 0
+            %if still infeasible relax growth
+            model = setParam(model, 'lb', 'GROWTH', 0);
+            model = setParam(model, 'ub', 'GROWTH', 1000);
+            output = solveLinMin(model);
+            if output.f == 0
+                %if still infeasible relax glucose uptake rate
+                model = setParam(model, 'lb', 'glcIN', 0);
+                output = solveLinMin(model);
+            end
+        end
     end
     results(:,i) = output.x;
 end
 
 subplot(1,2,1)
 hold all
-plot(paramVal(1,:), results(findIndex(model.rxns, 'GROWTH'),:), 'o')
+plot(paramVal(findIndex(paramName,'GROWTH'),:), results(findIndex(model.rxns, 'GROWTH'),:), 'o')
 plot([0 0.5], [0 0.5], 'k-')
 xlim([0 0.5])
 xlabel('measured growth')
@@ -50,7 +73,7 @@ axis square
 
 subplot(1,2,2)
 hold all
-plot(paramVal(2,:), results(findIndex(model.rxns, 'glcIN'),:), 'o')
+plot(paramVal(findIndex(paramName,'glcIN'),:), results(findIndex(model.rxns, 'glcIN'),:), 'o')
 plot([0 25], [0 25], 'k-')
 xlim([0 25])
 
