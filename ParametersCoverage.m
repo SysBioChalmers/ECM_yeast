@@ -5,13 +5,13 @@
 % and products)for all of the enzymatic reactions  with an associated EC 
 % number in model_data.model. 
 %
-% Ivan Domenzain.   Last edited: 2018-02-06
+% Ivan Domenzain.   Last edited: 2018-11-07
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [Ks,Kp] = ParametersCoverage(model_data,org_name,parameter)
 
     current       = pwd;
     EC_numbers    = model_data.EC_numbers;
-    [nR, x]       = size(EC_numbers);
+    [nR,~]        = size(EC_numbers);
     Totalcounter  = 0;
     Kcatcounter   = 0;
     KScounter     = 0;
@@ -38,6 +38,7 @@ function [Ks,Kp] = ParametersCoverage(model_data,org_name,parameter)
     %for each of the model reactions
     Kp = []; Ks = [];
     for i=1:nR
+        disp(model.rxnNames{i})
         subsIndx       = find(model.S(:,i)<0);
         prodsIndx      = find(model.S(:,i)>0);
         substrates     = model.metNames(subsIndx);
@@ -49,7 +50,8 @@ function [Ks,Kp] = ParametersCoverage(model_data,org_name,parameter)
         nE             = length(rxnECs);
        %For each of the possible isoenzymes for the i-th reaction
         for j=1:nE
-            ECs     = strsplit(rxnECs{j},' ');         
+            disp(rxnECs{j})
+            ECs     = strsplit(rxnECs{j},' '); 
            %For each of the enzymatic subunits (in case of complexes)
             Km_list = []; Kcat = [];
            %look for the parameters reported for each substrate in the rxn
@@ -57,6 +59,7 @@ function [Ks,Kp] = ParametersCoverage(model_data,org_name,parameter)
             for k=1:nS
                 [val,origin] = getKvalforMets(substrates(k),ECs,data_cell,...
                                phylDistStruct,org_index,org_name,parameter);
+                disp(['   substrate: ' substrates{k} ' ' num2str(val)])
                 %In the case of KM a value for each compound in the rxn is 
                 %searched
                 if strcmpi(parameter,'Michaelis constant')
@@ -91,7 +94,7 @@ function [Ks,Kp] = ParametersCoverage(model_data,org_name,parameter)
             for k=1:nP
                 [val,origin] = getKvalforMets(products(k),ECs,data_cell,...
                                phylDistStruct,org_index,org_name,parameter);
-                
+                disp(['   product: ' products{k} ' ' num2str(val)])
                 if strcmpi(parameter,'Michaelis constant')
                     formatSpec = '%s\t%s\t%s\t%s\tmM\t[%s]\t%s\n';
                     str = sprintf(formatSpec,parameter,model.rxns{i},products{k},num2str(val),rxnECs{j},origin); 
@@ -122,7 +125,8 @@ function [Ks,Kp] = ParametersCoverage(model_data,org_name,parameter)
         Kcatcounter   = Kcatcounter + nE;
         KScounter     = KScounter + nE*nS;
         KPcounter     = KPcounter + nE*nP;
-        Totalcounter  = Totalcounter + nE + nE*(nS+nP);        
+        Totalcounter  = Totalcounter + nE + nE*(nS+nP);
+        disp(' ')
     end
     cd (current)
 end
@@ -130,27 +134,29 @@ end
 function [val,origin] = getKvalforMets(met,ECs,data_cell,DistStruct,indx,...
                                                         org_name,p)
     options = {org_name;'closest'};
+    values  = [];
     for l=1:length(ECs)
-            val = []; ii = 1;
-            while isempty(val) && ii<=2
-                val = extractKval(ECs(l),data_cell,p,met,indx, DistStruct,...
-                                                              options(ii));
-                ii=ii+1;
-            end
-
-            if ~isempty(val)
-                %Take the minimum Kcat value to avoid underpredicted 
-                %enzyme costs
-                if strcmpi(p,'catalytic rate constant')
-                    val = max(val);
-                elseif strcmpi(p,'Michaelis constant')
-                %Take the max Km values to avoid underpredicted 
-                %enzyme costs
-                    val = min(val);
-                end
-            else
-                val = NaN;
-            end
+        met = metNamesExceptions(met,ECs(l));
+        val = []; ii = 1;
+        while isempty(val) && ii<=2
+            val = extractKval(ECs(l),data_cell,p,met,indx, DistStruct,options(ii));
+            values = [values; val];
+            ii=ii+1;
+        end
+    end
+    
+    if ~isempty(values)
+        %Take the minimum Kcat value to avoid underpredicted
+        %enzyme costs
+        if strcmpi(p,'catalytic rate constant')
+            val = max(values);
+        elseif strcmpi(p,'Michaelis constant')
+            %Take the max Km values to avoid underpredicted
+            %enzyme costs
+            val = min(values);
+        end
+    else
+        val = NaN;
     end
     origin = options{ii-1};
 end
@@ -204,8 +210,7 @@ function org_index = find_inKEGG(org_name,names)
     end
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function Kval = extractKval(EC,Kcell,p,met,OrgIndx,DistStruct,org_name)
-    
+function Kval = extractKval(EC,Kcell,parameter,met,OrgIndx,DistStruct,org_name)    
     Kval      = [];
     hyphenPos = strfind(EC{1},'-');
     %Ignore hyphens in the EC number 
@@ -217,20 +222,19 @@ function Kval = extractKval(EC,Kcell,p,met,OrgIndx,DistStruct,org_name)
    % Extract indexes for the EC# appearences for any met or organism)
     EC_indexes = extract_indexes(EC,Kcell,'*',false,'any', OrgIndx,DistStruct,hyphen);
     if ~isempty(EC_indexes)
-    	values   = Kcell{4}(EC_indexes);
-        wideness = abs(log(median(values))/...
+    	values = Kcell{4}(EC_indexes);
+        width = abs(log(median(values))/...
                        log(max(values)/min(values)));
-       %If the Kvalues present a narrow distribution then
-       %the mean value is taken
-        if wideness >= 1
-            Kval       = mean(values);
+       %If the Kvalues present a narrow distribution then the mean value is taken
+        if width >= 1 && length(values)>=3
+            Kval = mean(values);
         else
            %Search for the triplet [EC#/Substrate/Organism] on the KM_cell data
             EC_indexes = extract_indexes(EC,Kcell,met,true,org_name,...
                                                  OrgIndx,DistStruct,hyphen);
            %If no match was found, the search will be done for any
            %substrate (for Kcat values)
-            if isempty(EC_indexes) && strcmpi(p,'catalytic rate constant')
+            if isempty(EC_indexes) && strcmpi(parameter,'catalytic rate constant')
                  EC_indexes = extract_indexes(EC,Kcell,met,false,org_name,...
                                                  OrgIndx,DistStruct,hyphen);
             end
@@ -238,7 +242,6 @@ function Kval = extractKval(EC,Kcell,p,met,OrgIndx,DistStruct,org_name)
                 Kval     = Kcell{4}(EC_indexes);
             end
         end
-
     else
         disp([EC{1} ' not found in data'])            
     end          
