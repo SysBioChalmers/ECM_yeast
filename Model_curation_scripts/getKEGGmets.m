@@ -21,20 +21,25 @@ end
 
 for i=1:length(model.metNames)
     metName = model.metNames{i};
-    metName = nameExceptions(metName);
-    
-        
-    index = find(strcmpi(metsList,metName),1);
-    if ~isempty(index) && ~strcmpi(metName,'ubiquinone-6')
-        KEGGID = yeast.metKEGGID{index};
-        
+    metName = nameExceptions(metName); 
+    index   = find(strcmpi(metsList,metName),1);
+    if ~isempty(index) 
+        KEGGID = yeast.metKEGGID{index};    
         metsKEGG{i} = KEGGID;
+        if strcmpi(metName,'ubiquinone-6')
+            metsKEGG{i} = 'C00399';
+            %Ferrocytochrome and ferricytochrome have unespecific chemical formulas
+            %(R-groups present) but their reactive zone is equivalent to Heme C.
+            %The substitution is in order that equilibrator is able to work with
+            %the reaction
+        elseif strcmpi(KEGGID,'C00125')
+            metsKEGG{i} = 'C15817';
+        elseif strcmpi(KEGGID,'C00126')
+            metsKEGG{i} = 'C15817';
+        end
     elseif strcmpi(metName,'HCO3')
-    	metsKEGG{i} = 'C00288';
-    elseif strcmpi(metName,'ubiquinone-6')
-    	metsKEGG{i} = 'C00399';
+        metsKEGG{i} = 'C00288';
     end
-
 end
 model.metKEGGID = metsKEGG;
 end
