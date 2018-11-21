@@ -57,8 +57,8 @@ for formula in data.ReactionFormula:
     print('ln(Reversibility Index) = %.1f\n' % ln_RI)
     output = output+type+'\t'+reactionStr+'\t'+compound+'\t'+str(KEQ)+'\t'+unit+'\t'+ KEGGID+'\t'+compoundID+'\t'+parameterID+'\n'
 #Write output:
-os.chdir(ECM_path+'/dataCoverage')
-fid  = open('kEqTable.csv','w')
+os.chdir(ECM_path+'/dataFiles')
+fid  = open('kEqTable.txt','w')
 fid.write(output)
 fid.close()
 os.chdir(ECM_path)
