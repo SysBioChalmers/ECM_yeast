@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % [model_data,kcats,KMs] = enhanceReducedGEM(model,org_name,KEGGcode)
 %
-% Ivan Domenzain.   Last edited: 2018-04-09
+% Ivan Domenzain.   Last edited: 2018-10-09
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %function [model_data,kcats,KMs] = enhanceGEM(model,org_name,org_code)
  current       = pwd; 
@@ -11,7 +11,7 @@
  yeast8_path   = '/Users/ivand/Documents/GitHub/yeast-GEM/ModelFiles/xml';
  org_name      = 'saccharomyces cerevisiae';
  org_code      = 'sce';
- %%%%%%%%%%%%%%%%%%%%%%%%%% Model modifications  %%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%%%%%%%%%%%%%%%%%%%%%% Preprocess reduced GEM  %%%%%%%%%%%%%%%%%%%%%%%%%%
  %Commented because the missing genes were also manually added to the model
  cd (yeast8_path)
  yeast8 = readCbModel('yeastGEM.xml');
@@ -27,7 +27,9 @@
  model_data = getEnzymeCodes(model);
  cd ([current '/Models'])
  save('reducedModel.mat','model','model_data') 
- %%%%%%%%%%%%%%%%%%%% Parameter distributions analysis  %%%%%%%%%%%%%%%%%%%
+ %Save SBML file
+ exportModel(model,'reducedYeast.xml',true)
+ %%%%%%%%%%%%%%%%%%%% Get parameters from BRENDA %%%%%%%%%%%%%%%%%%%%%%%%%%
  cd (current)
  %Get all the unique EC# matched to the model and then analyse the distribution
  %of KM and Kcat values reported for each of these. EC numbers with more
@@ -37,27 +39,23 @@
  %[NarrowKMs,KMStats]     = BRENDA_analysis(model_data,'KM');
  %Reversibility consistency check between the LB and rev fields in the model
  %inconsistencies          = reversibilityConsistencyCheck(model);
- [Ks, Kp] = ParametersCoverage(model_data,org_name,'catalytic rate constant');
+ [Ks, Kp] = getKineticData(model_data,org_name,'catalytic rate constant');
  %plotCDF(Ks,Kp,'Kcat distributions','Kcat [1/s]')
-
- [Ks, Kp] = ParametersCoverage(model_data,org_name,'Michaelis constant');
+ [Ks, Kp] = getKineticData(model_data,org_name,'Michaelis constant');
  %plotCDF(Ks,Kp,'KM substrates','KM [mM]')
 
-%end
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% Get Keq from Equilibrator  %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Use equilibrator (python) for determining Keq's for all of the enzymatic
 %reactions
-commandStr = ['python ' repoPath_terminal '/build_ECM_modelFile.py'];
- system(commandStr);
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function plotCDF(distribution1,distribution2,name,xAxis)
-    figure
-    [y, stats]=cdfplot(distribution1);
-    hold on
-    [y, stats]=cdfplot(distribution2);
-    hold on
-    title(name)
-    ylabel('Cumulative distribution','FontSize',30,'FontWeight','bold');
-    xlabel(xAxis,'FontSize',30,'FontWeight','bold');
-    legend('Substrates','Products')
+commandStr = ['python ' repoPath_terminal '/getKeq.py'];
+status = system(commandStr);
+if status~=0
+    disp('getKeq.py failed to execute from MATLAB, try to run it separately')
+    disp('in a terminal, once this is done, press any key to continue')
+    pause
 end
+%%%%%%%%%%%%%%%%%%%%%%%% Get ECM model structure %%%%%%%%%%%%%%%%%%%%%%%%%%
+ECM_model = getECM_model(model);
+cd (current)
+%end
+
