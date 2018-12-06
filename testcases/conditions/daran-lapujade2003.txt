@@ -1,0 +1,7 @@
+GROWTH	0.1	0.1	0.1
+glcIN	1.15	0	0
+acIN	0	0	5.89
+ethIN	0	3.78	0
+ethOUT	0	0	0
+co2OUT	2.85	3.26	7.45
+o2IN	2.74	6.87	7.4
