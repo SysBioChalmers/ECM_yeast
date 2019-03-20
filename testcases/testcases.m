@@ -1,16 +1,16 @@
 addpath('sourceCode')
-load('../Model/model.mat');
+load('../Models/model.mat');
 clf
 
 %Load condtion
-%conditionName = 'heyland2009';
+conditionName = 'heyland2009';
 %conditionName = 'costenoble2011';
 %conditionName = 'daran-lapujade2003';
 %conditionName = 'daran-lapujade2007';
 %conditionName = 'postma1989';
 %conditionName = 'meyenburg1969';
 %conditionName = 'hoek1999';
-conditionName = 'hoek1998';
+%conditionName = 'hoek1998';
 
 
 A = importdata(['conditions/' conditionName '.txt']);
@@ -84,7 +84,7 @@ axis square
 fileID = fopen(['fluxes/' conditionName '.txt'],'w');
 
 fprintf(fileID, 'Rxn\tFlux\n');
-for i = 1:length(resX)
+for i = 1:length(model.rxns)
     fprintf(fileID, '%s', model.rxns{i}); %Rxn Name
     for j = 1:size(results,2)
         fprintf(fileID, '\t%2.2f', results(i,j)); %Rxn flux
