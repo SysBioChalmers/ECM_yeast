@@ -1,6 +1,6 @@
 GROWTH	0.1	0.1	0.1
 glcIN	1.15	6.2	12.3
-ethOUT	0	9.6	0
+ethOUT	0	9.6	21.5
 co2OUT	2.85	10.3	22.9
 o2IN	2.7	0	0
 glyOUT	0	0.8	0.9
