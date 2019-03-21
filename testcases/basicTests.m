@@ -1,6 +1,5 @@
 addpath('sourceCode')
 load('../Models/model.mat');
-clf
 
 %allow free exchange in absence of measurment
 model = setParam(model,'ub','acOUT',0);
@@ -18,7 +17,7 @@ model = setParam(model,'ub','PIIn', 1000);
 model = setParam(model,'ub','HCO3IN', 1000);
 
 %Set maintainance
-model = setParam(model,'lb',{'ATPX'}, 0.5);  %0.7 mol/h maintainence
+
 model.b = [model.b model.b];
 
 %Setup biomass equation
@@ -31,6 +30,7 @@ model = setParam(model, 'ub', 'GROWTH', 1000);
 
 %Maximize ATP
 model = setParam(model,'ub','glcIN', 1);
+model = setParam(model,'lb',{'ATPX'}, 0);  %0.7 mol/h maintainence
 valueObject = makeValueObjectWeight(0, 0, 0, 0, 0, 0, 0, 0, 1, 1);
 model = makeBiomassEquation(model, valueObject);
 model = setParam(model,'obj',{'GROWTH'}, 1);
@@ -39,6 +39,7 @@ output = solveLinMin(model, true);
 
 %Maximize biomass
 model = setParam(model,'ub','glcIN', 1);
+model = setParam(model,'lb',{'ATPX'}, 0.5);  %0.7 mol/h maintainence
 valueObject = makeValueObjectWeight(0.40, 0.12, 0.006, 0.025, 0.005, 0.01, 0, 0.4, 55, 1);
 model = makeBiomassEquation(model, valueObject);
 model = setParam(model,'obj',{'GROWTH'}, 1);
