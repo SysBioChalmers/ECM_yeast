@@ -46,5 +46,22 @@ model = setParam(model,'obj',{'GROWTH'}, 1);
 output = solveLinMin(model, true);
 -output.f/0.180
 
+%Maximize biomass on ethanol
+model = setParam(model,'ub','glcIN', 0);
+model = setParam(model,'ub','ethIN', 1);
+model = setParam(model,'lb',{'ATPX'}, 0.5);  %0.7 mol/h maintainence
+valueObject = makeValueObjectWeight(0.40, 0.12, 0.006, 0.025, 0.005, 0.01, 0, 0.4, 55, 1);
+model = makeBiomassEquation(model, valueObject);
+model = setParam(model,'obj',{'GROWTH'}, 1);
+output = solveLinMin(model, true);
+-output.f/0.046
 
-
+%Maximize biomass on acetate
+model = setParam(model,'ub','ethIN', 0);
+model = setParam(model,'ub','acIN', 1);
+model = setParam(model,'lb',{'ATPX'}, 0.5);  %0.7 mol/h maintainence
+valueObject = makeValueObjectWeight(0.40, 0.12, 0.006, 0.025, 0.005, 0.01, 0, 0.4, 55, 1);
+model = makeBiomassEquation(model, valueObject);
+model = setParam(model,'obj',{'GROWTH'}, 1);
+output = solveLinMin(model, true);
+-output.f/0.060
