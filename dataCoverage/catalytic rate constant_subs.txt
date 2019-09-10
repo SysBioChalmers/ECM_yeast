@@ -1,0 +1,57 @@
+catalytic rate constant	GAL1		55.8	1/s	[EC2.7.1.6]	saccharomyces cerevisiae
+catalytic rate constant	PGM1_2		0.74	1/s	[EC5.4.2.2]	closest
+catalytic rate constant	HXK		1.67	1/s	[EC2.7.1.1]	saccharomyces cerevisiae
+catalytic rate constant	HXK		491.4	1/s	[EC2.7.1.2]	saccharomyces cerevisiae
+catalytic rate constant	PGI		2765	1/s	[EC5.3.1.9]	closest
+catalytic rate constant	PFK		150.3143	1/s	[EC2.7.1.11]	saccharomyces cerevisiae
+catalytic rate constant	FBP		4.9	1/s	[EC3.1.3.11]	saccharomyces cerevisiae
+catalytic rate constant	FBA		46	1/s	[EC4.1.2.13]	closest
+catalytic rate constant	TPI		16700	1/s	[EC5.3.1.1]	saccharomyces cerevisiae
+catalytic rate constant	GLD		29	1/s	[EC1.2.1.12]	saccharomyces cerevisiae
+catalytic rate constant	PGK		963.1	1/s	[EC2.7.2.3]	saccharomyces cerevisiae
+catalytic rate constant	GPM		1085.5	1/s	[EC5.4.2.11]	saccharomyces cerevisiae
+catalytic rate constant	ENO		68.065	1/s	[EC4.2.1.11]	saccharomyces cerevisiae
+catalytic rate constant	CDC		232	1/s	[EC2.7.1.40]	saccharomyces cerevisiae
+catalytic rate constant	ZWF		3500	1/s	[EC1.1.1.49]	closest
+catalytic rate constant	PGL		NaN	1/s	[EC3.1.1.31]	closest
+catalytic rate constant	PGL		NaN	1/s	[EC3.1.1.31 EC3.1.1.31]	closest
+catalytic rate constant	GND		98	1/s	[EC1.1.1.44]	closest
+catalytic rate constant	RPI		39530	1/s	[EC5.3.1.6]	closest
+catalytic rate constant	RPE		2642.5	1/s	[EC5.1.3.1]	saccharomyces cerevisiae
+catalytic rate constant	TKLa		NaN	1/s	[EC2.2.1.1]	closest
+catalytic rate constant	TAL1		13.908	1/s	[EC2.2.1.2]	saccharomyces cerevisiae
+catalytic rate constant	TKLb		NaN	1/s	[EC2.2.1.1]	closest
+catalytic rate constant	DAR		390	1/s	[EC1.1.1.8]	closest
+catalytic rate constant	GPP		833	1/s	[EC3.1.3.21]	saccharomyces cerevisiae
+catalytic rate constant	PDC		73.1	1/s	[EC4.1.1.- EC4.1.1.1]	saccharomyces cerevisiae
+catalytic rate constant	PDC		0.89	1/s	[EC4.1.1.- EC4.1.1.1 EC4.1.1.43 EC4.1.1.74]	closest
+catalytic rate constant	PDC		73.1	1/s	[EC4.1.1.1]	saccharomyces cerevisiae
+catalytic rate constant	ADH1		895.4	1/s	[EC1.1.1.1]	saccharomyces cerevisiae
+catalytic rate constant	ALD6		1.02	1/s	[EC1.2.1.4]	closest
+catalytic rate constant	ALD2		11.03	1/s	[EC1.2.1.3]	closest
+catalytic rate constant	ALD2		4.46	1/s	[EC1.2.1.5]	closest
+catalytic rate constant	ICL1		65.5	1/s	[EC4.1.3.1 EC4.1.3.30]	saccharomyces cerevisiae
+catalytic rate constant	ICL1		65.5	1/s	[EC4.1.3.30]	saccharomyces cerevisiae
+catalytic rate constant	MLS1		46.6571	1/s	[EC2.3.3.9]	saccharomyces cerevisiae
+catalytic rate constant	PDH		486	1/s	[EC1.2.4.1]	closest
+catalytic rate constant	PDH		506	1/s	[EC1.8.1.4]	closest
+catalytic rate constant	ACS		9400	1/s	[EC6.2.1.1]	closest
+catalytic rate constant	PCK		38	1/s	[EC4.1.1.49]	saccharomyces cerevisiae
+catalytic rate constant	PYC		60	1/s	[EC6.4.1.1]	saccharomyces cerevisiae
+catalytic rate constant	CIT		167	1/s	[EC2.3.3.1]	saccharomyces cerevisiae
+catalytic rate constant	ACO		5.3	1/s	[EC4.2.1.3]	closest
+catalytic rate constant	IDH		53.4167	1/s	[EC1.1.1.41]	saccharomyces cerevisiae
+catalytic rate constant	IDPH		255	1/s	[EC1.1.1.42]	closest
+catalytic rate constant	KGD1KGD2		NaN	1/s	[EC1.2.4.2]	closest
+catalytic rate constant	KGD1KGD2		NaN	1/s	[EC2.3.1.61]	closest
+catalytic rate constant	SDH12		60	1/s	[EC1.3.5.1]	saccharomyces cerevisiae
+catalytic rate constant	FRDS2		658	1/s	[EC1.3.1.6]	saccharomyces cerevisiae
+catalytic rate constant	FUM1		436.4545	1/s	[EC4.2.1.2]	saccharomyces cerevisiae
+catalytic rate constant	MDH1		139	1/s	[EC1.1.1.37]	closest
+catalytic rate constant	NDI1		0.031	1/s	[EC1.6.5.9]	saccharomyces cerevisiae
+catalytic rate constant	NDE2		0.031	1/s	[EC1.6.5.9]	saccharomyces cerevisiae
+catalytic rate constant	RIP1		143	1/s	[EC1.10.2.2]	saccharomyces cerevisiae
+catalytic rate constant	COX1		1500	1/s	[EC1.9.3.1]	saccharomyces cerevisiae
+catalytic rate constant	ATP1		97.6	1/s	[EC2.3.1.7]	closest
+catalytic rate constant	ATP1		390	1/s	[EC3.6.3.14]	closest
+catalytic rate constant	ATP1		97.6	1/s	[EC3.6.3.14 EC2.3.1.7]	closest
