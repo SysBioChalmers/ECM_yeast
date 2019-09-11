@@ -1,4 +1,4 @@
-function ECM_model =  getParameterized_model
+function ECM_model =  getParameterized_model(model)
 %
 % Ivan Domenzain.   Last edited: 2019-10-11
 
@@ -9,8 +9,6 @@ yeastGEM          = cloneAndLoad('yeast-GEM','GECKO');
 org_name          = 'saccharomyces cerevisiae';
 org_code          = 'sce';
 %% Preprocess reduced GEM  
-model = load('../../models/model.mat');
-model = model.model;
 model = createKEGGmodel(model,yeastGEM);
 model = addNewFields(model,yeastGEM);
 save('../../models/reducedYeast.mat','model')
