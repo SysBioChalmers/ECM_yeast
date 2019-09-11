@@ -19,10 +19,10 @@
             </rdf:Bag>
           </dcterms:creator>
           <dcterms:created rdf:parseType="Resource">
-            <dcterms:W3CDTF>2018-11-23T16:55:50Z</dcterms:W3CDTF>
+            <dcterms:W3CDTF>2019-09-11T11:09:20Z</dcterms:W3CDTF>
           </dcterms:created>
           <dcterms:modified rdf:parseType="Resource">
-            <dcterms:W3CDTF>2018-11-23T16:55:50Z</dcterms:W3CDTF>
+            <dcterms:W3CDTF>2019-09-11T11:09:20Z</dcterms:W3CDTF>
           </dcterms:modified>
         </rdf:Description>
       </rdf:RDF>
@@ -858,12 +858,6 @@
       <parameter id="FB2N0" value="-0" constant="true"/>
       <parameter id="FB3N1000" value="1000" constant="true"/>
     </listOfParameters>
-    <listOfRules>
-      <algebraicRule/>
-    </listOfRules>
-    <listOfConstraints>
-      <constraint/>
-    </listOfConstraints>
     <listOfReactions>
       <reaction metaid="R_acOUT" sboTerm="SBO:0000176" id="R_acOUT" name="Production of acetate" reversible="false" fast="false" compartment="b" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
         <listOfReactants>
@@ -925,9 +919,9 @@
           <speciesReference species="M_H2O__91__c__93__" stoichiometry="1" constant="true"/>
         </listOfReactants>
       </reaction>
-      <reaction metaid="R_HCO3IN" sboTerm="SBO:0000176" id="R_HCO3IN" name="Uptake of HCO3" reversible="false" fast="false" compartment="b" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+      <reaction metaid="R_H2OIN" sboTerm="SBO:0000176" id="R_H2OIN" name="Uptake of f H2O" reversible="false" fast="false" compartment="b" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
         <listOfProducts>
-          <speciesReference species="M_HCO3__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H2O__91__c__93__" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
       <reaction metaid="R_galIN" sboTerm="SBO:0000176" id="R_galIN" name="Uptake of galactose" reversible="false" fast="false" compartment="b" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB2N0">
@@ -1397,6 +1391,7 @@
       <reaction metaid="R_ATPX" sboTerm="SBO:0000176" id="R_ATPX" name="ATP hydrolysis" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
         <listOfReactants>
           <speciesReference species="M_ATP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H2O__91__c__93__" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
           <speciesReference species="M_ADP__91__c__93__" stoichiometry="1" constant="true"/>
@@ -1663,12 +1658,12 @@
         <listOfReactants>
           <speciesReference species="M_ubiquinol__45__6__91__m__93__" stoichiometry="1" constant="true"/>
           <speciesReference species="M_Ferricytochrome_c__91__m__93__" stoichiometry="2" constant="true"/>
-          <speciesReference species="M_H__91__m__93__" stoichiometry="2" constant="true"/>
+          <speciesReference species="M_H__91__m__93__" stoichiometry="4" constant="true"/>
         </listOfReactants>
         <listOfProducts>
           <speciesReference species="M_ubiquinone__45__6__91__m__93__" stoichiometry="1" constant="true"/>
           <speciesReference species="M_Ferrocytochrome_c__91__m__93__" stoichiometry="2" constant="true"/>
-          <speciesReference species="M_H__91__i__93__" stoichiometry="2" constant="true"/>
+          <speciesReference species="M_H__91__i__93__" stoichiometry="4" constant="true"/>
         </listOfProducts>
         <fbc:geneProductAssociation>
           <fbc:or/>
@@ -1678,7 +1673,7 @@
         <listOfReactants>
           <speciesReference species="M_O2__91__c__93__" stoichiometry="0.25" constant="true"/>
           <speciesReference species="M_Ferrocytochrome_c__91__m__93__" stoichiometry="1" constant="true"/>
-          <speciesReference species="M_H__91__m__93__" stoichiometry="2" constant="true"/>
+          <speciesReference species="M_H__91__m__93__" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
           <speciesReference species="M_Ferricytochrome_c__91__m__93__" stoichiometry="1" constant="true"/>
@@ -1760,6 +1755,15 @@
         <fbc:geneProductAssociation>
           <fbc:or/>
         </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_NCE" sboTerm="SBO:0000176" id="R_NCE" name="CO2 dissociation" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_CO2__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H2O__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_HCO3__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
       </reaction>
       <reaction metaid="R_ShuttleX" sboTerm="SBO:0000176" id="R_ShuttleX" name="NAD(H) shuttle" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
         <listOfReactants>
@@ -1885,34 +1889,6 @@
         </listOfReactants>
         <listOfProducts>
           <speciesReference species="M_H__91__m__93__" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-      </reaction>
-      <reaction metaid="R_VGROPROTALT" sboTerm="SBO:0000176" id="R_VGROPROTALT" name="Alternative protein synthesis" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
-        <listOfReactants>
-          <speciesReference species="M_AKG__91__m__93__" stoichiometry="0.0361" constant="true"/>
-          <speciesReference species="M_P13G__91__c__93__" stoichiometry="0.0864" constant="true"/>
-          <speciesReference species="M_ACCOA__91__m__93__" stoichiometry="0.429" constant="true"/>
-          <speciesReference species="M_ATP__91__c__93__" stoichiometry="5.23" constant="true"/>
-          <speciesReference species="M_E4P__91__c__93__" stoichiometry="0.0795" constant="true"/>
-          <speciesReference species="M_GA3P__91__c__93__" stoichiometry="0.031" constant="true"/>
-          <speciesReference species="M_R5P__91__c__93__" stoichiometry="0.0292" constant="true"/>
-          <speciesReference species="M_NAD__91__m__93__" stoichiometry="0.314" constant="true"/>
-          <speciesReference species="M_NADPH__91__c__93__" stoichiometry="1.28" constant="true"/>
-          <speciesReference species="M_NADPH__91__m__93__" stoichiometry="0.262" constant="true"/>
-          <speciesReference species="M_O2__91__c__93__" stoichiometry="0.0298" constant="true"/>
-          <speciesReference species="M_PEP__91__c__93__" stoichiometry="0.233" constant="true"/>
-          <speciesReference species="M_PYR__91__m__93__" stoichiometry="0.434" constant="true"/>
-          <speciesReference species="M_OAA__91__c__93__" stoichiometry="0.418" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="M_ADP__91__c__93__" stoichiometry="5.23" constant="true"/>
-          <speciesReference species="M_CO2__91__c__93__" stoichiometry="0.652" constant="true"/>
-          <speciesReference species="M_COA__91__m__93__" stoichiometry="0.429" constant="true"/>
-          <speciesReference species="M_NADH__91__m__93__" stoichiometry="0.314" constant="true"/>
-          <speciesReference species="M_NADP__91__c__93__" stoichiometry="1.28" constant="true"/>
-          <speciesReference species="M_NADP__91__m__93__" stoichiometry="0.262" constant="true"/>
-          <speciesReference species="M_PI__91__c__93__" stoichiometry="5.78" constant="true"/>
-          <speciesReference species="M_growthProteinAlt__91__c__93__" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
       <reaction metaid="R_VGROPROT" sboTerm="SBO:0000176" id="R_VGROPROT" name="Protein synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
@@ -2054,6 +2030,7 @@
       <reaction metaid="R_VGROMAINTAIN" sboTerm="SBO:0000176" id="R_VGROMAINTAIN" name="GAM" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
         <listOfReactants>
           <speciesReference species="M_ATP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H2O__91__c__93__" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
           <speciesReference species="M_ADP__91__c__93__" stoichiometry="1" constant="true"/>
@@ -2254,7 +2231,6 @@
       </groups:group>
       <groups:group sboTerm="SBO:0000633" groups:id="group3" groups:name="Biomass equation" groups:kind="partonomy">
         <groups:listOfMembers>
-          <groups:member groups:idRef="R_VGROPROTALT"/>
           <groups:member groups:idRef="R_VGROPROT"/>
           <groups:member groups:idRef="R_VGRORNA"/>
           <groups:member groups:idRef="R_VGRODNA"/>
@@ -2312,6 +2288,7 @@
           <groups:member groups:idRef="R_PDH"/>
           <groups:member groups:idRef="R_ACS"/>
           <groups:member groups:idRef="R_PCK"/>
+          <groups:member groups:idRef="R_NCE"/>
         </groups:listOfMembers>
       </groups:group>
       <groups:group sboTerm="SBO:0000633" groups:id="group8" groups:name="Oxidative Phosphorylation" groups:kind="partonomy">
@@ -2359,6 +2336,7 @@
           <groups:member groups:idRef="R_ATPTransportRev"/>
           <groups:member groups:idRef="R_OAC1Rev"/>
           <groups:member groups:idRef="R_PyrTransRev"/>
+          <groups:member groups:idRef="R_H2Otransport"/>
           <groups:member groups:idRef="R_CAT2Rev"/>
           <groups:member groups:idRef="R_HDECOUP"/>
         </groups:listOfMembers>

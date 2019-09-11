@@ -7138,12 +7138,12 @@
         <listOfReactants>
           <speciesReference species="ubiquinol_6_m_" stoichiometry="1"/>
           <speciesReference species="Ferricytochrome_c_m_" stoichiometry="2"/>
-          <speciesReference species="H_m_" stoichiometry="2"/>
+          <speciesReference species="H_m_" stoichiometry="4"/>
         </listOfReactants>
         <listOfProducts>
           <speciesReference species="ubiquinone_6_m_" stoichiometry="1"/>
           <speciesReference species="Ferrocytochrome_c_m_" stoichiometry="2"/>
-          <speciesReference species="H_i_" stoichiometry="2"/>
+          <speciesReference species="H_i_" stoichiometry="4"/>
         </listOfProducts>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -7180,7 +7180,7 @@
                               <apply>
                                 <power/>
                                 <ci> kM_R48_H_m_ </ci>
-                                <cn type="integer"> 2 </cn>
+                                <cn type="integer"> 4 </cn>
                               </apply>
                             </apply>
                             <ci> kM_R48_ubiquinone_6_m_ </ci>
@@ -7194,7 +7194,7 @@
                         <apply>
                           <power/>
                           <ci> kM_R48_H_i_ </ci>
-                          <cn type="integer"> 2 </cn>
+                          <cn type="integer"> 4 </cn>
                         </apply>
                       </apply>
                     </apply>
@@ -7219,7 +7219,7 @@
                         <ci> H_m_ </ci>
                         <ci> kM_R48_H_m_ </ci>
                       </apply>
-                      <cn type="integer"> 2 </cn>
+                      <cn type="integer"> 4 </cn>
                     </apply>
                   </apply>
                   <apply>
@@ -7250,7 +7250,7 @@
                                 <apply>
                                   <power/>
                                   <ci> kM_R48_H_m_ </ci>
-                                  <cn type="integer"> 2 </cn>
+                                  <cn type="integer"> 4 </cn>
                                 </apply>
                               </apply>
                               <ci> kM_R48_ubiquinone_6_m_ </ci>
@@ -7264,7 +7264,7 @@
                           <apply>
                             <power/>
                             <ci> kM_R48_H_i_ </ci>
-                            <cn type="integer"> 2 </cn>
+                            <cn type="integer"> 4 </cn>
                           </apply>
                         </apply>
                       </apply>
@@ -7290,7 +7290,7 @@
                         <ci> H_i_ </ci>
                         <ci> kM_R48_H_i_ </ci>
                       </apply>
-                      <cn type="integer"> 2 </cn>
+                      <cn type="integer"> 4 </cn>
                     </apply>
                   </apply>
                 </apply>
@@ -7334,7 +7334,7 @@
                           <ci> kM_R48_H_m_ </ci>
                         </apply>
                       </apply>
-                      <cn type="integer"> 2 </cn>
+                      <cn type="integer"> 4 </cn>
                     </apply>
                   </apply>
                   <apply>
@@ -7372,7 +7372,7 @@
                           <ci> kM_R48_H_i_ </ci>
                         </apply>
                       </apply>
-                      <cn type="integer"> 2 </cn>
+                      <cn type="integer"> 4 </cn>
                     </apply>
                   </apply>
                 </apply>
@@ -7397,7 +7397,7 @@
         <listOfReactants>
           <speciesReference species="O2_c_" stoichiometry="0.25"/>
           <speciesReference species="Ferrocytochrome_c_m_" stoichiometry="1"/>
-          <speciesReference species="H_m_" stoichiometry="2"/>
+          <speciesReference species="H_m_" stoichiometry="1"/>
         </listOfReactants>
         <listOfProducts>
           <speciesReference species="Ferricytochrome_c_m_" stoichiometry="1"/>
@@ -7436,11 +7436,7 @@
                                 <cn type="e-notation"> 2.5 <sep/> -1 </cn>
                               </apply>
                               <ci> kM_R49_Ferrocytochrome_c_m_ </ci>
-                              <apply>
-                                <power/>
-                                <ci> kM_R49_H_m_ </ci>
-                                <cn type="integer"> 2 </cn>
-                              </apply>
+                              <ci> kM_R49_H_m_ </ci>
                             </apply>
                             <ci> kM_R49_Ferricytochrome_c_m_ </ci>
                           </apply>
@@ -7468,13 +7464,9 @@
                       <ci> kM_R49_Ferrocytochrome_c_m_ </ci>
                     </apply>
                     <apply>
-                      <power/>
-                      <apply>
-                        <divide/>
-                        <ci> H_m_ </ci>
-                        <ci> kM_R49_H_m_ </ci>
-                      </apply>
-                      <cn type="integer"> 2 </cn>
+                      <divide/>
+                      <ci> H_m_ </ci>
+                      <ci> kM_R49_H_m_ </ci>
                     </apply>
                   </apply>
                   <apply>
@@ -7502,11 +7494,7 @@
                                   <cn type="e-notation"> 2.5 <sep/> -1 </cn>
                                 </apply>
                                 <ci> kM_R49_Ferrocytochrome_c_m_ </ci>
-                                <apply>
-                                  <power/>
-                                  <ci> kM_R49_H_m_ </ci>
-                                  <cn type="integer"> 2 </cn>
-                                </apply>
+                                <ci> kM_R49_H_m_ </ci>
                               </apply>
                               <ci> kM_R49_Ferricytochrome_c_m_ </ci>
                             </apply>
@@ -7571,17 +7559,13 @@
                       </apply>
                     </apply>
                     <apply>
-                      <power/>
+                      <plus/>
+                      <cn type="integer"> 1 </cn>
                       <apply>
-                        <plus/>
-                        <cn type="integer"> 1 </cn>
-                        <apply>
-                          <divide/>
-                          <ci> H_m_ </ci>
-                          <ci> kM_R49_H_m_ </ci>
-                        </apply>
+                        <divide/>
+                        <ci> H_m_ </ci>
+                        <ci> kM_R49_H_m_ </ci>
                       </apply>
-                      <cn type="integer"> 2 </cn>
                     </apply>
                   </apply>
                   <apply>
