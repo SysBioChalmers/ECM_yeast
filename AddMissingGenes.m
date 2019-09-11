@@ -9,7 +9,7 @@ function model = AddMissingGenes(model)
     genes2add.grRules = {'YBR020W' 'YBR019' 'YBR018' '(YMR105C or YKL127)'};
     genes2add.rxns    = [14 15 16 17];
 
-    model = addGenes(model,genes2add);
+    model = addGenes(model,genes2add.genes);
     for i=1:length(genes2add.grRules)
         model.grRules(genes2add.rxns(i)) =  genes2add.grRules(i);
     end
