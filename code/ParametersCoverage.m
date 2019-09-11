@@ -30,10 +30,9 @@ function [Ks,Kp] = getKineticData(model_data,org_name,parameter)
     
    %Create .txt files for saving the results         
     cd dataFiles
-    param = strrep(parameter,' ','_');
-    fileName_subs  = [param '_subs.txt'];
+    fileName_subs  = [parameter '_subs.txt'];
     fileID_subs    = fopen(fileName_subs,'w');
-    fileName_prods = [param '_prods.txt'];
+    fileName_prods = [parameter '_prods.txt'];
     fileID_prods   = fopen(fileName_prods,'w');
     cd (current)   
     %for each of the model reactions
