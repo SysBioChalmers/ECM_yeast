@@ -29,7 +29,6 @@ This repository is administered by [@IVANDOMENZAIN](https://github.com/IVANDOMEN
 - `python setup.py install`
 
 
-
 ## Development Guidelines
 
 Anybody is welcome to contribute to the development of **OrthOmics**, but please abide by the following guidelines.
@@ -62,3 +61,7 @@ More detailed explanation or comments can be left in the commit description.
 * No changes should be directly commited to the `master` or `devel` branches. Commits are made to side-branches, after which pull requests are made for merging with `master` or `devel`.
 * The person making the pull request and the one accepting the merge _cannot_ be the same person.
 * A merge with the master branch invokes a new release.
+
+## Contributors
+- Iván Domenzain [(@IVANDOMENZAIN)](https://github.com/IVANDOMENZAIN), Chalmers University of Technology, Gothenburg Sweden
+- Avlant Nilsson [(@avlant)](https://github.com/avlant), Department of Biological Engineering, Massachusetts Institute of Technology
