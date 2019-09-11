@@ -1,6 +1,6 @@
 function ECM_model =  enhanceReducedGEM
 %
-% Ivan Domenzain.   Last edited: 2018-12-04
+% Ivan Domenzain.   Last edited: 2019-10-11
 
 current       = pwd;
 %Specify the GECKO toolbox directory
@@ -10,10 +10,7 @@ yeast8_path   = '/Users/ivand/Documents/GitHub/yeast-GEM/ModelFiles/xml';
 org_name      = 'saccharomyces cerevisiae';
 org_code      = 'sce';
 %%%%%%%%%%%%%%%%%%%%%%% Preprocess reduced GEM  %%%%%%%%%%%%%%%%%%%%%%%%%%
-cd (yeast8_path)
-yeast8 = readCbModel('yeastGEM.xml');
-cd ([current '/Models'])
-model = importExcelModel('model.xlsx');
+model = open('../../models/model.mat');
 cd ..
 model = createKEGGmodel(model,yeast8);
 cd ../Model_curation_scripts

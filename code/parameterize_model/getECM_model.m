@@ -7,17 +7,17 @@ function ECM_model = getECM_model(model)
 %
 % usage: ECM_model = getECM_model(model)
 %
-% Ivan Domenzain.   Last edited: 2018-10-09
+% Ivan Domenzain.   Last edited: 2019-09-11
 %
 
 %ECM operates with exclusively with eznymatic reactions
 enzRxns = find(~cellfun(@isempty,model.grRules));
-nR  = length(enzRxns);
-nM  = length(model.mets);
-S   = full(model.S(:,enzRxns));
-rev = ones(nR,1);
-mets = model.mets;
-rxns = model.rxns(enzRxns);
+nR      = length(enzRxns);
+nM      = length(model.mets);
+S       = full(model.S(:,enzRxns));
+rev     = ones(nR,1);
+mets    = model.mets;
+rxns    = model.rxns(enzRxns);
 %Indicate external metabolites
 ext = [];
 kinetics = true;
@@ -31,19 +31,17 @@ ECM_model.metabolite_NameForPlots = model.mets;
 ECM_model.metabolite_KEGGID = model.metKEGGID;
 %Get and save an SBML file for the ECM_model (including kinetic
 %expressions)
-cd Models
-SBMLmodel = network_sbml_export(ECM_model,'','reducedYeast_ECM','reducedYeast_ECM.xml');
+SBMLmodel = network_sbml_export(ECM_model,'','reducedYeast_ECM','../../models/reducedYeast_ECM.xml');
 %Create network structure
 options = struct;
-options.filename = 'reducedYeast_ECM.tsv';
-options.modular_rate_law_table = enzRxns;
-options.modular_rate_law_kinetics = enzRxns;
+options.filename                      = '../../models/reducedYeast_ECM.tsv';
+options.modular_rate_law_table        = enzRxns;
+options.modular_rate_law_kinetics     = enzRxns;
 options.modular_rate_law_parameter_id = enzRxns;
 options.save_in_one_file = 1;
 %options.c = [1:nM];
 options.document_name = 'reducedYeast_ECM';
 %Get and save an SBtab version of the ECM model
 sbtab_document = network_to_sbtab(ECM_model, options);
-cd ..
-addParametersToNetwork(options.document_name)
+%addParametersToNetwork(options.document_name)
 end

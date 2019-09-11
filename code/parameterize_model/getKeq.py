@@ -1,6 +1,6 @@
 #!/usr/bin/python
 """
-# Ivan Domenzain.   Last edited: 2018-10-07
+# Ivan Domenzain.   Last edited: 2019-09-10
 """
 #INPUTS:
 ECM_path = '/Users/ivand/Documents/GitHub/ECM_Yeast'
@@ -57,7 +57,7 @@ for formula in data.ReactionFormula:
     print('ln(Reversibility Index) = %.1f\n' % ln_RI)
     output = output+type+'\t'+reactionStr+'\t'+compound+'\t'+str(KEQ)+'\t'+unit+'\t'+ KEGGID+'\t'+compoundID+'\t'+parameterID+'\n'
 #Write output:
-os.chdir(ECM_path+'/dataFiles')
+os.chdir(ECM_path+'/results/parameters')
 fid  = open('kEqTable.txt','w')
 fid.write(output)
 fid.close()
