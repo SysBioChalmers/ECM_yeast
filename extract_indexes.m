@@ -5,7 +5,7 @@
 % Extract the indexes of the entries in the BRENDA data that meet the 
 % conditions specified by the search criteria
 %
-% Ivan Domenzain.   Last edited 2017-12-19
+% Ivan Domenzain.   Last edited 2018-11-07
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function EC_indexes = extract_indexes(EC,data_cell,metName,met_flag,...
                                     organism, org_index,TaxDistStruct,wild)
@@ -13,8 +13,7 @@ function EC_indexes = extract_indexes(EC,data_cell,metName,met_flag,...
                      
     EC_cell   = data_cell{1}; 
     subs_cell = data_cell{2};
-    orgs_cell = data_cell{3};
-    
+    orgs_cell = data_cell{3}; 
     EC_indexes = [];
     %In the case of wild cards present in the EC number
     if wild
@@ -29,14 +28,7 @@ function EC_indexes = extract_indexes(EC,data_cell,metName,met_flag,...
    %If met_flag=true then it will extract only the entry indexes for the 
    %specific metabolite in the EC subset from the BRENDA cell array
     if met_flag
-        Subs_indexes = [];
-        for l = 1:length(metName)
-            if ~isempty(metName(l))
-                Subs_indexes = horzcat(Subs_indexes,...
-                    EC_indexes(strcmpi(metName(l),subs_cell(EC_indexes))));          
-            end
-        end
-        EC_indexes = Subs_indexes;    
+        EC_indexes = EC_indexes(strcmpi(metName,subs_cell(EC_indexes)));
     end
     EC_orgs = orgs_cell(EC_indexes);
  
@@ -49,7 +41,6 @@ function EC_indexes = extract_indexes(EC,data_cell,metName,met_flag,...
     %the Kcat value for the closest organism
     elseif strcmpi(organism,'closest') && org_index~='*'
         KEGG_indexes = [];temp = [];
-
        %For relating a phyl dist between the modelled organism and the 
        %organisms on the BRENDA cell array it should search for a KEGG code
        %for each of these 
@@ -78,14 +69,15 @@ function EC_indexes = extract_indexes(EC,data_cell,metName,met_flag,...
             end
         end
        %Update the EC_indexes cell array
-        EC_indexes = temp;
+        
        %Looks for the taxonomically closest organism and saves the index 
        %of its appearences in the BRENDA cell
-        if ~isempty(EC_indexes)
+        if ~isempty(temp)
+            EC_indexes = temp;
             distances  = num2cell(TaxDistStruct.distMat(org_index,:));
             distances  = distances(KEGG_indexes);
             EC_indexes = EC_indexes(cell2mat(distances) ==...
-                                    min(cell2mat(distances)));                     
+                                    min(cell2mat(distances)));
         end
     end
     

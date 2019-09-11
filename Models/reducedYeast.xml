@@ -1,0 +1,2380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" xmlns:fbc="http://www.sbml.org/sbml/level3/version1/fbc/version2" xmlns:groups="http://www.sbml.org/sbml/level3/version1/groups/version1" level="3" version="1" fbc:required="false" groups:required="false">
+  <model metaid="costYeast" id="costYeast" name="Cost modified central carbon metabolism for yeast" fbc:strict="true">
+    <annotation>
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+        <rdf:Description rdf:about="#costYeast">
+          <dcterms:creator>
+            <rdf:Bag>
+              <rdf:li rdf:parseType="Resource">
+                <vCard:N rdf:parseType="Resource">
+                  <vCard:Family>Nilsson</vCard:Family>
+                  <vCard:Given>Avlant</vCard:Given>
+                </vCard:N>
+                <vCard:EMAIL>avlant@hotmail.com</vCard:EMAIL>
+                <vCard:ORG rdf:parseType="Resource">
+                  <vCard:Orgname>Chalmers University of Technology</vCard:Orgname>
+                </vCard:ORG>
+              </rdf:li>
+            </rdf:Bag>
+          </dcterms:creator>
+          <dcterms:created rdf:parseType="Resource">
+            <dcterms:W3CDTF>2018-11-23T16:55:50Z</dcterms:W3CDTF>
+          </dcterms:created>
+          <dcterms:modified rdf:parseType="Resource">
+            <dcterms:W3CDTF>2018-11-23T16:55:50Z</dcterms:W3CDTF>
+          </dcterms:modified>
+        </rdf:Description>
+      </rdf:RDF>
+    </annotation>
+    <listOfUnitDefinitions>
+      <unitDefinition id="mmol_per_gDW_per_hr">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-3" multiplier="1"/>
+          <unit kind="gram" exponent="-1" scale="0" multiplier="1"/>
+          <unit kind="second" exponent="-1" scale="0" multiplier="3600"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="c" sboTerm="SBO:0000290" id="c" name="cytosol" spatialDimensions="3" size="1" constant="true"/>
+      <compartment metaid="m" sboTerm="SBO:0000290" id="m" name="mitochondria" spatialDimensions="3" size="1" constant="true"/>
+      <compartment metaid="c_i" sboTerm="SBO:0000290" id="c_i" name="intermembrane" spatialDimensions="3" size="1" constant="true"/>
+      <compartment metaid="b" sboTerm="SBO:0000290" id="b" name="unbalanced" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="M_MAL__91__m__93__" sboTerm="SBO:0000247" id="M_MAL__91__m__93__" name="(S)-malate" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_MAL__91__m__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/15589"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C4H6O5/c5-2(4(8)9)1-3(6)7/h2,5H,1H2,(H,6,7)(H,8,9)/p-2/t2-/m0/s1/fC4H4O5/q-2"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_AKG__91__m__93__" sboTerm="SBO:0000247" id="M_AKG__91__m__93__" name="2-oxoglutarate" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_AKG__91__m__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/30916"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)/p-1/fC5H5O5/h7H/q-1"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_P2G__91__c__93__" sboTerm="SBO:0000247" id="M_P2G__91__c__93__" name="2-phospho-D-glyceric acid" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_P2G__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/17835"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C3H7O7P/c4-1-2(3(5)6)10-11(7,8)9/h2,4H,1H2,(H,5,6)(H2,7,8,9)/t2-/m1/s1"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_P3G__91__c__93__" sboTerm="SBO:0000247" id="M_P3G__91__c__93__" name="3-phospho-D-glycerate" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_P3G__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/17794"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C3H7O7P/c4-2(3(5)6)1-10-11(7,8)9/h2,4H,1H2,(H,5,6)(H2,7,8,9)/t2-/m1/s1"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_P13G__91__c__93__" sboTerm="SBO:0000247" id="M_P13G__91__c__93__" name="1,3-bisphospho-D-glycerate" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_G15L__91__c__93__" sboTerm="SBO:0000247" id="M_G15L__91__c__93__" name="6-O-phosphono-D-glucono-1,5-lactone" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_G15L__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/16938"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C6H11O9P/c7-3-2(1-14-16(11,12)13)15-6(10)5(9)4(3)8/h2-5,7-9H,1H2,(H2,11,12,13)/t2-,3-,4+,5-/m1/s1/f/h11-12H"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_P6G__91__c__93__" sboTerm="SBO:0000247" id="M_P6G__91__c__93__" name="6-phospho-D-gluconate" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_P6G__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/16863"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C6H13O10P/c7-2(1-16-17(13,14)15)3(8)4(9)5(10)6(11)12/h2-5,7-10H,1H2,(H,11,12)(H2,13,14,15)/p-1/t2-,3-,4+,5-/m1/s1"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_ACA__91__c__93__" sboTerm="SBO:0000247" id="M_ACA__91__c__93__" name="acetaldehyde" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_ACA__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/15343"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C2H4O/c1-2-3/h2H,1H3"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_AC__91__c__93__" sboTerm="SBO:0000247" id="M_AC__91__c__93__" name="acetate" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_AC__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/30089"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C2H4O2/c1-2(3)4/h1H3,(H,3,4)/p-1"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_ACCOA__91__c__93__" sboTerm="SBO:0000247" id="M_ACCOA__91__c__93__" name="acetyl-CoA" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_ACCOA__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/15351"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C23H38N7O17P3S/c1-12(31)51-7-6-25-14(32)4-5-26-21(35)18(34)23(2,3)9-44-50(41,42)47-49(39,40)43-8-13-17(46-48(36,37)38)16(33)22(45-13)30-11-29-15-19(24)27-10-28-20(15)30/h10-11,13,16-18,22,33-34H,4-9H2,1-3H3,(H,25,32)(H,26,35)(H,39,40)(H,41,42)(H2,24,27,28)(H2,36,37,38)/t13-,16-,17-,18+,22-/m1/s1/f/h25-26,36-37,39,41H,24H2"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_ACCOA__91__m__93__" sboTerm="SBO:0000247" id="M_ACCOA__91__m__93__" name="acetyl-CoA" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_ACCOA__91__m__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/15351"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C23H38N7O17P3S/c1-12(31)51-7-6-25-14(32)4-5-26-21(35)18(34)23(2,3)9-44-50(41,42)47-49(39,40)43-8-13-17(46-48(36,37)38)16(33)22(45-13)30-11-29-15-19(24)27-10-28-20(15)30/h10-11,13,16-18,22,33-34H,4-9H2,1-3H3,(H,25,32)(H,26,35)(H,39,40)(H,41,42)(H2,24,27,28)(H2,36,37,38)/t13-,16-,17-,18+,22-/m1/s1/f/h25-26,36-37,39,41H,24H2"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_ADP__91__c__93__" sboTerm="SBO:0000247" id="M_ADP__91__c__93__" name="ADP" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_ADP__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/16761"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C10H15N5O10P2/c11-8-5-9(13-2-12-8)15(3-14-5)10-7(17)6(16)4(24-10)1-23-27(21,22)25-26(18,19)20/h2-4,6-7,10,16-17H,1H2,(H,21,22)(H2,11,12,13)(H2,18,19,20)/t4-,6-,7-,10-/m1/s1/f/h18-19,21H,11H2"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_GLC__91__c__93__" sboTerm="SBO:0000247" id="M_GLC__91__c__93__" name="alpha-D-glucose" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_GLC__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/17925"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C6H12O6/c7-1-2-3(8)4(9)5(10)6(11)12-2/h2-11H,1H2/t2-,3-,4+,5-,6+/m1/s1"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_G6P__91__c__93__" sboTerm="SBO:0000247" id="M_G6P__91__c__93__" name="alpha-D-glucose 6-phosphate" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_G6P__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/17665"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C6H13O9P/c7-3-2(1-14-16(11,12)13)15-6(10)5(9)4(3)8/h2-10H,1H2,(H2,11,12,13)/t2-,3-,4+,5-,6+/m1/s1/f/h11-12H"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_ATP__91__c__93__" sboTerm="SBO:0000247" id="M_ATP__91__c__93__" name="ATP" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_ATP__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/15422"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C10H16N5O13P3/c11-8-5-9(13-2-12-8)15(3-14-5)10-7(17)6(16)4(26-10)1-25-30(21,22)28-31(23,24)27-29(18,19)20/h2-4,6-7,10,16-17H,1H2,(H,21,22)(H,23,24)(H2,11,12,13)(H2,18,19,20)/t4-,6-,7-,10-/m1/s1/f/h18-19,21,23H,11H2"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_AMP__91__c__93__" sboTerm="SBO:0000247" id="M_AMP__91__c__93__" name="AMP" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_AMP__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/16027"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C10H14N5O7P/c11-8-5-9(13-2-12-8)15(3-14-5)10-7(17)6(16)4(22-10)1-21-23(18,19)20/h2-4,6-7,10,16-17H,1H2,(H2,11,12,13)(H2,18,19,20)/t4-,6-,7-,10-/m1/s1/f/h18-19H,11H2"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_F16P__91__c__93__" sboTerm="SBO:0000247" id="M_F16P__91__c__93__" name="D-fructose 1,6-bisphosphate" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_F16P__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/28013"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C6H14O12P2/c7-4-3(1-16-19(10,11)12)18-6(9,5(4)8)2-17-20(13,14)15/h3-5,7-9H,1-2H2,(H2,10,11,12)(H2,13,14,15)/t3-,4-,5+,6-/m1/s1/f/h10-11,13-14H"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_F6P__91__c__93__" sboTerm="SBO:0000247" id="M_F6P__91__c__93__" name="D-fructose 6-phosphate" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_F6P__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/16084"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C6H13O9P/c7-2-6(10)5(9)4(8)3(15-6)1-14-16(11,12)13/h3-5,7-10H,1-2H2,(H2,11,12,13)/t3-,4-,5+,6-/m1/s1/f/h11-12H"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_BIOMASS__91__c__93__" sboTerm="SBO:0000247" id="M_BIOMASS__91__c__93__" name="biomass" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_CI__91__m__93__" sboTerm="SBO:0000247" id="M_CI__91__m__93__" name="citrate" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_CI__91__m__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/16947"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C6H8O7/c7-3(8)1-6(13,5(11)12)2-4(9)10/h13H,1-2H2,(H,7,8)(H,9,10)(H,11,12)/p-3/fC6H5O7/q-3"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_CO2__91__c__93__" sboTerm="SBO:0000247" id="M_CO2__91__c__93__" name="CO2" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_CO2__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/16526"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/CO2/c2-1-3"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_CO2__91__m__93__" sboTerm="SBO:0000247" id="M_CO2__91__m__93__" name="CO2" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_CO2__91__m__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/16526"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/CO2/c2-1-3"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_COA__91__c__93__" sboTerm="SBO:0000247" id="M_COA__91__c__93__" name="coenzyme A" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_COA__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/15346"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C21H36N7O16P3S/c1-21(2,16(31)19(32)24-4-3-12(29)23-5-6-48)8-41-47(38,39)44-46(36,37)40-7-11-15(43-45(33,34)35)14(30)20(42-11)28-10-27-13-17(22)25-9-26-18(13)28/h9-11,14-16,20,30-31,48H,3-8H2,1-2H3,(H,23,29)(H,24,32)(H,36,37)(H,38,39)(H2,22,25,26)(H2,33,34,35)/t11-,14-,15-,16+,20-/m1/s1/f/h23-24,33-34,36,38H,22H2"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_COA__91__m__93__" sboTerm="SBO:0000247" id="M_COA__91__m__93__" name="coenzyme A" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_COA__91__m__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/15346"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C21H36N7O16P3S/c1-21(2,16(31)19(32)24-4-3-12(29)23-5-6-48)8-41-47(38,39)44-46(36,37)40-7-11-15(43-45(33,34)35)14(30)20(42-11)28-10-27-13-17(22)25-9-26-18(13)28/h9-11,14-16,20,30-31,48H,3-8H2,1-2H3,(H,23,29)(H,24,32)(H,36,37)(H,38,39)(H2,22,25,26)(H2,33,34,35)/t11-,14-,15-,16+,20-/m1/s1/f/h23-24,33-34,36,38H,22H2"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_E4P__91__c__93__" sboTerm="SBO:0000247" id="M_E4P__91__c__93__" name="D-erythrose 4-phosphate" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_E4P__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/16897"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C4H9O7P/c5-1-3(6)4(7)2-11-12(8,9)10/h1,3-4,6-7H,2H2,(H2,8,9,10)/p-2/t3-,4+/m0/s1"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_GA3P__91__c__93__" sboTerm="SBO:0000247" id="M_GA3P__91__c__93__" name="D-glyceraldehyde 3-phosphate" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_GA3P__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/29052"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C3H7O6P/c4-1-3(5)2-9-10(6,7)8/h1,3,5H,2H2,(H2,6,7,8)/t3-/m0/s1/f/h6-7H"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_R5P__91__c__93__" sboTerm="SBO:0000247" id="M_R5P__91__c__93__" name="D-ribose 5-phosphate" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_R5P__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/17797"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C5H11O8P/c6-1-3(7)5(9)4(8)2-13-14(10,11)12/h1,3-5,7-9H,2H2,(H2,10,11,12)/t3-,4+,5-/m0/s1/f/h10-11H"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_RU5P__91__c__93__" sboTerm="SBO:0000247" id="M_RU5P__91__c__93__" name="D-ribulose 5-phosphate" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_RU5P__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/17363"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C5H11O8P/c6-1-3(7)5(9)4(8)2-13-14(10,11)12/h4-6,8-9H,1-2H2,(H2,10,11,12)/t4-,5+/m1/s1/f/h10-11H"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_X5P__91__c__93__" sboTerm="SBO:0000247" id="M_X5P__91__c__93__" name="D-xylulose 5-phosphate" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_X5P__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/16332"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C5H11O8P/c6-1-3(7)5(9)4(8)2-13-14(10,11)12/h4-6,8-9H,1-2H2,(H2,10,11,12)/t4-,5-/m1/s1/f/h10-11H"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_ETH__91__c__93__" sboTerm="SBO:0000247" id="M_ETH__91__c__93__" name="ethanol" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_ETH__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/16236"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C2H6O/c1-2-3/h3H,2H2,1H3"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_FUM__91__m__93__" sboTerm="SBO:0000247" id="M_FUM__91__m__93__" name="fumarate" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_FUM__91__m__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/29806"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C4H4O4/c5-3(6)1-2-4(7)8/h1-2H,(H,5,6)(H,7,8)/p-2/b2-1+/fC4H2O4/q-2"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_GP__91__c__93__" sboTerm="SBO:0000247" id="M_GP__91__c__93__" name="glycerol-3-phosphate" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_GLY__91__c__93__" sboTerm="SBO:0000247" id="M_GLY__91__c__93__" name="glycerol" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_GLY__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/17754"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C3H8O3/c4-1-3(6)2-5/h3-6H,1-2H2"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_DHAP__91__c__93__" sboTerm="SBO:0000247" id="M_DHAP__91__c__93__" name="dihydroxyacetone phosphate" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_DHAP__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/16108"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C3H7O6P/c4-1-3(5)2-9-10(6,7)8/h4H,1-2H2,(H2,6,7,8)/f/h6-7H"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_ICI__91__m__93__" sboTerm="SBO:0000247" id="M_ICI__91__m__93__" name="isocitrate" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_ICI__91__m__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/16087"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C6H8O7/c7-3(8)1-2(5(10)11)4(9)6(12)13/h2,4,9H,1H2,(H,7,8)(H,10,11)(H,12,13)/p-3/fC6H5O7/q-3"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_NAD__91__c__93__" sboTerm="SBO:0000247" id="M_NAD__91__c__93__" name="nad+" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_NAD__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/15846"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C21H27N7O14P2/c22-17-12-19(25-7-24-17)28(8-26-12)21-16(32)14(30)11(41-21)6-39-44(36,37)42-43(34,35)38-5-10-13(29)15(31)20(40-10)27-3-1-2-9(4-27)18(23)33/h1-4,7-8,10-11,13-16,20-21,29-32H,5-6H2,(H5-,22,23,24,25,33,34,35,36,37)/p+1/t10-,11-,13-,14-,15-,16-,20-,21-/m1/s1/fC21H28N7O14P2/h34,36H,22-23H2/q+1"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_NAD__91__m__93__" sboTerm="SBO:0000247" id="M_NAD__91__m__93__" name="nad+" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_NAD__91__m__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/15846"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C21H27N7O14P2/c22-17-12-19(25-7-24-17)28(8-26-12)21-16(32)14(30)11(41-21)6-39-44(36,37)42-43(34,35)38-5-10-13(29)15(31)20(40-10)27-3-1-2-9(4-27)18(23)33/h1-4,7-8,10-11,13-16,20-21,29-32H,5-6H2,(H5-,22,23,24,25,33,34,35,36,37)/p+1/t10-,11-,13-,14-,15-,16-,20-,21-/m1/s1/fC21H28N7O14P2/h34,36H,22-23H2/q+1"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_NADH__91__c__93__" sboTerm="SBO:0000247" id="M_NADH__91__c__93__" name="NADH" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_NADH__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/16908"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C21H29N7O14P2/c22-17-12-19(25-7-24-17)28(8-26-12)21-16(32)14(30)11(41-21)6-39-44(36,37)42-43(34,35)38-5-10-13(29)15(31)20(40-10)27-3-1-2-9(4-27)18(23)33/h1,3-4,7-8,10-11,13-16,20-21,29-32H,2,5-6H2,(H2,23,33)(H,34,35)(H,36,37)(H2,22,24,25)/t10-,11-,13-,14-,15-,16-,20-,21-/m1/s1/f/h34,36H,22-23H2"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_NADH__91__m__93__" sboTerm="SBO:0000247" id="M_NADH__91__m__93__" name="NADH" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_NADH__91__m__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/16908"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C21H29N7O14P2/c22-17-12-19(25-7-24-17)28(8-26-12)21-16(32)14(30)11(41-21)6-39-44(36,37)42-43(34,35)38-5-10-13(29)15(31)20(40-10)27-3-1-2-9(4-27)18(23)33/h1,3-4,7-8,10-11,13-16,20-21,29-32H,2,5-6H2,(H2,23,33)(H,34,35)(H,36,37)(H2,22,24,25)/t10-,11-,13-,14-,15-,16-,20-,21-/m1/s1/f/h34,36H,22-23H2"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_NADP__91__c__93__" sboTerm="SBO:0000247" id="M_NADP__91__c__93__" name="nadp+" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_NADP__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/18009"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C21H28N7O17P3/c22-17-12-19(25-7-24-17)28(8-26-12)21-16(44-46(33,34)35)14(30)11(43-21)6-41-48(38,39)45-47(36,37)40-5-10-13(29)15(31)20(42-10)27-3-1-2-9(4-27)18(23)32/h1-4,7-8,10-11,13-16,20-21,29-31H,5-6H2,(H7-,22,23,24,25,32,33,34,35,36,37,38,39)/p+1/t10-,11-,13-,14-,15-,16-,20-,21-/m1/s1/fC21H29N7O17P3/h33-34,36,38H,22-23H2/q+1"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_NADP__91__m__93__" sboTerm="SBO:0000247" id="M_NADP__91__m__93__" name="nadp+" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_NADP__91__m__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/18009"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C21H28N7O17P3/c22-17-12-19(25-7-24-17)28(8-26-12)21-16(44-46(33,34)35)14(30)11(43-21)6-41-48(38,39)45-47(36,37)40-5-10-13(29)15(31)20(42-10)27-3-1-2-9(4-27)18(23)32/h1-4,7-8,10-11,13-16,20-21,29-31H,5-6H2,(H7-,22,23,24,25,32,33,34,35,36,37,38,39)/p+1/t10-,11-,13-,14-,15-,16-,20-,21-/m1/s1/fC21H29N7O17P3/h33-34,36,38H,22-23H2/q+1"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_NADPH__91__c__93__" sboTerm="SBO:0000247" id="M_NADPH__91__c__93__" name="NADPH" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_NADPH__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/16474"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C21H30N7O17P3/c22-17-12-19(25-7-24-17)28(8-26-12)21-16(44-46(33,34)35)14(30)11(43-21)6-41-48(38,39)45-47(36,37)40-5-10-13(29)15(31)20(42-10)27-3-1-2-9(4-27)18(23)32/h1,3-4,7-8,10-11,13-16,20-21,29-31H,2,5-6H2,(H2,23,32)(H,36,37)(H,38,39)(H2,22,24,25)(H2,33,34,35)/t10-,11-,13-,14-,15-,16-,20-,21-/m1/s1/f/h33-34,36,38H,22-23H2"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_NADPH__91__m__93__" sboTerm="SBO:0000247" id="M_NADPH__91__m__93__" name="NADPH" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_NADPH__91__m__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/16474"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C21H30N7O17P3/c22-17-12-19(25-7-24-17)28(8-26-12)21-16(44-46(33,34)35)14(30)11(43-21)6-41-48(38,39)45-47(36,37)40-5-10-13(29)15(31)20(42-10)27-3-1-2-9(4-27)18(23)32/h1,3-4,7-8,10-11,13-16,20-21,29-31H,2,5-6H2,(H2,23,32)(H,36,37)(H,38,39)(H2,22,24,25)(H2,33,34,35)/t10-,11-,13-,14-,15-,16-,20-,21-/m1/s1/f/h33-34,36,38H,22-23H2"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_O2__91__c__93__" sboTerm="SBO:0000247" id="M_O2__91__c__93__" name="O2" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_O2__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/15379"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/O2/c1-2"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_OAA__91__m__93__" sboTerm="SBO:0000247" id="M_OAA__91__m__93__" name="oxaloacetate" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_OAA__91__m__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/16452"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C4H4O5/c5-2(4(8)9)1-3(6)7/h1H2,(H,6,7)(H,8,9)/p-2/fC4H2O5/q-2"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_PI__91__c__93__" sboTerm="SBO:0000247" id="M_PI__91__c__93__" name="phosphate" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_PI__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/18367"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/H3O4P/c1-5(2,3)4/h(H3,1,2,3,4)/p-3/fO4P/q-3"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_PEP__91__c__93__" sboTerm="SBO:0000247" id="M_PEP__91__c__93__" name="phosphoenolpyruvate" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_PEP__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/18021"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C3H5O6P/c1-2(3(4)5)9-10(6,7)8/h1H2,(H,4,5)(H2,6,7,8)/p-1"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_PYR__91__c__93__" sboTerm="SBO:0000247" id="M_PYR__91__c__93__" name="pyruvate" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_PYR__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/15361"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)/p-1/fC3H3O3/q-1"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_S7P__91__c__93__" sboTerm="SBO:0000247" id="M_S7P__91__c__93__" name="sedoheptulose 7-phosphate" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_S7P__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/15721"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C7H15O10P/c8-1-3(9)5(11)7(13)6(12)4(10)2-17-18(14,15)16/h4-8,10-13H,1-2H2,(H2,14,15,16)/t4-,5-,6-,7+/m1/s1"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_SUC__91__m__93__" sboTerm="SBO:0000247" id="M_SUC__91__m__93__" name="succinate" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_SUC__91__m__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/30031"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C4H6O4/c5-3(6)1-2-4(7)8/h1-2H2,(H,5,6)(H,7,8)/p-2/fC4H4O4/q-2"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_ubiquinone__45__6__91__m__93__" sboTerm="SBO:0000247" id="M_ubiquinone__45__6__91__m__93__" name="ubiquinone-6" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_ubiquinone__45__6__91__m__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/18160"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C54H82O4/c1-40(2)22-14-23-41(3)24-15-25-42(4)26-16-27-43(5)28-17-29-44(6)30-18-31-45(7)32-19-33-46(8)34-20-35-47(9)36-21-37-48(10)38-39-50-49(11)51(55)53(57-12)54(58-13)52(50)56/h22,24,26,28,30,32,34,36,38H,14-21,23,25,27,29,31,33,35,37,39H2,1-13H3/b41-24+,42-26+,43-28+,44-30+,45-32+,46-34+,47-36+,48-38+"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_ubiquinol__45__6__91__m__93__" sboTerm="SBO:0000247" id="M_ubiquinol__45__6__91__m__93__" name="ubiquinol-6" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_ubiquinol__45__6__91__m__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/17976"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C14H20O4/c1-8(2)6-7-10-9(3)11(15)13(17-4)14(18-5)12(10)16/h6,15-16H,7H2,1-5H3"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_Ferricytochrome_c__91__m__93__" sboTerm="SBO:0000247" id="M_Ferricytochrome_c__91__m__93__" name="ferricytochrome c" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_Ferricytochrome_c__91__m__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00125"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C24H36N4O6S2/c1-6-16-21(30)28-20(14(4)5)24(33)34-15-9-7-8-10-35-36-12-17(22(31)25-16)26-23(32)19(13(2)3)27-18(29)11-15/h6-7,9,13-15,17,19-20H,8,10-12H2,1-5H3,(H,25,31)(H,26,32)(H,27,29)(H,28,30)/f/h25-28H"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_Ferrocytochrome_c__91__m__93__" sboTerm="SBO:0000247" id="M_Ferrocytochrome_c__91__m__93__" name="ferrocytochrome c" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_Ferrocytochrome_c__91__m__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00126"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C6H12O6/c7-2-6(11)5(10)4(9)3(8)1-12-6/h3-5,7-11H,1-2H2"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_H__91__m__93__" sboTerm="SBO:0000247" id="M_H__91__m__93__" name="h+" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_H__91__i__93__" sboTerm="SBO:0000247" id="M_H__91__i__93__" name="h+" compartment="c_i" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_growthProteinAlt__91__c__93__" sboTerm="SBO:0000247" id="M_growthProteinAlt__91__c__93__" name="growthProteinAlt" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_growthProtein__91__c__93__" sboTerm="SBO:0000247" id="M_growthProtein__91__c__93__" name="growthProtein" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_growthRNA__91__c__93__" sboTerm="SBO:0000247" id="M_growthRNA__91__c__93__" name="growthRNA" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_growthDNA__91__c__93__" sboTerm="SBO:0000247" id="M_growthDNA__91__c__93__" name="growthDNA" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_growthLipid__91__c__93__" sboTerm="SBO:0000247" id="M_growthLipid__91__c__93__" name="growthLipid" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_growthGlycogen__91__c__93__" sboTerm="SBO:0000247" id="M_growthGlycogen__91__c__93__" name="growthGlycogen" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_growthTrehalose__91__c__93__" sboTerm="SBO:0000247" id="M_growthTrehalose__91__c__93__" name="growthTrehalose" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_growthMannan__91__c__93__" sboTerm="SBO:0000247" id="M_growthMannan__91__c__93__" name="growthMannan" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_growthGlucan__91__c__93__" sboTerm="SBO:0000247" id="M_growthGlucan__91__c__93__" name="growthGlucan" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_growthMaintainance__91__c__93__" sboTerm="SBO:0000247" id="M_growthMaintainance__91__c__93__" name="Maintainance for growth" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_ATP__91__m__93__" sboTerm="SBO:0000247" id="M_ATP__91__m__93__" name="ATP" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_ADP__91__m__93__" sboTerm="SBO:0000247" id="M_ADP__91__m__93__" name="ADP" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_PI__91__m__93__" sboTerm="SBO:0000247" id="M_PI__91__m__93__" name="phosphate" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_PYR__91__m__93__" sboTerm="SBO:0000247" id="M_PYR__91__m__93__" name="pyruvate" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_OAA__91__c__93__" sboTerm="SBO:0000247" id="M_OAA__91__c__93__" name="oxaloacetate" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_GAL__91__c__93__" sboTerm="SBO:0000247" id="M_GAL__91__c__93__" name="galactose" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_GALP__91__c__93__" sboTerm="SBO:0000247" id="M_GALP__91__c__93__" name="D-galactose 1-phosphate" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_GALP__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/37480"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C6H13O9P/c7-1-2-3(8)4(9)5(10)6(14-2)15-16(11,12)13/h2-10H,1H2,(H2,11,12,13)/t2-,3+,4+,5-,6u/m1/s1/f/h11-12H"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_GALUDP__91__c__93__" sboTerm="SBO:0000247" id="M_GALUDP__91__c__93__" name="UDP-D-galactose" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_GALUDP__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/18307"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C15H24N2O17P2/c18-3-5-8(20)10(22)12(24)14(32-5)33-36(28,29)34-35(26,27)30-4-6-9(21)11(23)13(31-6)17-2-1-7(19)16-15(17)25/h1-2,5-6,8-14,18,20-24H,3-4H2,(H,26,27)(H,28,29)(H,16,19,25)/t5-,6-,8+,9-,10+,11-,12-,13-,14?/m1/s1/f/h16,26,28H"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_GLUUDP__91__c__93__" sboTerm="SBO:0000247" id="M_GLUUDP__91__c__93__" name="UDP-glucose" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_GLUUDP__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/18066"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C15H24N2O17P2/c18-3-5-8(20)10(22)12(24)14(32-5)33-36(28,29)34-35(26,27)30-4-6-9(21)11(23)13(31-6)17-2-1-7(19)16-15(17)25/h1-2,5-6,8-14,18,20-24H,3-4H2,(H,26,27)(H,28,29)(H,16,19,25)/t5-,6-,8-,9-,10+,11-,12-,13-,14?/m1/s1/f/h16,26,28H"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_G1P__91__c__93__" sboTerm="SBO:0000247" id="M_G1P__91__c__93__" name="D-glucose 1-phosphate" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_G1P__91__c__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/16077"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C6H13O9P/c7-1-2-3(8)4(9)5(10)6(14-2)15-16(11,12)13/h2-10H,1H2,(H2,11,12,13)/t2-,3-,4+,5-,6?/m1/s1"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_Glyoxylate__91__m__93__" sboTerm="SBO:0000247" id="M_Glyoxylate__91__m__93__" name="Glyoxylate" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_Succinyl__45__CoA__91__m__93__" sboTerm="SBO:0000247" id="M_Succinyl__45__CoA__91__m__93__" name="succinyl-CoA" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#M_Succinyl__45__CoA__91__m__93__">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/obo.chebi:CHEBI/15380"/>
+                  <rdf:li rdf:resource="http://identifiers.org/inchi/InChI=1/C25H40N7O19P3S/c1-25(2,20(38)23(39)28-6-5-14(33)27-7-8-55-16(36)4-3-15(34)35)10-48-54(45,46)51-53(43,44)47-9-13-19(50-52(40,41)42)18(37)24(49-13)32-12-31-17-21(26)29-11-30-22(17)32/h11-13,18-20,24,37-38H,3-10H2,1-2H3,(H,27,33)(H,28,39)(H,34,35)(H,43,44)(H,45,46)(H2,26,29,30)(H2,40,41,42)/t13-,18-,19-,20+,24-/m1/s1/f/h27-28,34,40-41,43,45H,26H2"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species metaid="M_H2O__91__m__93__" sboTerm="SBO:0000247" id="M_H2O__91__m__93__" name="H2O" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_H2O__91__c__93__" sboTerm="SBO:0000247" id="M_H2O__91__c__93__" name="H2O" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_HCO3__91__c__93__" sboTerm="SBO:0000247" id="M_HCO3__91__c__93__" name="HCO3" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="FB1N1000" value="-1000" constant="true"/>
+      <parameter id="FB2N0" value="-0" constant="true"/>
+      <parameter id="FB3N1000" value="1000" constant="true"/>
+    </listOfParameters>
+    <listOfRules>
+      <algebraicRule/>
+    </listOfRules>
+    <listOfConstraints>
+      <constraint/>
+    </listOfConstraints>
+    <listOfReactions>
+      <reaction metaid="R_acOUT" sboTerm="SBO:0000176" id="R_acOUT" name="Production of acetate" reversible="false" fast="false" compartment="b" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_AC__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+      </reaction>
+      <reaction metaid="R_acIN" sboTerm="SBO:0000176" id="R_acIN" name="Uptake of acetate" reversible="false" fast="false" compartment="b" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB2N0">
+        <listOfProducts>
+          <speciesReference species="M_AC__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_biomassOUT" sboTerm="SBO:0000176" id="R_biomassOUT" name="Production of biomass" reversible="false" fast="false" compartment="b" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_BIOMASS__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+      </reaction>
+      <reaction metaid="R_co2OUT" sboTerm="SBO:0000176" id="R_co2OUT" name="Production of CO2" reversible="false" fast="false" compartment="b" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_CO2__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+      </reaction>
+      <reaction metaid="R_ethOUT" sboTerm="SBO:0000176" id="R_ethOUT" name="Production of ethanol" reversible="false" fast="false" compartment="b" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ETH__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+      </reaction>
+      <reaction metaid="R_glyOUT" sboTerm="SBO:0000176" id="R_glyOUT" name="Production of glycerol" reversible="false" fast="false" compartment="b" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_GLY__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+      </reaction>
+      <reaction metaid="R_glcIN" sboTerm="SBO:0000176" id="R_glcIN" name="Uptake of glucose" reversible="false" fast="false" compartment="b" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB2N0">
+        <listOfProducts>
+          <speciesReference species="M_GLC__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_o2IN" sboTerm="SBO:0000176" id="R_o2IN" name="Uptake of O2" reversible="false" fast="false" compartment="b" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB2N0">
+        <listOfProducts>
+          <speciesReference species="M_O2__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_ethIN" sboTerm="SBO:0000176" id="R_ethIN" name="Uptake of ethanol" reversible="false" fast="false" compartment="b" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB2N0">
+        <listOfProducts>
+          <speciesReference species="M_ETH__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_PIIn" sboTerm="SBO:0000176" id="R_PIIn" name="Uptake of Phosphate" reversible="false" fast="false" compartment="b" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfProducts>
+          <speciesReference species="M_PI__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_PIOut" sboTerm="SBO:0000176" id="R_PIOut" name="Production of Phosphate" reversible="false" fast="false" compartment="b" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_PI__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+      </reaction>
+      <reaction metaid="R_H2O_Out" sboTerm="SBO:0000176" id="R_H2O_Out" name="Production of H2O" reversible="false" fast="false" compartment="b" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_H2O__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+      </reaction>
+      <reaction metaid="R_HCO3IN" sboTerm="SBO:0000176" id="R_HCO3IN" name="Uptake of HCO3" reversible="false" fast="false" compartment="b" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfProducts>
+          <speciesReference species="M_HCO3__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_galIN" sboTerm="SBO:0000176" id="R_galIN" name="Uptake of galactose" reversible="false" fast="false" compartment="b" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB2N0">
+        <listOfProducts>
+          <speciesReference species="M_GAL__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_gluActiveIn" sboTerm="SBO:0000176" id="R_gluActiveIn" name="Active uptake of glucose" reversible="false" fast="false" compartment="b" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB2N0">
+        <listOfReactants>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ADP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_GLC__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_PI__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_GAL1" sboTerm="SBO:0000176" id="R_GAL1" name="Galactokinase" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_GAL__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ADP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_GALP__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YBR020W"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_GAL10" sboTerm="SBO:0000176" id="R_GAL10" name="UDPglucose 4-epimerase" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_GALUDP__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_GLUUDP__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YBR019C"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_GAL7b" sboTerm="SBO:0000176" id="R_GAL7b" name="Galactose-1-phosphate uridylyltransferase" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_GALP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_GLUUDP__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_GALUDP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_G1P__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YBR018C"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_PGM1_2" sboTerm="SBO:0000176" id="R_PGM1_2" name="phosphoglucomutase" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_G1P__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_G6P__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="YMR105C"/>
+            <fbc:geneProductRef fbc:geneProduct="YKL127W"/>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_HXK" sboTerm="SBO:0000176" id="R_HXK" name="hexokinase (D-glucose:ATP)" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_GLC__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ADP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_G6P__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="YLR446W"/>
+            <fbc:geneProductRef fbc:geneProduct="YCL040W"/>
+            <fbc:geneProductRef fbc:geneProduct="YFR053C"/>
+            <fbc:geneProductRef fbc:geneProduct="YGL253W"/>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_PGI" sboTerm="SBO:0000176" id="R_PGI" name="Glucose-6-phosphate isomerase" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_G6P__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_F6P__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YBR196C"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_PFK" sboTerm="SBO:0000176" id="R_PFK" name="Phosphofructokinase" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_F6P__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ADP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_F16P__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="YMR205C"/>
+            <fbc:and>
+              <fbc:geneProductRef fbc:geneProduct="YGR240C"/>
+              <fbc:geneProductRef fbc:geneProduct="YMR205C"/>
+            </fbc:and>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_FBP" sboTerm="SBO:0000176" id="R_FBP" name="fructose-bisphosphatase" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_F16P__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H2O__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_F6P__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_PI__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YLR377C"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_FBA" sboTerm="SBO:0000176" id="R_FBA" name="Fructose-bisphosphate aldolase" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_F16P__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_GA3P__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_DHAP__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YKL060C"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_TPI" sboTerm="SBO:0000176" id="R_TPI" name="triose-phosphate isomerase" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_DHAP__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_GA3P__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YDR050C"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_GLD" sboTerm="SBO:0000176" id="R_GLD" name="glyceraldehyde-3-phosphate dehydrogenase" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_GA3P__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NAD__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_PI__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_P13G__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NADH__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="YGR192C"/>
+            <fbc:geneProductRef fbc:geneProduct="YJL052W"/>
+            <fbc:geneProductRef fbc:geneProduct="YJR009C"/>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_PGK" sboTerm="SBO:0000176" id="R_PGK" name="Phosphoglycerate kinase" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_P13G__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_ADP__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_P3G__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YCR012W"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_GPM" sboTerm="SBO:0000176" id="R_GPM" name="Phosphoglycerate mutase" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_P3G__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_P2G__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YKL152C"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_ENO" sboTerm="SBO:0000176" id="R_ENO" name="Enolase" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_P2G__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_PEP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H2O__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="YPL281C"/>
+            <fbc:geneProductRef fbc:geneProduct="YGR254W"/>
+            <fbc:geneProductRef fbc:geneProduct="YHR174W"/>
+            <fbc:geneProductRef fbc:geneProduct="YMR323W"/>
+            <fbc:geneProductRef fbc:geneProduct="YOR393W"/>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_CDC" sboTerm="SBO:0000176" id="R_CDC" name="Pyruvate kinase" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ADP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_PEP__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_PYR__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="YAL038W"/>
+            <fbc:geneProductRef fbc:geneProduct="YOR347C"/>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_ZWF" sboTerm="SBO:0000176" id="R_ZWF" name="glucose 6-phosphate dehydrogenase" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_G6P__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NADP__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_G15L__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NADPH__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YNL241C"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_PGL" sboTerm="SBO:0000176" id="R_PGL" name="6-phosphogluconolactonase" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_G15L__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H2O__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_P6G__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="YGR248W"/>
+            <fbc:geneProductRef fbc:geneProduct="YHR163W"/>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_GND" sboTerm="SBO:0000176" id="R_GND" name="phosphogluconate dehydrogenase" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_P6G__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NADP__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_CO2__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_RU5P__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NADPH__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="YGR256W"/>
+            <fbc:geneProductRef fbc:geneProduct="YHR183W"/>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_RPI" sboTerm="SBO:0000176" id="R_RPI" name="ribose-5-phosphate isomerase" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_RU5P__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_R5P__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YOR095C"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_RPE" sboTerm="SBO:0000176" id="R_RPE" name="ribulose 5-phosphate 3-epimerase" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_RU5P__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_X5P__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YJL121C"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_TKLa" sboTerm="SBO:0000176" id="R_TKLa" name="transketolase 1" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_R5P__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_X5P__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_GA3P__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_S7P__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="YBR117C"/>
+            <fbc:geneProductRef fbc:geneProduct="YPR074C"/>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_TAL1" sboTerm="SBO:0000176" id="R_TAL1" name="Transaldolase" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_GA3P__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_S7P__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_F6P__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_E4P__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YLR354C"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_TKLb" sboTerm="SBO:0000176" id="R_TKLb" name="transketolase 2" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_E4P__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_X5P__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_F6P__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_GA3P__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="YBR117C"/>
+            <fbc:geneProductRef fbc:geneProduct="YPR074C"/>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_DAR" sboTerm="SBO:0000176" id="R_DAR" name="glycerol-3-phosphate dehydrogenase (NAD)" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_DHAP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NADH__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_GP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NAD__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="YDL022W"/>
+            <fbc:geneProductRef fbc:geneProduct="YOL059W"/>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_GPP" sboTerm="SBO:0000176" id="R_GPP" name="glycerol-3-phosphatase" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_GP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H2O__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_GLY__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_PI__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="YER062C"/>
+            <fbc:geneProductRef fbc:geneProduct="YIL053W"/>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_PDC" sboTerm="SBO:0000176" id="R_PDC" name="Pyruvate decarboxylase" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_PYR__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ACA__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_CO2__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="YGR087C"/>
+            <fbc:geneProductRef fbc:geneProduct="YLR044C"/>
+            <fbc:geneProductRef fbc:geneProduct="YLR134W"/>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_ADH1" sboTerm="SBO:0000176" id="R_ADH1" name="alcohol dehydrogenase, (acetaldehyde to ethanol)" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ACA__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NADH__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ETH__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NAD__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="YBR145W"/>
+            <fbc:geneProductRef fbc:geneProduct="YOL086C"/>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_ALD6" sboTerm="SBO:0000176" id="R_ALD6" name="aldehyde dehydrogenase (acetaldehyde, NADP)" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ACA__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NADP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H2O__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_AC__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NADPH__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YPL061W"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_ALD2" sboTerm="SBO:0000176" id="R_ALD2" name="acetaldehyde dehydrogenase" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ACA__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NAD__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H2O__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_AC__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NADH__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="YMR110C"/>
+            <fbc:geneProductRef fbc:geneProduct="YMR170C"/>
+            <fbc:geneProductRef fbc:geneProduct="YER073W"/>
+            <fbc:geneProductRef fbc:geneProduct="YOR374W"/>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_ICL1" sboTerm="SBO:0000176" id="R_ICL1" name="Isocitrate lyase" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ICI__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_SUC__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_Glyoxylate__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YER065C"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_MLS1" sboTerm="SBO:0000176" id="R_MLS1" name="malate synthase" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ACCOA__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_Glyoxylate__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H2O__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_MAL__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_COA__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="YIR031C"/>
+            <fbc:geneProductRef fbc:geneProduct="YNL117W"/>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_ATPX" sboTerm="SBO:0000176" id="R_ATPX" name="ATP hydrolysis" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ADP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_PI__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_PDH" sboTerm="SBO:0000176" id="R_PDH" name="pyruvate dehydrogenase" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_COA__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NAD__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_PYR__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ACCOA__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_CO2__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NADH__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:and>
+            <fbc:geneProductRef fbc:geneProduct="YBR221C"/>
+            <fbc:geneProductRef fbc:geneProduct="YER178W"/>
+            <fbc:geneProductRef fbc:geneProduct="YFL018C"/>
+            <fbc:geneProductRef fbc:geneProduct="YGR193C"/>
+            <fbc:geneProductRef fbc:geneProduct="YNL071W"/>
+          </fbc:and>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_ACS" sboTerm="SBO:0000176" id="R_ACS" name="acetyl-CoA synthetase" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_AC__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_COA__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H2O__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ACCOA__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_AMP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_PI__91__c__93__" stoichiometry="2" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="YAL054C"/>
+            <fbc:geneProductRef fbc:geneProduct="YLR153C"/>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_ADK1_1" sboTerm="SBO:0000176" id="R_ADK1_1" name="adenylate kinase" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_AMP__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ADP__91__c__93__" stoichiometry="2" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="YDL166C"/>
+            <fbc:geneProductRef fbc:geneProduct="YDR226W"/>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_PCK" sboTerm="SBO:0000176" id="R_PCK" name="Phosphoenolpyruvate carboxykinase" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_OAA__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ADP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_CO2__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_PEP__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YKR097W"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_PYC" sboTerm="SBO:0000176" id="R_PYC" name="pyruvate carboxylase" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_PYR__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_HCO3__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ADP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_PI__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_OAA__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="YBR218C"/>
+            <fbc:geneProductRef fbc:geneProduct="YGL062W"/>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_CIT" sboTerm="SBO:0000176" id="R_CIT" name="citrate synthase" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ACCOA__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_OAA__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H2O__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_CI__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_COA__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="YNR001C"/>
+            <fbc:geneProductRef fbc:geneProduct="YPR001W"/>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_ACO" sboTerm="SBO:0000176" id="R_ACO" name="Aconitate hydratase, mitochondrial" reversible="true" fast="false" compartment="m" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_CI__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ICI__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YLR304C"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_IDH" sboTerm="SBO:0000176" id="R_IDH" name="Isocitrate dehydrogenase (NAD+)" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ICI__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NAD__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_AKG__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_CO2__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NADH__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YDL066W"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_IDPH" sboTerm="SBO:0000176" id="R_IDPH" name="isocitrate dehydrogenase (NADP)" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ICI__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NADP__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_AKG__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_CO2__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NADPH__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YDL066W"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_KGD1" sboTerm="SBO:0000176" id="R_KGD1" name="oxoglutarate dehydrogenase" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_AKG__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_COA__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NAD__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_CO2__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NADH__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_Succinyl__45__CoA__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YIL125W"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_LSC2" sboTerm="SBO:0000176" id="R_LSC2" name="succinate-CoA ligase (ADP-forming)" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ADP__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_PI__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_Succinyl__45__CoA__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_COA__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_SUC__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_ATP__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:and>
+            <fbc:geneProductRef fbc:geneProduct="YGR244C"/>
+            <fbc:geneProductRef fbc:geneProduct="YOR142W"/>
+          </fbc:and>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_FUM1" sboTerm="SBO:0000176" id="R_FUM1" name="fumarase" reversible="true" fast="false" compartment="m" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_FUM__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H2O__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_MAL__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YPL262W"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_MDH1" sboTerm="SBO:0000176" id="R_MDH1" name="Malate dehydrogenase" reversible="true" fast="false" compartment="m" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_MAL__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NAD__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_NADH__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_OAA__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YKL085W"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_SDH" sboTerm="SBO:0000176" id="R_SDH" name="Succinate dehydrogenase" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_SUC__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_ubiquinone__45__6__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_FUM__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_ubiquinol__45__6__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:and>
+              <fbc:geneProductRef fbc:geneProduct="YDR178W"/>
+              <fbc:geneProductRef fbc:geneProduct="YJL045W"/>
+              <fbc:geneProductRef fbc:geneProduct="YKL141W"/>
+              <fbc:geneProductRef fbc:geneProduct="YLL041C"/>
+            </fbc:and>
+            <fbc:and>
+              <fbc:geneProductRef fbc:geneProduct="YDR178W"/>
+              <fbc:geneProductRef fbc:geneProduct="YKL141W"/>
+              <fbc:geneProductRef fbc:geneProduct="YKL148C"/>
+              <fbc:geneProductRef fbc:geneProduct="YLL041C"/>
+            </fbc:and>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_NDI1" sboTerm="SBO:0000176" id="R_NDI1" name="NADH:ubiquinone oxidoreductase" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_NADH__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_ubiquinone__45__6__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_NAD__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_ubiquinol__45__6__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="YML120C"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_NDE2" sboTerm="SBO:0000176" id="R_NDE2" name="NADH dehydrogenase, cytosolic/mitochondrial" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_NADH__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_ubiquinone__45__6__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_NAD__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_ubiquinol__45__6__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="YDL085W"/>
+            <fbc:geneProductRef fbc:geneProduct="YMR145C"/>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_RIP1" sboTerm="SBO:0000176" id="R_RIP1" name="ubiquinol:ferricytochrome c reductase" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ubiquinol__45__6__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_Ferricytochrome_c__91__m__93__" stoichiometry="2" constant="true"/>
+          <speciesReference species="M_H__91__m__93__" stoichiometry="2" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ubiquinone__45__6__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_Ferrocytochrome_c__91__m__93__" stoichiometry="2" constant="true"/>
+          <speciesReference species="M_H__91__i__93__" stoichiometry="2" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_COX1" sboTerm="SBO:0000176" id="R_COX1" name="ferrocytochrome-c:oxygen oxidoreductase" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_O2__91__c__93__" stoichiometry="0.25" constant="true"/>
+          <speciesReference species="M_Ferrocytochrome_c__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H__91__m__93__" stoichiometry="2" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_Ferricytochrome_c__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H__91__i__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H2O__91__m__93__" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:and>
+              <fbc:geneProductRef fbc:geneProduct="Q0045"/>
+              <fbc:geneProductRef fbc:geneProduct="Q0250"/>
+              <fbc:geneProductRef fbc:geneProduct="Q0275"/>
+              <fbc:geneProductRef fbc:geneProduct="YDL067C"/>
+              <fbc:geneProductRef fbc:geneProduct="YEL039C"/>
+              <fbc:geneProductRef fbc:geneProduct="YGL187C"/>
+              <fbc:geneProductRef fbc:geneProduct="YGL191W"/>
+              <fbc:geneProductRef fbc:geneProduct="YHR051W"/>
+              <fbc:geneProductRef fbc:geneProduct="YIL111W"/>
+              <fbc:geneProductRef fbc:geneProduct="YLR038C"/>
+              <fbc:geneProductRef fbc:geneProduct="YLR395C"/>
+              <fbc:geneProductRef fbc:geneProduct="YMR256C"/>
+            </fbc:and>
+            <fbc:and>
+              <fbc:geneProductRef fbc:geneProduct="Q0045"/>
+              <fbc:geneProductRef fbc:geneProduct="Q0250"/>
+              <fbc:geneProductRef fbc:geneProduct="Q0275"/>
+              <fbc:geneProductRef fbc:geneProduct="YDL067C"/>
+              <fbc:geneProductRef fbc:geneProduct="YEL039C"/>
+              <fbc:geneProductRef fbc:geneProduct="YGL187C"/>
+              <fbc:geneProductRef fbc:geneProduct="YGL191W"/>
+              <fbc:geneProductRef fbc:geneProduct="YHR051W"/>
+              <fbc:geneProductRef fbc:geneProduct="YLR038C"/>
+              <fbc:geneProductRef fbc:geneProduct="YLR395C"/>
+              <fbc:geneProductRef fbc:geneProduct="YMR256C"/>
+              <fbc:geneProductRef fbc:geneProduct="YNL052W"/>
+            </fbc:and>
+            <fbc:and>
+              <fbc:geneProductRef fbc:geneProduct="Q0045"/>
+              <fbc:geneProductRef fbc:geneProduct="Q0250"/>
+              <fbc:geneProductRef fbc:geneProduct="Q0275"/>
+              <fbc:geneProductRef fbc:geneProduct="YDL067C"/>
+              <fbc:geneProductRef fbc:geneProduct="YGL187C"/>
+              <fbc:geneProductRef fbc:geneProduct="YGL191W"/>
+              <fbc:geneProductRef fbc:geneProduct="YHR051W"/>
+              <fbc:geneProductRef fbc:geneProduct="YIL111W"/>
+              <fbc:geneProductRef fbc:geneProduct="YJR048W"/>
+              <fbc:geneProductRef fbc:geneProduct="YLR038C"/>
+              <fbc:geneProductRef fbc:geneProduct="YLR395C"/>
+              <fbc:geneProductRef fbc:geneProduct="YMR256C"/>
+            </fbc:and>
+            <fbc:and>
+              <fbc:geneProductRef fbc:geneProduct="Q0045"/>
+              <fbc:geneProductRef fbc:geneProduct="Q0250"/>
+              <fbc:geneProductRef fbc:geneProduct="Q0275"/>
+              <fbc:geneProductRef fbc:geneProduct="YDL067C"/>
+              <fbc:geneProductRef fbc:geneProduct="YGL187C"/>
+              <fbc:geneProductRef fbc:geneProduct="YGL191W"/>
+              <fbc:geneProductRef fbc:geneProduct="YHR051W"/>
+              <fbc:geneProductRef fbc:geneProduct="YJR048W"/>
+              <fbc:geneProductRef fbc:geneProduct="YLR038C"/>
+              <fbc:geneProductRef fbc:geneProduct="YLR395C"/>
+              <fbc:geneProductRef fbc:geneProduct="YMR256C"/>
+              <fbc:geneProductRef fbc:geneProduct="YNL052W"/>
+            </fbc:and>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_ATP1" sboTerm="SBO:0000176" id="R_ATP1" name="ATP synthase" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_H__91__i__93__" stoichiometry="3" constant="true"/>
+          <speciesReference species="M_ADP__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_PI__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_H__91__m__93__" stoichiometry="3" constant="true"/>
+          <speciesReference species="M_ATP__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H2O__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="R_ShuttleX" sboTerm="SBO:0000176" id="R_ShuttleX" name="NAD(H) shuttle" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_NAD__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NADH__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_NAD__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NADH__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_ATPTransport" sboTerm="SBO:0000176" id="R_ATPTransport" name="ADP,ATP carrier protein 1" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ADP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_PI__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H__91__i__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_ATP__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_ADP__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_PI__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_OAC1" sboTerm="SBO:0000176" id="R_OAC1" name="Mitochondrial oxaloacetate transport protein" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_H__91__i__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_OAA__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_OAA__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_PyrTrans" sboTerm="SBO:0000176" id="R_PyrTrans" name="Transport of pyruvate, mitochondrial" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_PYR__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H__91__i__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_H__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_PYR__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_CAT2" sboTerm="SBO:0000176" id="R_CAT2" name="Acetyl coA transport (Carnitine O-acetyltransferase, mitochondrial)" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ACCOA__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_COA__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ACCOA__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_COA__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_CO2TRANS" sboTerm="SBO:0000176" id="R_CO2TRANS" name="CO2 transport" reversible="true" fast="false" compartment="m" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_CO2__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_CO2__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_ShuttleXRev" sboTerm="SBO:0000176" id="R_ShuttleXRev" name="NAD(H) shuttle" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_NAD__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NADH__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_NAD__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_NADH__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_ATPTransportRev" sboTerm="SBO:0000176" id="R_ATPTransportRev" name="ADP,ATP carrier protein 1" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_ADP__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_PI__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ADP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_PI__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_ATP__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_OAC1Rev" sboTerm="SBO:0000176" id="R_OAC1Rev" name="Mitochondrial oxaloacetate transport protein" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_OAA__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_OAA__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_PyrTransRev" sboTerm="SBO:0000176" id="R_PyrTransRev" name="Transport of pyruvate, mitochondrial" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_PYR__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_PYR__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_H2Otransport" sboTerm="SBO:0000176" id="R_H2Otransport" name="Transport of H2O, mitochondrial" reversible="true" fast="false" compartment="m" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_H2O__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_H2O__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_CAT2Rev" sboTerm="SBO:0000176" id="R_CAT2Rev" name="Acetyl coA transport (Carnitine O-acetyltransferase, mitochondrial)" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ACCOA__91__m__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_COA__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ACCOA__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_COA__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_HDECOUP" sboTerm="SBO:0000176" id="R_HDECOUP" name="Hdecouploing" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_H__91__i__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_H__91__m__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_VGROPROTALT" sboTerm="SBO:0000176" id="R_VGROPROTALT" name="Alternative protein synthesis" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_AKG__91__m__93__" stoichiometry="0.0361" constant="true"/>
+          <speciesReference species="M_P13G__91__c__93__" stoichiometry="0.0864" constant="true"/>
+          <speciesReference species="M_ACCOA__91__m__93__" stoichiometry="0.429" constant="true"/>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="5.23" constant="true"/>
+          <speciesReference species="M_E4P__91__c__93__" stoichiometry="0.0795" constant="true"/>
+          <speciesReference species="M_GA3P__91__c__93__" stoichiometry="0.031" constant="true"/>
+          <speciesReference species="M_R5P__91__c__93__" stoichiometry="0.0292" constant="true"/>
+          <speciesReference species="M_NAD__91__m__93__" stoichiometry="0.314" constant="true"/>
+          <speciesReference species="M_NADPH__91__c__93__" stoichiometry="1.28" constant="true"/>
+          <speciesReference species="M_NADPH__91__m__93__" stoichiometry="0.262" constant="true"/>
+          <speciesReference species="M_O2__91__c__93__" stoichiometry="0.0298" constant="true"/>
+          <speciesReference species="M_PEP__91__c__93__" stoichiometry="0.233" constant="true"/>
+          <speciesReference species="M_PYR__91__m__93__" stoichiometry="0.434" constant="true"/>
+          <speciesReference species="M_OAA__91__c__93__" stoichiometry="0.418" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ADP__91__c__93__" stoichiometry="5.23" constant="true"/>
+          <speciesReference species="M_CO2__91__c__93__" stoichiometry="0.652" constant="true"/>
+          <speciesReference species="M_COA__91__m__93__" stoichiometry="0.429" constant="true"/>
+          <speciesReference species="M_NADH__91__m__93__" stoichiometry="0.314" constant="true"/>
+          <speciesReference species="M_NADP__91__c__93__" stoichiometry="1.28" constant="true"/>
+          <speciesReference species="M_NADP__91__m__93__" stoichiometry="0.262" constant="true"/>
+          <speciesReference species="M_PI__91__c__93__" stoichiometry="5.78" constant="true"/>
+          <speciesReference species="M_growthProteinAlt__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_VGROPROT" sboTerm="SBO:0000176" id="R_VGROPROT" name="Protein synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_AKG__91__m__93__" stoichiometry="0.0341" constant="true"/>
+          <speciesReference species="M_P13G__91__c__93__" stoichiometry="0.00833" constant="true"/>
+          <speciesReference species="M_ACCOA__91__m__93__" stoichiometry="0.447" constant="true"/>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="5.02" constant="true"/>
+          <speciesReference species="M_E4P__91__c__93__" stoichiometry="0.0717" constant="true"/>
+          <speciesReference species="M_GA3P__91__c__93__" stoichiometry="0.0755" constant="true"/>
+          <speciesReference species="M_R5P__91__c__93__" stoichiometry="0.0257" constant="true"/>
+          <speciesReference species="M_NAD__91__m__93__" stoichiometry="0.356" constant="true"/>
+          <speciesReference species="M_NADPH__91__c__93__" stoichiometry="1.2" constant="true"/>
+          <speciesReference species="M_NADPH__91__m__93__" stoichiometry="0.248" constant="true"/>
+          <speciesReference species="M_O2__91__c__93__" stoichiometry="0.0291" constant="true"/>
+          <speciesReference species="M_PEP__91__c__93__" stoichiometry="0.26" constant="true"/>
+          <speciesReference species="M_PYR__91__m__93__" stoichiometry="0.409" constant="true"/>
+          <speciesReference species="M_OAA__91__c__93__" stoichiometry="0.416" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ADP__91__c__93__" stoichiometry="5.02" constant="true"/>
+          <speciesReference species="M_CO2__91__c__93__" stoichiometry="0.633" constant="true"/>
+          <speciesReference species="M_COA__91__m__93__" stoichiometry="0.447" constant="true"/>
+          <speciesReference species="M_NADH__91__m__93__" stoichiometry="0.356" constant="true"/>
+          <speciesReference species="M_NADP__91__c__93__" stoichiometry="1.2" constant="true"/>
+          <speciesReference species="M_NADP__91__m__93__" stoichiometry="0.248" constant="true"/>
+          <speciesReference species="M_PI__91__c__93__" stoichiometry="5.47" constant="true"/>
+          <speciesReference species="M_growthProtein__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_VGRORNA" sboTerm="SBO:0000176" id="R_VGRORNA" name="RNA synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_P13G__91__c__93__" stoichiometry="0.702" constant="true"/>
+          <speciesReference species="M_P6G__91__c__93__" stoichiometry="0.234" constant="true"/>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="14.6" constant="true"/>
+          <speciesReference species="M_R5P__91__c__93__" stoichiometry="0.766" constant="true"/>
+          <speciesReference species="M_NAD__91__c__93__" stoichiometry="1.87" constant="true"/>
+          <speciesReference species="M_NADPH__91__c__93__" stoichiometry="0.766" constant="true"/>
+          <speciesReference species="M_O2__91__c__93__" stoichiometry="0.266" constant="true"/>
+          <speciesReference species="M_OAA__91__c__93__" stoichiometry="0.532" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ADP__91__c__93__" stoichiometry="14.6" constant="true"/>
+          <speciesReference species="M_NADH__91__c__93__" stoichiometry="1.87" constant="true"/>
+          <speciesReference species="M_NADP__91__c__93__" stoichiometry="0.766" constant="true"/>
+          <speciesReference species="M_PI__91__c__93__" stoichiometry="16" constant="true"/>
+          <speciesReference species="M_growthRNA__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_VGRODNA" sboTerm="SBO:0000176" id="R_VGRODNA" name="DNA synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_P13G__91__c__93__" stoichiometry="0.9" constant="true"/>
+          <speciesReference species="M_P6G__91__c__93__" stoichiometry="0.1" constant="true"/>
+          <speciesReference species="M_ACCOA__91__c__93__" stoichiometry="5.55e-17" constant="true"/>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="14.6" constant="true"/>
+          <speciesReference species="M_R5P__91__c__93__" stoichiometry="0.9" constant="true"/>
+          <speciesReference species="M_NAD__91__c__93__" stoichiometry="2.3" constant="true"/>
+          <speciesReference species="M_NADPH__91__c__93__" stoichiometry="2.4" constant="true"/>
+          <speciesReference species="M_O2__91__c__93__" stoichiometry="0.25" constant="true"/>
+          <speciesReference species="M_OAA__91__c__93__" stoichiometry="0.5" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ADP__91__c__93__" stoichiometry="14.6" constant="true"/>
+          <speciesReference species="M_NADH__91__c__93__" stoichiometry="2.3" constant="true"/>
+          <speciesReference species="M_NADP__91__c__93__" stoichiometry="2.4" constant="true"/>
+          <speciesReference species="M_PI__91__c__93__" stoichiometry="16.4" constant="true"/>
+          <speciesReference species="M_growthDNA__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_VGROLIPID" sboTerm="SBO:0000176" id="R_VGROLIPID" name="Lipid synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_P13G__91__c__93__" stoichiometry="0.804" constant="true"/>
+          <speciesReference species="M_ACCOA__91__c__93__" stoichiometry="18.4" constant="true"/>
+          <speciesReference species="M_G6P__91__c__93__" stoichiometry="0.197" constant="true"/>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="19.6" constant="true"/>
+          <speciesReference species="M_DHAP__91__c__93__" stoichiometry="0.918" constant="true"/>
+          <speciesReference species="M_NAD__91__c__93__" stoichiometry="0.316" constant="true"/>
+          <speciesReference species="M_NADPH__91__c__93__" stoichiometry="29.9" constant="true"/>
+          <speciesReference species="M_NADPH__91__m__93__" stoichiometry="0.00208" constant="true"/>
+          <speciesReference species="M_O2__91__c__93__" stoichiometry="0.572" constant="true"/>
+          <speciesReference species="M_PYR__91__m__93__" stoichiometry="0.00416" constant="true"/>
+          <speciesReference species="M_OAA__91__c__93__" stoichiometry="0.00208" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ADP__91__c__93__" stoichiometry="19.6" constant="true"/>
+          <speciesReference species="M_CO2__91__c__93__" stoichiometry="1.4" constant="true"/>
+          <speciesReference species="M_COA__91__c__93__" stoichiometry="18.4" constant="true"/>
+          <speciesReference species="M_NADH__91__c__93__" stoichiometry="0.316" constant="true"/>
+          <speciesReference species="M_NADP__91__c__93__" stoichiometry="29.9" constant="true"/>
+          <speciesReference species="M_NADP__91__m__93__" stoichiometry="0.00208" constant="true"/>
+          <speciesReference species="M_PI__91__c__93__" stoichiometry="21.6" constant="true"/>
+          <speciesReference species="M_growthLipid__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_VGROGLYCOGEN" sboTerm="SBO:0000176" id="R_VGROGLYCOGEN" name="Glycogen synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_G6P__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="3.07" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ADP__91__c__93__" stoichiometry="3.07" constant="true"/>
+          <speciesReference species="M_PI__91__c__93__" stoichiometry="4.07" constant="true"/>
+          <speciesReference species="M_growthGlycogen__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_VGROTREHALOSE" sboTerm="SBO:0000176" id="R_VGROTREHALOSE" name="Trehalose synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_G6P__91__c__93__" stoichiometry="2" constant="true"/>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="5.38" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ADP__91__c__93__" stoichiometry="5.38" constant="true"/>
+          <speciesReference species="M_PI__91__c__93__" stoichiometry="7.38" constant="true"/>
+          <speciesReference species="M_growthTrehalose__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_VGROMANNAN" sboTerm="SBO:0000176" id="R_VGROMANNAN" name="Mannan synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="3.07" constant="true"/>
+          <speciesReference species="M_F6P__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ADP__91__c__93__" stoichiometry="3.07" constant="true"/>
+          <speciesReference species="M_PI__91__c__93__" stoichiometry="4.07" constant="true"/>
+          <speciesReference species="M_growthMannan__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_VGROGLUCAN" sboTerm="SBO:0000176" id="R_VGROGLUCAN" name="Glucan synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_G6P__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="3.07" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ADP__91__c__93__" stoichiometry="3.07" constant="true"/>
+          <speciesReference species="M_PI__91__c__93__" stoichiometry="4.07" constant="true"/>
+          <speciesReference species="M_growthGlucan__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_VGROMAINTAIN" sboTerm="SBO:0000176" id="R_VGROMAINTAIN" name="GAM" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+        <listOfReactants>
+          <speciesReference species="M_ATP__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_ADP__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_PI__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_growthMaintainance__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="R_GROWTH" sboTerm="SBO:0000176" id="R_GROWTH" name="Growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB2N0">
+        <listOfReactants>
+          <speciesReference species="M_growthProtein__91__c__93__" stoichiometry="4.14" constant="true"/>
+          <speciesReference species="M_growthRNA__91__c__93__" stoichiometry="0.1966" constant="true"/>
+          <speciesReference species="M_growthDNA__91__c__93__" stoichiometry="0.012" constant="true"/>
+          <speciesReference species="M_growthLipid__91__c__93__" stoichiometry="0.0269" constant="true"/>
+          <speciesReference species="M_growthGlycogen__91__c__93__" stoichiometry="0.5185" constant="true"/>
+          <speciesReference species="M_growthTrehalose__91__c__93__" stoichiometry="0.0234" constant="true"/>
+          <speciesReference species="M_growthMannan__91__c__93__" stoichiometry="0.8079" constant="true"/>
+          <speciesReference species="M_growthGlucan__91__c__93__" stoichiometry="1.1348" constant="true"/>
+          <speciesReference species="M_growthMaintainance__91__c__93__" stoichiometry="35.363" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M_BIOMASS__91__c__93__" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+    </listOfReactions>
+    <fbc:listOfObjectives fbc:activeObjective="obj">
+      <fbc:objective fbc:id="obj" fbc:type="maximize">
+        <fbc:listOfFluxObjectives>
+          <fbc:fluxObjective fbc:reaction="R_biomassOUT" fbc:coefficient="1"/>
+        </fbc:listOfFluxObjectives>
+      </fbc:objective>
+    </fbc:listOfObjectives>
+    <fbc:listOfGeneProducts>
+      <fbc:geneProduct metaid="YAL054C" sboTerm="SBO:0000252" fbc:id="YAL054C" fbc:label="YAL054C"/>
+      <fbc:geneProduct metaid="YBR117C" sboTerm="SBO:0000252" fbc:id="YBR117C" fbc:label="YBR117C"/>
+      <fbc:geneProduct metaid="YBR196C" sboTerm="SBO:0000252" fbc:id="YBR196C" fbc:label="YBR196C"/>
+      <fbc:geneProduct metaid="YBR218C" sboTerm="SBO:0000252" fbc:id="YBR218C" fbc:label="YBR218C"/>
+      <fbc:geneProduct metaid="YCL040W" sboTerm="SBO:0000252" fbc:id="YCL040W" fbc:label="YCL040W"/>
+      <fbc:geneProduct metaid="YCR012W" sboTerm="SBO:0000252" fbc:id="YCR012W" fbc:label="YCR012W"/>
+      <fbc:geneProduct metaid="YDL022W" sboTerm="SBO:0000252" fbc:id="YDL022W" fbc:label="YDL022W"/>
+      <fbc:geneProduct metaid="YDL066W" sboTerm="SBO:0000252" fbc:id="YDL066W" fbc:label="YDL066W"/>
+      <fbc:geneProduct metaid="YDR050C" sboTerm="SBO:0000252" fbc:id="YDR050C" fbc:label="YDR050C"/>
+      <fbc:geneProduct metaid="YER062C" sboTerm="SBO:0000252" fbc:id="YER062C" fbc:label="YER062C"/>
+      <fbc:geneProduct metaid="YER178W" sboTerm="SBO:0000252" fbc:id="YER178W" fbc:label="YER178W"/>
+      <fbc:geneProduct metaid="YFR053C" sboTerm="SBO:0000252" fbc:id="YFR053C" fbc:label="YFR053C"/>
+      <fbc:geneProduct metaid="YGL062W" sboTerm="SBO:0000252" fbc:id="YGL062W" fbc:label="YGL062W"/>
+      <fbc:geneProduct metaid="YGL253W" sboTerm="SBO:0000252" fbc:id="YGL253W" fbc:label="YGL253W"/>
+      <fbc:geneProduct metaid="YGR087C" sboTerm="SBO:0000252" fbc:id="YGR087C" fbc:label="YGR087C"/>
+      <fbc:geneProduct metaid="YGR192C" sboTerm="SBO:0000252" fbc:id="YGR192C" fbc:label="YGR192C"/>
+      <fbc:geneProduct metaid="YGR240C" sboTerm="SBO:0000252" fbc:id="YGR240C" fbc:label="YGR240C"/>
+      <fbc:geneProduct metaid="YGR248W" sboTerm="SBO:0000252" fbc:id="YGR248W" fbc:label="YGR248W"/>
+      <fbc:geneProduct metaid="YGR254W" sboTerm="SBO:0000252" fbc:id="YGR254W" fbc:label="YGR254W"/>
+      <fbc:geneProduct metaid="YGR256W" sboTerm="SBO:0000252" fbc:id="YGR256W" fbc:label="YGR256W"/>
+      <fbc:geneProduct metaid="YHR163W" sboTerm="SBO:0000252" fbc:id="YHR163W" fbc:label="YHR163W"/>
+      <fbc:geneProduct metaid="YHR174W" sboTerm="SBO:0000252" fbc:id="YHR174W" fbc:label="YHR174W"/>
+      <fbc:geneProduct metaid="YHR183W" sboTerm="SBO:0000252" fbc:id="YHR183W" fbc:label="YHR183W"/>
+      <fbc:geneProduct metaid="YIL053W" sboTerm="SBO:0000252" fbc:id="YIL053W" fbc:label="YIL053W"/>
+      <fbc:geneProduct metaid="YIL125W" sboTerm="SBO:0000252" fbc:id="YIL125W" fbc:label="YIL125W"/>
+      <fbc:geneProduct metaid="YJL052W" sboTerm="SBO:0000252" fbc:id="YJL052W" fbc:label="YJL052W"/>
+      <fbc:geneProduct metaid="YJL121C" sboTerm="SBO:0000252" fbc:id="YJL121C" fbc:label="YJL121C"/>
+      <fbc:geneProduct metaid="YJR009C" sboTerm="SBO:0000252" fbc:id="YJR009C" fbc:label="YJR009C"/>
+      <fbc:geneProduct metaid="YKL060C" sboTerm="SBO:0000252" fbc:id="YKL060C" fbc:label="YKL060C"/>
+      <fbc:geneProduct metaid="YKL085W" sboTerm="SBO:0000252" fbc:id="YKL085W" fbc:label="YKL085W"/>
+      <fbc:geneProduct metaid="YKL141W" sboTerm="SBO:0000252" fbc:id="YKL141W" fbc:label="YKL141W"/>
+      <fbc:geneProduct metaid="YKL152C" sboTerm="SBO:0000252" fbc:id="YKL152C" fbc:label="YKL152C"/>
+      <fbc:geneProduct metaid="YKR097W" sboTerm="SBO:0000252" fbc:id="YKR097W" fbc:label="YKR097W"/>
+      <fbc:geneProduct metaid="YLR044C" sboTerm="SBO:0000252" fbc:id="YLR044C" fbc:label="YLR044C"/>
+      <fbc:geneProduct metaid="YLR134W" sboTerm="SBO:0000252" fbc:id="YLR134W" fbc:label="YLR134W"/>
+      <fbc:geneProduct metaid="YLR153C" sboTerm="SBO:0000252" fbc:id="YLR153C" fbc:label="YLR153C"/>
+      <fbc:geneProduct metaid="YLR304C" sboTerm="SBO:0000252" fbc:id="YLR304C" fbc:label="YLR304C"/>
+      <fbc:geneProduct metaid="YLR354C" sboTerm="SBO:0000252" fbc:id="YLR354C" fbc:label="YLR354C"/>
+      <fbc:geneProduct metaid="YLR377C" sboTerm="SBO:0000252" fbc:id="YLR377C" fbc:label="YLR377C"/>
+      <fbc:geneProduct metaid="YMR205C" sboTerm="SBO:0000252" fbc:id="YMR205C" fbc:label="YMR205C"/>
+      <fbc:geneProduct metaid="YNL241C" sboTerm="SBO:0000252" fbc:id="YNL241C" fbc:label="YNL241C"/>
+      <fbc:geneProduct metaid="YNR001C" sboTerm="SBO:0000252" fbc:id="YNR001C" fbc:label="YNR001C"/>
+      <fbc:geneProduct metaid="YOL059W" sboTerm="SBO:0000252" fbc:id="YOL059W" fbc:label="YOL059W"/>
+      <fbc:geneProduct metaid="YOL086C" sboTerm="SBO:0000252" fbc:id="YOL086C" fbc:label="YOL086C"/>
+      <fbc:geneProduct metaid="YOR095C" sboTerm="SBO:0000252" fbc:id="YOR095C" fbc:label="YOR095C"/>
+      <fbc:geneProduct metaid="YOR347C" sboTerm="SBO:0000252" fbc:id="YOR347C" fbc:label="YOR347C"/>
+      <fbc:geneProduct metaid="YPL061W" sboTerm="SBO:0000252" fbc:id="YPL061W" fbc:label="YPL061W"/>
+      <fbc:geneProduct metaid="YPL262W" sboTerm="SBO:0000252" fbc:id="YPL262W" fbc:label="YPL262W"/>
+      <fbc:geneProduct metaid="YPR001W" sboTerm="SBO:0000252" fbc:id="YPR001W" fbc:label="YPR001W"/>
+      <fbc:geneProduct metaid="YPR074C" sboTerm="SBO:0000252" fbc:id="YPR074C" fbc:label="YPR074C"/>
+      <fbc:geneProduct metaid="YOR393W" sboTerm="SBO:0000252" fbc:id="YOR393W" fbc:label="YOR393W"/>
+      <fbc:geneProduct metaid="YPL281C" sboTerm="SBO:0000252" fbc:id="YPL281C" fbc:label="YPL281C"/>
+      <fbc:geneProduct metaid="YMR323W" sboTerm="SBO:0000252" fbc:id="YMR323W" fbc:label="YMR323W"/>
+      <fbc:geneProduct metaid="YAL038W" sboTerm="SBO:0000252" fbc:id="YAL038W" fbc:label="YAL038W"/>
+      <fbc:geneProduct metaid="YMR170C" sboTerm="SBO:0000252" fbc:id="YMR170C" fbc:label="YMR170C"/>
+      <fbc:geneProduct metaid="YOR374W" sboTerm="SBO:0000252" fbc:id="YOR374W" fbc:label="YOR374W"/>
+      <fbc:geneProduct metaid="YER073W" sboTerm="SBO:0000252" fbc:id="YER073W" fbc:label="YER073W"/>
+      <fbc:geneProduct metaid="YER065C" sboTerm="SBO:0000252" fbc:id="YER065C" fbc:label="YER065C"/>
+      <fbc:geneProduct metaid="YIR031C" sboTerm="SBO:0000252" fbc:id="YIR031C" fbc:label="YIR031C"/>
+      <fbc:geneProduct metaid="YNL117W" sboTerm="SBO:0000252" fbc:id="YNL117W" fbc:label="YNL117W"/>
+      <fbc:geneProduct metaid="YFL018C" sboTerm="SBO:0000252" fbc:id="YFL018C" fbc:label="YFL018C"/>
+      <fbc:geneProduct metaid="YBR221C" sboTerm="SBO:0000252" fbc:id="YBR221C" fbc:label="YBR221C"/>
+      <fbc:geneProduct metaid="YKL148C" sboTerm="SBO:0000252" fbc:id="YKL148C" fbc:label="YKL148C"/>
+      <fbc:geneProduct metaid="YLL041C" sboTerm="SBO:0000252" fbc:id="YLL041C" fbc:label="YLL041C"/>
+      <fbc:geneProduct metaid="YML120C" sboTerm="SBO:0000252" fbc:id="YML120C" fbc:label="YML120C"/>
+      <fbc:geneProduct metaid="YMR145C" sboTerm="SBO:0000252" fbc:id="YMR145C" fbc:label="YMR145C"/>
+      <fbc:geneProduct metaid="YDL085W" sboTerm="SBO:0000252" fbc:id="YDL085W" fbc:label="YDL085W"/>
+      <fbc:geneProduct metaid="YDR178W" sboTerm="SBO:0000252" fbc:id="YDR178W" fbc:label="YDR178W"/>
+      <fbc:geneProduct metaid="YEL024W" sboTerm="SBO:0000252" fbc:id="YEL024W" fbc:label="YEL024W"/>
+      <fbc:geneProduct metaid="YBL045C" sboTerm="SBO:0000252" fbc:id="YBL045C" fbc:label="YBL045C"/>
+      <fbc:geneProduct metaid="YHR001W__45__A" sboTerm="SBO:0000252" fbc:id="YHR001W__45__A" fbc:label="YHR001W__45__A"/>
+      <fbc:geneProduct metaid="YPR191W" sboTerm="SBO:0000252" fbc:id="YPR191W" fbc:label="YPR191W"/>
+      <fbc:geneProduct metaid="YFR033C" sboTerm="SBO:0000252" fbc:id="YFR033C" fbc:label="YFR033C"/>
+      <fbc:geneProduct metaid="YDR529C" sboTerm="SBO:0000252" fbc:id="YDR529C" fbc:label="YDR529C"/>
+      <fbc:geneProduct metaid="YJL166W" sboTerm="SBO:0000252" fbc:id="YJL166W" fbc:label="YJL166W"/>
+      <fbc:geneProduct metaid="YGR183C" sboTerm="SBO:0000252" fbc:id="YGR183C" fbc:label="YGR183C"/>
+      <fbc:geneProduct metaid="YNL052W" sboTerm="SBO:0000252" fbc:id="YNL052W" fbc:label="YNL052W"/>
+      <fbc:geneProduct metaid="YIL111W" sboTerm="SBO:0000252" fbc:id="YIL111W" fbc:label="YIL111W"/>
+      <fbc:geneProduct metaid="YLR395C" sboTerm="SBO:0000252" fbc:id="YLR395C" fbc:label="YLR395C"/>
+      <fbc:geneProduct metaid="Q0045" sboTerm="SBO:0000252" fbc:id="Q0045" fbc:label="Q0045"/>
+      <fbc:geneProduct metaid="Q0250" sboTerm="SBO:0000252" fbc:id="Q0250" fbc:label="Q0250"/>
+      <fbc:geneProduct metaid="YGL187C" sboTerm="SBO:0000252" fbc:id="YGL187C" fbc:label="YGL187C"/>
+      <fbc:geneProduct metaid="YHR051W" sboTerm="SBO:0000252" fbc:id="YHR051W" fbc:label="YHR051W"/>
+      <fbc:geneProduct metaid="YGL191W" sboTerm="SBO:0000252" fbc:id="YGL191W" fbc:label="YGL191W"/>
+      <fbc:geneProduct metaid="YLR038C" sboTerm="SBO:0000252" fbc:id="YLR038C" fbc:label="YLR038C"/>
+      <fbc:geneProduct metaid="YMR256C" sboTerm="SBO:0000252" fbc:id="YMR256C" fbc:label="YMR256C"/>
+      <fbc:geneProduct metaid="YDL067C" sboTerm="SBO:0000252" fbc:id="YDL067C" fbc:label="YDL067C"/>
+      <fbc:geneProduct metaid="YBL099W" sboTerm="SBO:0000252" fbc:id="YBL099W" fbc:label="YBL099W"/>
+      <fbc:geneProduct metaid="Q0080" sboTerm="SBO:0000252" fbc:id="Q0080" fbc:label="Q0080"/>
+      <fbc:geneProduct metaid="YPL078C" sboTerm="SBO:0000252" fbc:id="YPL078C" fbc:label="YPL078C"/>
+      <fbc:geneProduct metaid="YDR298C" sboTerm="SBO:0000252" fbc:id="YDR298C" fbc:label="YDR298C"/>
+      <fbc:geneProduct metaid="Q0130" sboTerm="SBO:0000252" fbc:id="Q0130" fbc:label="Q0130"/>
+      <fbc:geneProduct metaid="Q0085" sboTerm="SBO:0000252" fbc:id="Q0085" fbc:label="Q0085"/>
+      <fbc:geneProduct metaid="YJR121W" sboTerm="SBO:0000252" fbc:id="YJR121W" fbc:label="YJR121W"/>
+      <fbc:geneProduct metaid="YKL016C" sboTerm="SBO:0000252" fbc:id="YKL016C" fbc:label="YKL016C"/>
+      <fbc:geneProduct metaid="YDL004W" sboTerm="SBO:0000252" fbc:id="YDL004W" fbc:label="YDL004W"/>
+      <fbc:geneProduct metaid="YDR322C__45__A" sboTerm="SBO:0000252" fbc:id="YDR322C__45__A" fbc:label="YDR322C__45__A"/>
+      <fbc:geneProduct metaid="YPL271W" sboTerm="SBO:0000252" fbc:id="YPL271W" fbc:label="YPL271W"/>
+      <fbc:geneProduct metaid="YDR377W" sboTerm="SBO:0000252" fbc:id="YDR377W" fbc:label="YDR377W"/>
+      <fbc:geneProduct metaid="YPR020W" sboTerm="SBO:0000252" fbc:id="YPR020W" fbc:label="YPR020W"/>
+      <fbc:geneProduct metaid="YBR039W" sboTerm="SBO:0000252" fbc:id="YBR039W" fbc:label="YBR039W"/>
+      <fbc:geneProduct metaid="YLR295C" sboTerm="SBO:0000252" fbc:id="YLR295C" fbc:label="YLR295C"/>
+      <fbc:geneProduct metaid="YML081C__45__A" sboTerm="SBO:0000252" fbc:id="YML081C__45__A" fbc:label="YML081C__45__A"/>
+      <fbc:geneProduct metaid="YOL077W__45__A" sboTerm="SBO:0000252" fbc:id="YOL077W__45__A" fbc:label="YOL077W__45__A"/>
+      <fbc:geneProduct metaid="YBR020W" sboTerm="SBO:0000252" fbc:id="YBR020W" fbc:label="YBR020W"/>
+      <fbc:geneProduct metaid="YMR105C" sboTerm="SBO:0000252" fbc:id="YMR105C" fbc:label="YMR105C"/>
+      <fbc:geneProduct metaid="YDR226W" sboTerm="SBO:0000252" fbc:id="YDR226W" fbc:label="YDR226W"/>
+      <fbc:geneProduct metaid="YGR244C" sboTerm="SBO:0000252" fbc:id="YGR244C" fbc:label="YGR244C"/>
+      <fbc:geneProduct metaid="YLR446W" sboTerm="SBO:0000252" fbc:id="YLR446W" fbc:label="YLR446W"/>
+      <fbc:geneProduct metaid="YBR145W" sboTerm="SBO:0000252" fbc:id="YBR145W" fbc:label="YBR145W"/>
+      <fbc:geneProduct metaid="YMR110C" sboTerm="SBO:0000252" fbc:id="YMR110C" fbc:label="YMR110C"/>
+      <fbc:geneProduct metaid="YGR193C" sboTerm="SBO:0000252" fbc:id="YGR193C" fbc:label="YGR193C"/>
+      <fbc:geneProduct metaid="YNL071W" sboTerm="SBO:0000252" fbc:id="YNL071W" fbc:label="YNL071W"/>
+      <fbc:geneProduct metaid="YDL166C" sboTerm="SBO:0000252" fbc:id="YDL166C" fbc:label="YDL166C"/>
+      <fbc:geneProduct metaid="YOR142W" sboTerm="SBO:0000252" fbc:id="YOR142W" fbc:label="YOR142W"/>
+      <fbc:geneProduct metaid="YJL045W" sboTerm="SBO:0000252" fbc:id="YJL045W" fbc:label="YJL045W"/>
+      <fbc:geneProduct metaid="Q0105" sboTerm="SBO:0000252" fbc:id="Q0105" fbc:label="Q0105"/>
+      <fbc:geneProduct metaid="YEL039C" sboTerm="SBO:0000252" fbc:id="YEL039C" fbc:label="YEL039C"/>
+      <fbc:geneProduct metaid="YOR065W" sboTerm="SBO:0000252" fbc:id="YOR065W" fbc:label="YOR065W"/>
+      <fbc:geneProduct metaid="YJR048W" sboTerm="SBO:0000252" fbc:id="YJR048W" fbc:label="YJR048W"/>
+      <fbc:geneProduct metaid="Q0275" sboTerm="SBO:0000252" fbc:id="Q0275" fbc:label="Q0275"/>
+      <fbc:geneProduct metaid="YHR116W" sboTerm="SBO:0000252" fbc:id="YHR116W" fbc:label="YHR116W"/>
+      <fbc:geneProduct metaid="YDR231C" sboTerm="SBO:0000252" fbc:id="YDR231C" fbc:label="YDR231C"/>
+      <fbc:geneProduct metaid="YGR062C" sboTerm="SBO:0000252" fbc:id="YGR062C" fbc:label="YGR062C"/>
+      <fbc:geneProduct metaid="YJL003W" sboTerm="SBO:0000252" fbc:id="YJL003W" fbc:label="YJL003W"/>
+      <fbc:geneProduct metaid="YPL132W" sboTerm="SBO:0000252" fbc:id="YPL132W" fbc:label="YPL132W"/>
+      <fbc:geneProduct metaid="YLL018C__45__A" sboTerm="SBO:0000252" fbc:id="YLL018C__45__A" fbc:label="YLL018C__45__A"/>
+      <fbc:geneProduct metaid="YJL180C" sboTerm="SBO:0000252" fbc:id="YJL180C" fbc:label="YJL180C"/>
+      <fbc:geneProduct metaid="YLR393W" sboTerm="SBO:0000252" fbc:id="YLR393W" fbc:label="YLR393W"/>
+      <fbc:geneProduct metaid="YNL315C" sboTerm="SBO:0000252" fbc:id="YNL315C" fbc:label="YNL315C"/>
+      <fbc:geneProduct metaid="YCL005W__45__A" sboTerm="SBO:0000252" fbc:id="YCL005W__45__A" fbc:label="YCL005W__45__A"/>
+      <fbc:geneProduct metaid="YBR019C" sboTerm="SBO:0000252" fbc:id="YBR019C" fbc:label="YBR019C"/>
+      <fbc:geneProduct metaid="YBR018C" sboTerm="SBO:0000252" fbc:id="YBR018C" fbc:label="YBR018C"/>
+      <fbc:geneProduct metaid="YKL127W" sboTerm="SBO:0000252" fbc:id="YKL127W" fbc:label="YKL127W"/>
+      <fbc:geneProduct metaid="Q0045:Q0250:Q0275:YDL067C:YEL039C:YGL187C:YGL191W:YHR051W:YIL111W:YLR038C:YLR395C:YMR256C" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
+      <fbc:geneProduct metaid="Q0045:Q0250:Q0275:YDL067C:YEL039C:YGL187C:YGL191W:YHR051W:YLR038C:YLR395C:YMR256C:YNL052W" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
+      <fbc:geneProduct metaid="Q0045:Q0250:Q0275:YDL067C:YGL187C:YGL191W:YHR051W:YIL111W:YJR048W:YLR038C:YLR395C:YMR256C" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
+      <fbc:geneProduct metaid="Q0045:Q0250:Q0275:YDL067C:YGL187C:YGL191W:YHR051W:YJR048W:YLR038C:YLR395C:YMR256C:YNL052W" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
+      <fbc:geneProduct metaid="Q0045:Q0250:Q0275:YDL067C:YHR116W:YDR231C:YGR062C:YJL003W:YPL132W:YLL018C-A" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
+      <fbc:geneProduct metaid="Q0080:Q0085:Q0130:YBL099W:YBR039W:YDL004W:YDR298C:YDR322C-A:YDR377W:YJR121W:YKL016C:YLR295C:YML081C-A:YPL078C:YPL271W" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
+      <fbc:geneProduct metaid="Q0080:Q0085:Q0130:YBL099W:YBR039W:YDL004W:YDR298C:YDR322C-A:YDR377W:YJR121W:YKL016C:YLR295C:YML081C-A:YPL078C:YPL271W:YJL180C:YLR393W:YNL315C:YOL077W-A:YCL005W-A" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
+      <fbc:geneProduct metaid="Q0080:Q0085:Q0130:YBL099W:YBR039W:YDL004W:YDR298C:YDR377W:YJR121W:YKL016C:YLR295C:YML081C-A:YPL078C:YPL271W:YPR020W" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
+      <fbc:geneProduct metaid="Q0105:YBL045C:YDR529C:YEL024W:YEL039C:YFR033C:YGR183C:YHR001W-A:YJL166W:YOR065W:YPR191W" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
+      <fbc:geneProduct metaid="Q0105:YBL045C:YDR529C:YEL024W:YFR033C:YGR183C:YHR001W-A:YJL166W:YJR048W:YOR065W:YPR191W" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
+      <fbc:geneProduct metaid="YBR221C:YER178W:YFL018C:YGR193C:YNL071W" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
+      <fbc:geneProduct metaid="YDR178W:YJL045W:YKL141W:YLL041C" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
+      <fbc:geneProduct metaid="YDR178W:YKL141W:YKL148C:YLL041C" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
+      <fbc:geneProduct metaid="YGR240C:YMR205C" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
+      <fbc:geneProduct metaid="YGR244C:YOR142W" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
+    </fbc:listOfGeneProducts>
+    <groups:listOfGroups>
+      <groups:group sboTerm="SBO:0000633" groups:id="group1" groups:name="Anaerobic excretion" groups:kind="partonomy">
+        <groups:listOfMembers>
+          <groups:member groups:idRef="R_DAR"/>
+          <groups:member groups:idRef="R_GPP"/>
+          <groups:member groups:idRef="R_PDC"/>
+          <groups:member groups:idRef="R_ADH1"/>
+          <groups:member groups:idRef="R_ALD6"/>
+        </groups:listOfMembers>
+      </groups:group>
+      <groups:group sboTerm="SBO:0000633" groups:id="group2" groups:name="Anaplerotic reactions " groups:kind="partonomy">
+        <groups:listOfMembers>
+          <groups:member groups:idRef="R_ICL1"/>
+          <groups:member groups:idRef="R_MLS1"/>
+        </groups:listOfMembers>
+      </groups:group>
+      <groups:group sboTerm="SBO:0000633" groups:id="group3" groups:name="Biomass equation" groups:kind="partonomy">
+        <groups:listOfMembers>
+          <groups:member groups:idRef="R_VGROPROTALT"/>
+          <groups:member groups:idRef="R_VGROPROT"/>
+          <groups:member groups:idRef="R_VGRORNA"/>
+          <groups:member groups:idRef="R_VGRODNA"/>
+          <groups:member groups:idRef="R_VGROLIPID"/>
+          <groups:member groups:idRef="R_VGROGLYCOGEN"/>
+          <groups:member groups:idRef="R_VGROTREHALOSE"/>
+          <groups:member groups:idRef="R_VGROMANNAN"/>
+          <groups:member groups:idRef="R_VGROGLUCAN"/>
+          <groups:member groups:idRef="R_VGROMAINTAIN"/>
+          <groups:member groups:idRef="R_GROWTH"/>
+        </groups:listOfMembers>
+      </groups:group>
+      <groups:group sboTerm="SBO:0000633" groups:id="group4" groups:name="Exchange reactions" groups:kind="partonomy">
+        <groups:listOfMembers>
+          <groups:member groups:idRef="R_acOUT"/>
+          <groups:member groups:idRef="R_acIN"/>
+          <groups:member groups:idRef="R_biomassOUT"/>
+          <groups:member groups:idRef="R_co2OUT"/>
+          <groups:member groups:idRef="R_ethOUT"/>
+          <groups:member groups:idRef="R_glcIN"/>
+          <groups:member groups:idRef="R_o2IN"/>
+          <groups:member groups:idRef="R_ethIN"/>
+          <groups:member groups:idRef="R_PIIn"/>
+          <groups:member groups:idRef="R_PIOut"/>
+          <groups:member groups:idRef="R_galIN"/>
+          <groups:member groups:idRef="R_gluActiveIn"/>
+        </groups:listOfMembers>
+      </groups:group>
+      <groups:group sboTerm="SBO:0000633" groups:id="group5" groups:name="Galactose metabolism" groups:kind="partonomy">
+        <groups:listOfMembers>
+          <groups:member groups:idRef="R_GAL1"/>
+          <groups:member groups:idRef="R_GAL10"/>
+          <groups:member groups:idRef="R_GAL7b"/>
+          <groups:member groups:idRef="R_PGM1_2"/>
+        </groups:listOfMembers>
+      </groups:group>
+      <groups:group sboTerm="SBO:0000633" groups:id="group6" groups:name="Glycolysis" groups:kind="partonomy">
+        <groups:listOfMembers>
+          <groups:member groups:idRef="R_HXK"/>
+          <groups:member groups:idRef="R_PGI"/>
+          <groups:member groups:idRef="R_PFK"/>
+          <groups:member groups:idRef="R_FBP"/>
+          <groups:member groups:idRef="R_FBA"/>
+          <groups:member groups:idRef="R_TPI"/>
+          <groups:member groups:idRef="R_GLD"/>
+          <groups:member groups:idRef="R_PGK"/>
+          <groups:member groups:idRef="R_GPM"/>
+          <groups:member groups:idRef="R_ENO"/>
+          <groups:member groups:idRef="R_CDC"/>
+        </groups:listOfMembers>
+      </groups:group>
+      <groups:group sboTerm="SBO:0000633" groups:id="group7" groups:name="Other" groups:kind="partonomy">
+        <groups:listOfMembers>
+          <groups:member groups:idRef="R_ATPX"/>
+          <groups:member groups:idRef="R_PDH"/>
+          <groups:member groups:idRef="R_ACS"/>
+          <groups:member groups:idRef="R_PCK"/>
+        </groups:listOfMembers>
+      </groups:group>
+      <groups:group sboTerm="SBO:0000633" groups:id="group8" groups:name="Oxidative Phosphorylation" groups:kind="partonomy">
+        <groups:listOfMembers>
+          <groups:member groups:idRef="R_NDI1"/>
+          <groups:member groups:idRef="R_NDE2"/>
+          <groups:member groups:idRef="R_RIP1"/>
+          <groups:member groups:idRef="R_COX1"/>
+          <groups:member groups:idRef="R_ATP1"/>
+        </groups:listOfMembers>
+      </groups:group>
+      <groups:group sboTerm="SBO:0000633" groups:id="group9" groups:name="Phenylalanine, tyrosine, and tryptophan biosynthesis (aromatic amino acids)" groups:kind="partonomy">
+        <groups:listOfMembers>
+          <groups:member groups:idRef="R_ALD2"/>
+        </groups:listOfMembers>
+      </groups:group>
+      <groups:group sboTerm="SBO:0000633" groups:id="group10" groups:name="Salvage pathways" groups:kind="partonomy">
+        <groups:listOfMembers>
+          <groups:member groups:idRef="R_ADK1_1"/>
+        </groups:listOfMembers>
+      </groups:group>
+      <groups:group sboTerm="SBO:0000633" groups:id="group11" groups:name="TCA" groups:kind="partonomy">
+        <groups:listOfMembers>
+          <groups:member groups:idRef="R_PYC"/>
+          <groups:member groups:idRef="R_CIT"/>
+          <groups:member groups:idRef="R_ACO"/>
+          <groups:member groups:idRef="R_IDH"/>
+          <groups:member groups:idRef="R_IDPH"/>
+          <groups:member groups:idRef="R_KGD1"/>
+          <groups:member groups:idRef="R_LSC2"/>
+          <groups:member groups:idRef="R_FUM1"/>
+          <groups:member groups:idRef="R_MDH1"/>
+          <groups:member groups:idRef="R_SDH"/>
+        </groups:listOfMembers>
+      </groups:group>
+      <groups:group sboTerm="SBO:0000633" groups:id="group12" groups:name="Transport, mitochondrial" groups:kind="partonomy">
+        <groups:listOfMembers>
+          <groups:member groups:idRef="R_ShuttleX"/>
+          <groups:member groups:idRef="R_ATPTransport"/>
+          <groups:member groups:idRef="R_OAC1"/>
+          <groups:member groups:idRef="R_PyrTrans"/>
+          <groups:member groups:idRef="R_CAT2"/>
+          <groups:member groups:idRef="R_CO2TRANS"/>
+          <groups:member groups:idRef="R_ShuttleXRev"/>
+          <groups:member groups:idRef="R_ATPTransportRev"/>
+          <groups:member groups:idRef="R_OAC1Rev"/>
+          <groups:member groups:idRef="R_PyrTransRev"/>
+          <groups:member groups:idRef="R_CAT2Rev"/>
+          <groups:member groups:idRef="R_HDECOUP"/>
+        </groups:listOfMembers>
+      </groups:group>
+      <groups:group sboTerm="SBO:0000633" groups:id="group13" groups:name="pentose phosphate" groups:kind="partonomy">
+        <groups:listOfMembers>
+          <groups:member groups:idRef="R_ZWF"/>
+          <groups:member groups:idRef="R_PGL"/>
+          <groups:member groups:idRef="R_GND"/>
+          <groups:member groups:idRef="R_RPI"/>
+          <groups:member groups:idRef="R_RPE"/>
+          <groups:member groups:idRef="R_TKLa"/>
+          <groups:member groups:idRef="R_TAL1"/>
+          <groups:member groups:idRef="R_TKLb"/>
+        </groups:listOfMembers>
+      </groups:group>
+    </groups:listOfGroups>
+  </model>
+</sbml>
