@@ -1,4 +1,4 @@
-# ECM_yeast
+# ECM_yeast [![Gitter](https://badges.gitter.im/SysBioChalmers/ECM_yeast.svg)](https://gitter.im/SysBioChalmers/ECM_yeast?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 Automated pipeline for full kinetic parameterization of a reduced model for Saccharomyces cerevisiae's central carbon metabolism. As an output an SBtab model file incorporating Kcats, KMs and equilibrium constants into modular rate laws for all reactions in the original network is obtained.
 
 ## KeyWords
