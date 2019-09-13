@@ -63,5 +63,5 @@ More detailed explanation or comments can be left in the commit description.
 * A merge with the master branch invokes a new release.
 
 ## Contributors
-- Iván Domenzain [(@IVANDOMENZAIN)](https://github.com/IVANDOMENZAIN), Chalmers University of Technology, Gothenburg Sweden
-- Avlant Nilsson [(@avlant)](https://github.com/avlant), Department of Biological Engineering, Massachusetts Institute of Technology
+- Iván Domenzain ([@IVANDOMENZAIN](https://github.com/IVANDOMENZAIN)), Chalmers University of Technology, Gothenburg Sweden
+- Avlant Nilsson ([@avlant](https://github.com/avlant)), Department of Biological Engineering, Massachusetts Institute of Technology
