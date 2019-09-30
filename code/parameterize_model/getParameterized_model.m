@@ -48,7 +48,7 @@ function model = cloneAndLoad(repo1,repo2)
 cd ..
 git(['clone https://github.com/SysBioChalmers/' repo1])
 git(['clone https://github.com/SysBioChalmers/' repo2 '.git'])
-load([repo1 '/ModelFiles/mat/yeastGEM.mat'])
+load([repo1 '/ModelFiles/mat/yeastGEM.mat']);
 %model = ravenCobraWrapper(model);
 cd parameterize_model
 clc

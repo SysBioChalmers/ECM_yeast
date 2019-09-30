@@ -21,6 +21,6 @@ ID              = model.rxns(Indxs);
 Name            = model.rxnNames(Indxs);
 KEGGIDs         = model.rxnKEGGID(Indxs);
 %!ID	!Name	!ReactionFormula	!Identifiers:kegg.reaction		
-KEGGtable = table(ID,Name,ReactionFormula,KEGGIDs);
+KEGGtable       = table(ID,Name,ReactionFormula,KEGGIDs);
 writetable(KEGGtable,'../../models/KEGG_model_Scaffold.txt','Delimiter','\t')
 end
