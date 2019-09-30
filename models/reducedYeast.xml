@@ -19,10 +19,10 @@
             </rdf:Bag>
           </dcterms:creator>
           <dcterms:created rdf:parseType="Resource">
-            <dcterms:W3CDTF>2019-09-11T13:00:56Z</dcterms:W3CDTF>
+            <dcterms:W3CDTF>2019-09-27T19:30:06Z</dcterms:W3CDTF>
           </dcterms:created>
           <dcterms:modified rdf:parseType="Resource">
-            <dcterms:W3CDTF>2019-09-11T13:00:56Z</dcterms:W3CDTF>
+            <dcterms:W3CDTF>2019-09-27T19:30:06Z</dcterms:W3CDTF>
           </dcterms:modified>
         </rdf:Description>
       </rdf:RDF>
@@ -762,7 +762,6 @@
       </species>
       <species metaid="M_H__91__m__93__" sboTerm="SBO:0000247" id="M_H__91__m__93__" name="h+" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species metaid="M_H__91__i__93__" sboTerm="SBO:0000247" id="M_H__91__i__93__" name="h+" compartment="c_i" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species metaid="M_growthProteinAlt__91__c__93__" sboTerm="SBO:0000247" id="M_growthProteinAlt__91__c__93__" name="growthProteinAlt" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species metaid="M_growthProtein__91__c__93__" sboTerm="SBO:0000247" id="M_growthProtein__91__c__93__" name="growthProtein" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species metaid="M_growthRNA__91__c__93__" sboTerm="SBO:0000247" id="M_growthRNA__91__c__93__" name="growthRNA" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species metaid="M_growthDNA__91__c__93__" sboTerm="SBO:0000247" id="M_growthDNA__91__c__93__" name="growthDNA" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
@@ -1883,7 +1882,7 @@
           <speciesReference species="M_COA__91__m__93__" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
-      <reaction metaid="R_HDECOUP" sboTerm="SBO:0000176" id="R_HDECOUP" name="Hdecouploing" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+      <reaction metaid="R_HDECOUP" sboTerm="SBO:0000176" id="R_HDECOUP" name="Hdecoupling" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
         <listOfReactants>
           <speciesReference species="M_H__91__i__93__" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -1891,7 +1890,7 @@
           <speciesReference species="M_H__91__m__93__" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
-      <reaction metaid="R_VGROPROT" sboTerm="SBO:0000176" id="R_VGROPROT" name="Protein synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+      <reaction metaid="R_VGro_PROT" sboTerm="SBO:0000176" id="R_VGro_PROT" name="Protein synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
         <listOfReactants>
           <speciesReference species="M_AKG__91__m__93__" stoichiometry="0.0341" constant="true"/>
           <speciesReference species="M_P13G__91__c__93__" stoichiometry="0.00833" constant="true"/>
@@ -1919,7 +1918,7 @@
           <speciesReference species="M_growthProtein__91__c__93__" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
-      <reaction metaid="R_VGRORNA" sboTerm="SBO:0000176" id="R_VGRORNA" name="RNA synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+      <reaction metaid="R_VGro_RNA" sboTerm="SBO:0000176" id="R_VGro_RNA" name="RNA synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
         <listOfReactants>
           <speciesReference species="M_P13G__91__c__93__" stoichiometry="0.702" constant="true"/>
           <speciesReference species="M_P6G__91__c__93__" stoichiometry="0.234" constant="true"/>
@@ -1938,7 +1937,7 @@
           <speciesReference species="M_growthRNA__91__c__93__" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
-      <reaction metaid="R_VGRODNA" sboTerm="SBO:0000176" id="R_VGRODNA" name="DNA synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+      <reaction metaid="R_VGro_DNA" sboTerm="SBO:0000176" id="R_VGro_DNA" name="DNA synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
         <listOfReactants>
           <speciesReference species="M_P13G__91__c__93__" stoichiometry="0.9" constant="true"/>
           <speciesReference species="M_P6G__91__c__93__" stoichiometry="0.1" constant="true"/>
@@ -1958,7 +1957,7 @@
           <speciesReference species="M_growthDNA__91__c__93__" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
-      <reaction metaid="R_VGROLIPID" sboTerm="SBO:0000176" id="R_VGROLIPID" name="Lipid synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+      <reaction metaid="R_VGro_LIPID" sboTerm="SBO:0000176" id="R_VGro_LIPID" name="Lipid synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
         <listOfReactants>
           <speciesReference species="M_P13G__91__c__93__" stoichiometry="0.804" constant="true"/>
           <speciesReference species="M_ACCOA__91__c__93__" stoichiometry="18.4" constant="true"/>
@@ -1983,7 +1982,7 @@
           <speciesReference species="M_growthLipid__91__c__93__" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
-      <reaction metaid="R_VGROGLYCOGEN" sboTerm="SBO:0000176" id="R_VGROGLYCOGEN" name="Glycogen synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+      <reaction metaid="R_VGro_GLYCOGEN" sboTerm="SBO:0000176" id="R_VGro_GLYCOGEN" name="Glycogen synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
         <listOfReactants>
           <speciesReference species="M_G6P__91__c__93__" stoichiometry="1" constant="true"/>
           <speciesReference species="M_ATP__91__c__93__" stoichiometry="3.07" constant="true"/>
@@ -1994,7 +1993,7 @@
           <speciesReference species="M_growthGlycogen__91__c__93__" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
-      <reaction metaid="R_VGROTREHALOSE" sboTerm="SBO:0000176" id="R_VGROTREHALOSE" name="Trehalose synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+      <reaction metaid="R_VGro_TREHALOSE" sboTerm="SBO:0000176" id="R_VGro_TREHALOSE" name="Trehalose synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
         <listOfReactants>
           <speciesReference species="M_G6P__91__c__93__" stoichiometry="2" constant="true"/>
           <speciesReference species="M_ATP__91__c__93__" stoichiometry="5.38" constant="true"/>
@@ -2005,7 +2004,7 @@
           <speciesReference species="M_growthTrehalose__91__c__93__" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
-      <reaction metaid="R_VGROMANNAN" sboTerm="SBO:0000176" id="R_VGROMANNAN" name="Mannan synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+      <reaction metaid="R_VGro_MANNAN" sboTerm="SBO:0000176" id="R_VGro_MANNAN" name="Mannan synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
         <listOfReactants>
           <speciesReference species="M_ATP__91__c__93__" stoichiometry="3.07" constant="true"/>
           <speciesReference species="M_F6P__91__c__93__" stoichiometry="1" constant="true"/>
@@ -2016,7 +2015,7 @@
           <speciesReference species="M_growthMannan__91__c__93__" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
-      <reaction metaid="R_VGROGLUCAN" sboTerm="SBO:0000176" id="R_VGROGLUCAN" name="Glucan synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+      <reaction metaid="R_VGro_GLUCAN" sboTerm="SBO:0000176" id="R_VGro_GLUCAN" name="Glucan synthesis for growth" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
         <listOfReactants>
           <speciesReference species="M_G6P__91__c__93__" stoichiometry="1" constant="true"/>
           <speciesReference species="M_ATP__91__c__93__" stoichiometry="3.07" constant="true"/>
@@ -2027,7 +2026,7 @@
           <speciesReference species="M_growthGlucan__91__c__93__" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
-      <reaction metaid="R_VGROMAINTAIN" sboTerm="SBO:0000176" id="R_VGROMAINTAIN" name="GAM" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
+      <reaction metaid="R_VGro_MAINTAIN" sboTerm="SBO:0000176" id="R_VGro_MAINTAIN" name="GAM" reversible="false" fast="false" compartment="c" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
         <listOfReactants>
           <speciesReference species="M_ATP__91__c__93__" stoichiometry="1" constant="true"/>
           <speciesReference species="M_H2O__91__c__93__" stoichiometry="1" constant="true"/>
@@ -2231,15 +2230,15 @@
       </groups:group>
       <groups:group sboTerm="SBO:0000633" groups:id="group3" groups:name="Biomass equation" groups:kind="partonomy">
         <groups:listOfMembers>
-          <groups:member groups:idRef="R_VGROPROT"/>
-          <groups:member groups:idRef="R_VGRORNA"/>
-          <groups:member groups:idRef="R_VGRODNA"/>
-          <groups:member groups:idRef="R_VGROLIPID"/>
-          <groups:member groups:idRef="R_VGROGLYCOGEN"/>
-          <groups:member groups:idRef="R_VGROTREHALOSE"/>
-          <groups:member groups:idRef="R_VGROMANNAN"/>
-          <groups:member groups:idRef="R_VGROGLUCAN"/>
-          <groups:member groups:idRef="R_VGROMAINTAIN"/>
+          <groups:member groups:idRef="R_VGro_PROT"/>
+          <groups:member groups:idRef="R_VGro_RNA"/>
+          <groups:member groups:idRef="R_VGro_DNA"/>
+          <groups:member groups:idRef="R_VGro_LIPID"/>
+          <groups:member groups:idRef="R_VGro_GLYCOGEN"/>
+          <groups:member groups:idRef="R_VGro_TREHALOSE"/>
+          <groups:member groups:idRef="R_VGro_MANNAN"/>
+          <groups:member groups:idRef="R_VGro_GLUCAN"/>
+          <groups:member groups:idRef="R_VGro_MAINTAIN"/>
           <groups:member groups:idRef="R_GROWTH"/>
         </groups:listOfMembers>
       </groups:group>
