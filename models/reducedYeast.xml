@@ -19,10 +19,10 @@
             </rdf:Bag>
           </dcterms:creator>
           <dcterms:created rdf:parseType="Resource">
-            <dcterms:W3CDTF>2019-09-27T19:30:06Z</dcterms:W3CDTF>
+            <dcterms:W3CDTF>2020-04-14T14:30:15Z</dcterms:W3CDTF>
           </dcterms:created>
           <dcterms:modified rdf:parseType="Resource">
-            <dcterms:W3CDTF>2019-09-27T19:30:06Z</dcterms:W3CDTF>
+            <dcterms:W3CDTF>2020-04-14T14:30:15Z</dcterms:W3CDTF>
           </dcterms:modified>
         </rdf:Description>
       </rdf:RDF>
@@ -762,6 +762,7 @@
       </species>
       <species metaid="M_H__91__m__93__" sboTerm="SBO:0000247" id="M_H__91__m__93__" name="h+" compartment="m" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species metaid="M_H__91__i__93__" sboTerm="SBO:0000247" id="M_H__91__i__93__" name="h+" compartment="c_i" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species metaid="M_H__91__c__93__" sboTerm="SBO:0000247" id="M_H__91__c__93__" name="h+" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species metaid="M_growthProtein__91__c__93__" sboTerm="SBO:0000247" id="M_growthProtein__91__c__93__" name="growthProtein" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species metaid="M_growthRNA__91__c__93__" sboTerm="SBO:0000247" id="M_growthRNA__91__c__93__" name="growthRNA" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species metaid="M_growthDNA__91__c__93__" sboTerm="SBO:0000247" id="M_growthDNA__91__c__93__" name="growthDNA" compartment="c" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
@@ -1050,7 +1051,7 @@
           <fbc:geneProductRef fbc:geneProduct="YLR377C"/>
         </fbc:geneProductAssociation>
       </reaction>
-      <reaction metaid="R_FBA" sboTerm="SBO:0000176" id="R_FBA" name="Fructose-bisphosphate aldolase" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+      <reaction metaid="R_FBA" sboTerm="SBO:0000176" id="R_FBA" name="D-fructose 1-phosphate D-glyceraldehyde-3-phosphate-lyase" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
         <listOfReactants>
           <speciesReference species="M_F16P__91__c__93__" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -1073,7 +1074,7 @@
           <fbc:geneProductRef fbc:geneProduct="YDR050C"/>
         </fbc:geneProductAssociation>
       </reaction>
-      <reaction metaid="R_GLD" sboTerm="SBO:0000176" id="R_GLD" name="glyceraldehyde-3-phosphate dehydrogenase" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+      <reaction metaid="R_TPH" sboTerm="SBO:0000176" id="R_TPH" name="glyceraldehyde-3-phosphate dehydrogenase" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
         <listOfReactants>
           <speciesReference species="M_GA3P__91__c__93__" stoichiometry="1" constant="true"/>
           <speciesReference species="M_NAD__91__c__93__" stoichiometry="1" constant="true"/>
@@ -1082,6 +1083,7 @@
         <listOfProducts>
           <speciesReference species="M_P13G__91__c__93__" stoichiometry="1" constant="true"/>
           <speciesReference species="M_NADH__91__c__93__" stoichiometry="1" constant="true"/>
+          <speciesReference species="M_H__91__c__93__" stoichiometry="1" constant="true"/>
         </listOfProducts>
         <fbc:geneProductAssociation>
           <fbc:or>
@@ -1232,7 +1234,7 @@
           </fbc:or>
         </fbc:geneProductAssociation>
       </reaction>
-      <reaction metaid="R_TAL1" sboTerm="SBO:0000176" id="R_TAL1" name="Transaldolase" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
+      <reaction metaid="R_TAL1" sboTerm="SBO:0000176" id="R_TAL1" name="transaldolase" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
         <listOfReactants>
           <speciesReference species="M_GA3P__91__c__93__" stoichiometry="1" constant="true"/>
           <speciesReference species="M_S7P__91__c__93__" stoichiometry="1" constant="true"/>
@@ -1665,7 +1667,34 @@
           <speciesReference species="M_H__91__i__93__" stoichiometry="4" constant="true"/>
         </listOfProducts>
         <fbc:geneProductAssociation>
-          <fbc:or/>
+          <fbc:or>
+            <fbc:and>
+              <fbc:geneProductRef fbc:geneProduct="Q0105"/>
+              <fbc:geneProductRef fbc:geneProduct="YBL045C"/>
+              <fbc:geneProductRef fbc:geneProduct="YDR529C"/>
+              <fbc:geneProductRef fbc:geneProduct="YEL024W"/>
+              <fbc:geneProductRef fbc:geneProduct="YEL039C"/>
+              <fbc:geneProductRef fbc:geneProduct="YFR033C"/>
+              <fbc:geneProductRef fbc:geneProduct="YGR183C"/>
+              <fbc:geneProductRef fbc:geneProduct="YHR001W__45__A"/>
+              <fbc:geneProductRef fbc:geneProduct="YJL166W"/>
+              <fbc:geneProductRef fbc:geneProduct="YOR065W"/>
+              <fbc:geneProductRef fbc:geneProduct="YPR191W"/>
+            </fbc:and>
+            <fbc:and>
+              <fbc:geneProductRef fbc:geneProduct="Q0105"/>
+              <fbc:geneProductRef fbc:geneProduct="YBL045C"/>
+              <fbc:geneProductRef fbc:geneProduct="YDR529C"/>
+              <fbc:geneProductRef fbc:geneProduct="YEL024W"/>
+              <fbc:geneProductRef fbc:geneProduct="YFR033C"/>
+              <fbc:geneProductRef fbc:geneProduct="YGR183C"/>
+              <fbc:geneProductRef fbc:geneProduct="YHR001W__45__A"/>
+              <fbc:geneProductRef fbc:geneProduct="YJL166W"/>
+              <fbc:geneProductRef fbc:geneProduct="YJR048W"/>
+              <fbc:geneProductRef fbc:geneProduct="YOR065W"/>
+              <fbc:geneProductRef fbc:geneProduct="YPR191W"/>
+            </fbc:and>
+          </fbc:or>
         </fbc:geneProductAssociation>
       </reaction>
       <reaction metaid="R_COX1" sboTerm="SBO:0000176" id="R_COX1" name="ferrocytochrome-c:oxygen oxidoreductase" reversible="false" fast="false" compartment="m" fbc:lowerFluxBound="FB2N0" fbc:upperFluxBound="FB3N1000">
@@ -1737,6 +1766,18 @@
               <fbc:geneProductRef fbc:geneProduct="YMR256C"/>
               <fbc:geneProductRef fbc:geneProduct="YNL052W"/>
             </fbc:and>
+            <fbc:and>
+              <fbc:geneProductRef fbc:geneProduct="Q0045"/>
+              <fbc:geneProductRef fbc:geneProduct="Q0250"/>
+              <fbc:geneProductRef fbc:geneProduct="Q0275"/>
+              <fbc:geneProductRef fbc:geneProduct="YDL067C"/>
+              <fbc:geneProductRef fbc:geneProduct="YHR116W"/>
+              <fbc:geneProductRef fbc:geneProduct="YDR231C"/>
+              <fbc:geneProductRef fbc:geneProduct="YGR062C"/>
+              <fbc:geneProductRef fbc:geneProduct="YJL003W"/>
+              <fbc:geneProductRef fbc:geneProduct="YPL132W"/>
+              <fbc:geneProductRef fbc:geneProduct="YLL018C__45__A"/>
+            </fbc:and>
           </fbc:or>
         </fbc:geneProductAssociation>
       </reaction>
@@ -1752,7 +1793,64 @@
           <speciesReference species="M_H2O__91__m__93__" stoichiometry="1" constant="true"/>
         </listOfProducts>
         <fbc:geneProductAssociation>
-          <fbc:or/>
+          <fbc:or>
+            <fbc:and>
+              <fbc:geneProductRef fbc:geneProduct="Q0080"/>
+              <fbc:geneProductRef fbc:geneProduct="Q0085"/>
+              <fbc:geneProductRef fbc:geneProduct="Q0130"/>
+              <fbc:geneProductRef fbc:geneProduct="YBL099W"/>
+              <fbc:geneProductRef fbc:geneProduct="YBR039W"/>
+              <fbc:geneProductRef fbc:geneProduct="YDL004W"/>
+              <fbc:geneProductRef fbc:geneProduct="YDR298C"/>
+              <fbc:geneProductRef fbc:geneProduct="YDR322C__45__A"/>
+              <fbc:geneProductRef fbc:geneProduct="YDR377W"/>
+              <fbc:geneProductRef fbc:geneProduct="YJR121W"/>
+              <fbc:geneProductRef fbc:geneProduct="YKL016C"/>
+              <fbc:geneProductRef fbc:geneProduct="YLR295C"/>
+              <fbc:geneProductRef fbc:geneProduct="YML081C__45__A"/>
+              <fbc:geneProductRef fbc:geneProduct="YPL078C"/>
+              <fbc:geneProductRef fbc:geneProduct="YPL271W"/>
+            </fbc:and>
+            <fbc:and>
+              <fbc:geneProductRef fbc:geneProduct="Q0080"/>
+              <fbc:geneProductRef fbc:geneProduct="Q0085"/>
+              <fbc:geneProductRef fbc:geneProduct="Q0130"/>
+              <fbc:geneProductRef fbc:geneProduct="YBL099W"/>
+              <fbc:geneProductRef fbc:geneProduct="YBR039W"/>
+              <fbc:geneProductRef fbc:geneProduct="YDL004W"/>
+              <fbc:geneProductRef fbc:geneProduct="YDR298C"/>
+              <fbc:geneProductRef fbc:geneProduct="YDR377W"/>
+              <fbc:geneProductRef fbc:geneProduct="YJR121W"/>
+              <fbc:geneProductRef fbc:geneProduct="YKL016C"/>
+              <fbc:geneProductRef fbc:geneProduct="YLR295C"/>
+              <fbc:geneProductRef fbc:geneProduct="YML081C__45__A"/>
+              <fbc:geneProductRef fbc:geneProduct="YPL078C"/>
+              <fbc:geneProductRef fbc:geneProduct="YPL271W"/>
+              <fbc:geneProductRef fbc:geneProduct="YPR020W"/>
+            </fbc:and>
+            <fbc:and>
+              <fbc:geneProductRef fbc:geneProduct="Q0080"/>
+              <fbc:geneProductRef fbc:geneProduct="Q0085"/>
+              <fbc:geneProductRef fbc:geneProduct="Q0130"/>
+              <fbc:geneProductRef fbc:geneProduct="YBL099W"/>
+              <fbc:geneProductRef fbc:geneProduct="YBR039W"/>
+              <fbc:geneProductRef fbc:geneProduct="YDL004W"/>
+              <fbc:geneProductRef fbc:geneProduct="YDR298C"/>
+              <fbc:geneProductRef fbc:geneProduct="YDR322C__45__A"/>
+              <fbc:geneProductRef fbc:geneProduct="YDR377W"/>
+              <fbc:geneProductRef fbc:geneProduct="YJR121W"/>
+              <fbc:geneProductRef fbc:geneProduct="YKL016C"/>
+              <fbc:geneProductRef fbc:geneProduct="YLR295C"/>
+              <fbc:geneProductRef fbc:geneProduct="YML081C__45__A"/>
+              <fbc:geneProductRef fbc:geneProduct="YPL078C"/>
+              <fbc:geneProductRef fbc:geneProduct="YPL271W"/>
+              <fbc:geneProductRef fbc:geneProduct="YJL180C"/>
+              <fbc:geneProductRef fbc:geneProduct="YLR393W"/>
+              <fbc:geneProductRef fbc:geneProduct="YNL315C"/>
+              <fbc:geneProductRef fbc:geneProduct="YOL077W__45__A"/>
+              <fbc:geneProductRef fbc:geneProduct="YCL005W__45__A"/>
+            </fbc:and>
+          </fbc:or>
         </fbc:geneProductAssociation>
       </reaction>
       <reaction metaid="R_NCE" sboTerm="SBO:0000176" id="R_NCE" name="CO2 dissociation" reversible="true" fast="false" compartment="c" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB3N1000">
@@ -2200,12 +2298,12 @@
       <fbc:geneProduct metaid="Q0045:Q0250:Q0275:YDL067C:YEL039C:YGL187C:YGL191W:YHR051W:YLR038C:YLR395C:YMR256C:YNL052W" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
       <fbc:geneProduct metaid="Q0045:Q0250:Q0275:YDL067C:YGL187C:YGL191W:YHR051W:YIL111W:YJR048W:YLR038C:YLR395C:YMR256C" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
       <fbc:geneProduct metaid="Q0045:Q0250:Q0275:YDL067C:YGL187C:YGL191W:YHR051W:YJR048W:YLR038C:YLR395C:YMR256C:YNL052W" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
-      <fbc:geneProduct metaid="Q0045:Q0250:Q0275:YDL067C:YHR116W:YDR231C:YGR062C:YJL003W:YPL132W:YLL018C-A" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
-      <fbc:geneProduct metaid="Q0080:Q0085:Q0130:YBL099W:YBR039W:YDL004W:YDR298C:YDR322C-A:YDR377W:YJR121W:YKL016C:YLR295C:YML081C-A:YPL078C:YPL271W" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
-      <fbc:geneProduct metaid="Q0080:Q0085:Q0130:YBL099W:YBR039W:YDL004W:YDR298C:YDR322C-A:YDR377W:YJR121W:YKL016C:YLR295C:YML081C-A:YPL078C:YPL271W:YJL180C:YLR393W:YNL315C:YOL077W-A:YCL005W-A" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
-      <fbc:geneProduct metaid="Q0080:Q0085:Q0130:YBL099W:YBR039W:YDL004W:YDR298C:YDR377W:YJR121W:YKL016C:YLR295C:YML081C-A:YPL078C:YPL271W:YPR020W" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
-      <fbc:geneProduct metaid="Q0105:YBL045C:YDR529C:YEL024W:YEL039C:YFR033C:YGR183C:YHR001W-A:YJL166W:YOR065W:YPR191W" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
-      <fbc:geneProduct metaid="Q0105:YBL045C:YDR529C:YEL024W:YFR033C:YGR183C:YHR001W-A:YJL166W:YJR048W:YOR065W:YPR191W" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
+      <fbc:geneProduct metaid="Q0045:Q0250:Q0275:YDL067C:YHR116W:YDR231C:YGR062C:YJL003W:YPL132W:YLL018C__45__A" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
+      <fbc:geneProduct metaid="Q0080:Q0085:Q0130:YBL099W:YBR039W:YDL004W:YDR298C:YDR322C__45__A:YDR377W:YJR121W:YKL016C:YLR295C:YML081C__45__A:YPL078C:YPL271W" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
+      <fbc:geneProduct metaid="Q0080:Q0085:Q0130:YBL099W:YBR039W:YDL004W:YDR298C:YDR322C__45__A:YDR377W:YJR121W:YKL016C:YLR295C:YML081C__45__A:YPL078C:YPL271W:YJL180C:YLR393W:YNL315C:YOL077W__45__A:YCL005W__45__A" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
+      <fbc:geneProduct metaid="Q0080:Q0085:Q0130:YBL099W:YBR039W:YDL004W:YDR298C:YDR377W:YJR121W:YKL016C:YLR295C:YML081C__45__A:YPL078C:YPL271W:YPR020W" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
+      <fbc:geneProduct metaid="Q0105:YBL045C:YDR529C:YEL024W:YEL039C:YFR033C:YGR183C:YHR001W__45__A:YJL166W:YOR065W:YPR191W" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
+      <fbc:geneProduct metaid="Q0105:YBL045C:YDR529C:YEL024W:YFR033C:YGR183C:YHR001W__45__A:YJL166W:YJR048W:YOR065W:YPR191W" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
       <fbc:geneProduct metaid="YBR221C:YER178W:YFL018C:YGR193C:YNL071W" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
       <fbc:geneProduct metaid="YDR178W:YJL045W:YKL141W:YLL041C" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
       <fbc:geneProduct metaid="YDR178W:YKL141W:YKL148C:YLL041C" sboTerm="SBO:0000252" fbc:label="YAL054C"/>
@@ -2274,7 +2372,7 @@
           <groups:member groups:idRef="R_FBP"/>
           <groups:member groups:idRef="R_FBA"/>
           <groups:member groups:idRef="R_TPI"/>
-          <groups:member groups:idRef="R_GLD"/>
+          <groups:member groups:idRef="R_TPH"/>
           <groups:member groups:idRef="R_PGK"/>
           <groups:member groups:idRef="R_GPM"/>
           <groups:member groups:idRef="R_ENO"/>

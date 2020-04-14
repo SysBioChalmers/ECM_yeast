@@ -9,7 +9,7 @@ catalytic rate constant	PFK		174.8333	1/s	[EC2.7.1.11]	saccharomyces cerevisiae
 catalytic rate constant	FBP		4.9	1/s	[EC3.1.3.11]	saccharomyces cerevisiae
 catalytic rate constant	FBA		12.6	1/s	[EC4.1.2.13]	closest
 catalytic rate constant	TPI		16700	1/s	[EC5.3.1.1]	saccharomyces cerevisiae
-catalytic rate constant	GLD		107.454	1/s	[EC1.2.1.12]	saccharomyces cerevisiae
+catalytic rate constant	TPH		107.454	1/s	[EC1.2.1.12]	saccharomyces cerevisiae
 catalytic rate constant	PGK		354	1/s	[EC2.7.2.3]	saccharomyces cerevisiae
 catalytic rate constant	GPM		1085.5	1/s	[EC5.4.2.11]	saccharomyces cerevisiae
 catalytic rate constant	ENO		74.6171	1/s	[EC4.2.1.11]	saccharomyces cerevisiae

@@ -16,8 +16,9 @@ Michaelis constant	FBP	phosphate	NaN	mM	[EC3.1.3.11]	closest
 Michaelis constant	FBA	D-glyceraldehyde 3-phosphate	0.052	mM	[EC4.1.2.13]	closest
 Michaelis constant	FBA	dihydroxyacetone phosphate	0.095	mM	[EC4.1.2.13]	closest
 Michaelis constant	TPI	D-glyceraldehyde 3-phosphate	1.1	mM	[EC5.3.1.1]	saccharomyces cerevisiae
-Michaelis constant	GLD	1,3-bisphospho-D-glycerate	0.01	mM	[EC1.2.1.12]	closest
-Michaelis constant	GLD	NADH	0.012	mM	[EC1.2.1.12]	closest
+Michaelis constant	TPH	1,3-bisphospho-D-glycerate	0.01	mM	[EC1.2.1.12]	closest
+Michaelis constant	TPH	NADH	0.012	mM	[EC1.2.1.12]	closest
+Michaelis constant	TPH	h+	NaN	mM	[EC1.2.1.12]	closest
 Michaelis constant	PGK	3-phospho-D-glycerate	0.77	mM	[EC2.7.2.3]	saccharomyces cerevisiae
 Michaelis constant	PGK	ATP	0.33	mM	[EC2.7.2.3]	saccharomyces cerevisiae
 Michaelis constant	GPM	2-phospho-D-glyceric acid	NaN	mM	[EC5.4.2.11]	closest
