@@ -19,7 +19,7 @@ from equilibrator_api import ComponentContribution, Reaction, ReactionMatcher
 eq_api = ComponentContribution(pH=7.5, ionic_strength=0.1)
 #Load model data file
 os.chdir(ECM_path+'/Models')
-data  = pd.read_table('KEGGmodelScaffold.txt')
+data  = pd.read_table('KEGG_model_Scaffold.txt')
 os.chdir(ECM_path)
 i=0
 output     = '!!SBtab TableName=Parameter TableType=Quantity Document=S. cervisiae central carbon metabolism SBtabVersion=1.0'+'\n'

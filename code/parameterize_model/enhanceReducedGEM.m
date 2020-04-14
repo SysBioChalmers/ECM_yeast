@@ -11,6 +11,8 @@ org_name      = 'saccharomyces cerevisiae';
 org_code      = 'sce';
 %%%%%%%%%%%%%%%%%%%%%%% Preprocess reduced GEM  %%%%%%%%%%%%%%%%%%%%%%%%%%
 model = open('../../models/model.mat');
+yeast8 = load('../../../yeast-GEM/ModelFiles/mat/yeastGEM.mat');
+yeast8 = yeast8.model;
 cd ..
 model = createKEGGmodel(model,yeast8);
 cd ../Model_curation_scripts
